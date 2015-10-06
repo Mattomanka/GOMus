@@ -1,0 +1,12 @@
+{
+  "name": "GOMus",
+  "app_id": "08823fc4",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}
