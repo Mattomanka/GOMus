@@ -41,16 +41,25 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
+.controller('ToursCtrl', function($scope) {
+  $scope.locations = [
+    { id: 1, title: 'Kirha', img: 'img/ionic.png' },
+    { id: 2, title: 'Museum', img: 'img/ionic.png' },
+    { id: 3, title: 'Church', img: 'img/ionic.png' },
+    { id: 4, title: 'Church', img: 'img/ionic.png' },
+    { id: 5, title: 'Mus', img: 'img/ionic.png' }
+  ];
+  $scope.tours = [
+    { title: 'Church', id: 1, img: 'img/ionic.png', description: 'Tour to the church!' },
+    { title: 'Museum', id: 2, img: 'img/ionic.png', description: 'Tour to the museum.' },
+    { title: 'Museum2', id: 3, img: 'img/ionic.png', description: 'Tour to the second more cool museum.' }
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('TourCtrl', function($scope, $stateParams) {
+  console.log($scope);
+  console.log($stateParams);
+  $scope.params = {
+    id: $stateParams.tourId
+  }
 });

@@ -7699,3 +7699,24 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+#home-screen #locations ion-item {
+  width: 20%;
+  display: inline-block; }
+  #home-screen #locations ion-item .item-content {
+    width: 90%;
+    padding: 0; }
+    #home-screen #locations ion-item .item-content .location-img {
+      width: 100%; }
+      #home-screen #locations ion-item .item-content .location-img img {
+        width: 100%; }
+    #home-screen #locations ion-item .item-content .location-title {
+      width: 100%; }
+#home-screen .tours-footer {
+  text-align: center; }
+#home-screen .left {
+  float: left; }
+#home-screen .right {
+  float: right; }
+  #home-screen .right img {
+    width: 40px; }

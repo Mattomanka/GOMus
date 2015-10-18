@@ -1,0 +1,14 @@
+<ion-view view-title="Tours">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="tour in tours" href="#/app/tours/{{tour.id}}">
+        <div class="left">
+        	<h3>{{tour.title}}</h3>
+        	<h4>{{tour.description}}</h4>
+        </div>
+        <div class="right"><img src="{{tour.img}}" /></div>
+      </ion-item>
+    </ion-list>
+    <p class="tours-footer">Total number of tours: {{tours.length}}</p>
+  </ion-content>
+</ion-view>
