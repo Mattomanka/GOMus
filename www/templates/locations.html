@@ -1,0 +1,13 @@
+<ion-view view-title="Locations">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="location in locations" href="#/app/locations/{{location.id}}">
+        <div class="left">
+        	<h3>{{location.title}}</h3>
+        	<h4>{{location.description}}</h4>
+        </div>
+        <div class="right"><img src="{{location.img}}" /></div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

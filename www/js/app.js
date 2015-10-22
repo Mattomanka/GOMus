@@ -6,6 +6,12 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers'])
 
+.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+])
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -61,15 +67,35 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.single', {
+  .state('app.tour', {
     url: '/tours/:tourId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
+        templateUrl: 'templates/tour.html',
         controller: 'TourCtrl'
+      }
+    }
+  })
+
+  .state('app.locations', {
+    url: '/locations',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/locations.html',
+        controller: 'LocationsCtrl'
+      }
+    }
+  })
+
+  .state('app.location', {
+    url: '/locations/:locationId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/location.html',
+        controller: 'LocationCtrl'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/tours');
+  $urlRouterProvider.otherwise('/app/home');
 });
