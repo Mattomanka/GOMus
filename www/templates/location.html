@@ -1,0 +1,30 @@
+<ion-view id="location-screen" view-title="{{loctn.title}}">
+  <ion-content>
+  	<ion-list class="ls-gallery">
+      <ion-item>
+        <div class="location-img" ng-click="showImage(1)"><img src="{{loctn.img}}" /></div>
+      </ion-item>
+      <ion-item>
+        <div class="location-img" ng-click="showImage(1)"><img src="{{loctn.img}}" /></div>
+      </ion-item>
+      <ion-item>
+        <div class="location-img" ng-click="showImage(1)"><img src="{{loctn.img}}" /></div>
+      </ion-item>
+      <ion-item>
+        <div class="location-img" ng-click="showImage(1)"><img src="{{loctn.img}}" /></div>
+      </ion-item>
+    </ion-list>
+	<!--   <a class="button" ng-click="showImage(2)">Medium</a>
+	  <a class="button" ng-click="showImage(3)">Very large</a> -->
+    <h1>{{loctn.secTitle}}</h1>
+	<p>{{loctn.text}}</p>
+
+	<script id="image-modal.html" type="text/ng-template">
+	  <div class="modal image-modal transparent" ng-click="closeModal()">
+	      <ion-pane class="transparent">
+	         <img ng-src="{{imageSrc}}" class="fullscreen-image"/>
+	      </ion-pane>
+	  </div>
+	</script>
+  </ion-content>
+</ion-view>

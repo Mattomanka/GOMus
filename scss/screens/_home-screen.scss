@@ -1,22 +1,28 @@
 #home-screen {
 	#locations {
 		ion-item {
-			width: 20%;
+			width: 25%;
 			display: inline-block;
+			border: 0px;
 
 			.item-content {
 				width: 90%;
 				padding: 0;
+				margin: 0 auto;
 
 				.location-img {
-					width: 100%;
+					display: inline-block;
+					border-radius: 50%;
+	                overflow: hidden;
 
 					img {
 						width: 100%;
+						max-height: 100px;
 					}
 				}
 
 				.location-title {
+					text-align: center;
 					width: 100%;
 				}
 			}
