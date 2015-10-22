@@ -1,6 +1,16 @@
-<ion-view view-title="Tour">
+<ion-view id="tour-screen" view-title="Tour">
   <ion-content>
     <h1>Tour</h1>
 	<h2>Id of this tour is {{params.id}}</h2>
+	<p>This tour show you kircha.</p>
+	<ion-list>
+      <ion-item ng-repeat="location in locations" href="#/app/locations/{{location.id}}">
+        <div class="left">
+        	<h3>{{location.title}}</h3>
+        	<h4>{{location.description}}</h4>
+        </div>
+        <div class="right"><img src="{{location.img}}" /></div>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
