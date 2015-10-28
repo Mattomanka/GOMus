@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*
 To customize the look and feel of Ionic, you can override the variables
 in ionic's _variables.scss file.
@@ -7743,18 +7743,6 @@ a.button {
       width: 100%;
       max-height: 100px; }
 #location-screen .big-img {
-  height: 40vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover; }
-  #location-screen .big-img .item {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 0.5em 0em;
-    margin-top: 32vh; }
-  #location-screen .big-img .item h1 {
-    color: #FFF;
-    font-size: 1.5em;
-    text-align: center; }
 
 .transparent {
   background: transparent !important; }

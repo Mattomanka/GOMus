@@ -1,103 +1,38 @@
 <ion-view id="location-screen" view-title="{{loctn.title}}">
   <ion-content>
+  	<!-- <ion-list class="ls-gallery">
+      <ion-item>
+        <div class="location-img" ng-click="showImage(1)"><img src="{{loctn.img}}" /></div>
+      </ion-item>
+      <ion-item>
+        <div class="location-img" ng-click="showImage(1)"><img src="{{loctn.img}}" /></div>
+      </ion-item>
+      <ion-item>
+        <div class="location-img" ng-click="showImage(1)"><img src="{{loctn.img}}" /></div>
+      </ion-item>
+      <ion-item>
+        <div class="location-img" ng-click="showImage(1)"><img src="{{loctn.img}}" /></div>
+      </ion-item>
+    </ion-list> -->
+	<!--   <a class="button" ng-click="showImage(2)">Medium</a>
+	  <a class="button" ng-click="showImage(3)">Very large</a> -->
+	<div class="big-img" ng-click="showImage(1)" style="background-image: url({{loctn.img}})"></div>
+	<div class="card">
+	  <div class="item item-divider">
+	    <h1>{{loctn.title}}</h1>
+    	<h4>{{loctn.secTitle}}</h4>
+	  </div>
+	  <div class="item item-text-wrap">
+	    <p >{{loctn.text}}</p>
+	  </div>
+	</div>
+    
+	
 
-  
-	<div class="big-img card" ng-click="showImage(1)" style="background-image: url({{loctn.img[0]}})">
-	  <div class="item">
-			<h1>{{loctn.title}}</h1>
-	  </div>
-	</div>
-	
-	<div class="card sub-title-wrap">
-	  <div class="item item-divider">
-			<p> (St. Paul's Cathedral, German Evangelical Lutheran Church)</p>	
-	  </div>
-	  <div class="item item-text-wrap">
-		<p>St. Paul's Cathedral (Kirch) - the Lutheran Cathedral of St. Paul's German Evangelical Lutheran Church in Ukraine, Ukrainian Lutheran religious center of the German tradition of the Church - the historic building and architectural monument of national importance, which houses the Department of the Bishop of the whole Church in Ukraine. <a href="#/app/tours" class="read-more-btn">Read more...</a></p>
-	  </div> 
-	</div>
-	
-	<div class="card sub-title-wrap">
-	  <div class="item item-divider">
-			<p>Main plan</p>
-	  </div>
-	  <div class="item item-text-wrap">
-		<img ng-src="img/kicrh_plan_2.jpg" />	
-	  </div> 
-	</div>
-	
-	<div class="card exhibit-list list">
-	  <div class="row exhibit-item ">
-		<div class="col-10 item-number ">
-			<p style="background: #999;">1</p>
-		</div>
-		<div class="col-67 item-content">
-			<h3>The church porch</h3>
-			<p>At the entrance under the bell tower a plaque in memory of the victims of persecution and violence is also placed. For all the victims there are presented the names of the pastor Carl Vogel and organist Theophil Richter. Both were shot during the Stalin's rule.
-A wooden cross is a gift by Andreas Loquai from Bavaria, and the two angels in Baroque style came from the Catholic Church in the Urals.
-Glass door welcomes visitors with the words "Peace be with you" in eight languages.</p>
-		</div>
-		<div class="col-25 item-thumb col-center">
-			<img ng-src="img/KO/01_01.jpg" />	
-		</div>
-	  </div>
-	  <div class="row exhibit-item">
-		<div class="col-10 item-number ">
-			<p style="background: #b88759;">2</p>
-		</div>
-		<div class="col-67 item-content">
-			<h3>Icon</h3>
-			<p>Icon of the Virgin at the entrance of the church was painted in the Western Ukraine. During the Revolution the icon was saved by an elderly woman from a burning rural church. She kept it at her home for many years. After the accident that happened to the woman’s daughter  and she miraculously survived, the woman handed over the icon as a gift for the St. Paul’s Church.</p>
-		</div>
-		<div class="col-25 item-thumb col-center">
-			<img ng-src="img/KO/02_01.jpg" />	
-		</div>
-	  </div>
-	  <div class="row exhibit-item">
-		<div class="col-10 item-number ">
-			<p >3</p>
-		</div>
-		<div class="col-67 item-content">
-			<h3>Information stand about the history of the Kirch</h3>
-			<p>A series of photographs and brief notes about how the Kirch was built in Odessa.</p>
-		</div>
-		<div class="col-25 item-thumb col-center">
-			<img ng-src="img/KO/03_01.jpg" />	
-		</div>
-	  </div>
-	</div>
-	
-		<div class="card address-wrap text-center">
-	  <div class="item item-divider">
-			<p><i class="ion-ios-location-outline"></i> Contacts information</p>	
-	  </div>
-	  <div class="item ">
-			<p><i class="ion-ios-location"></i> Nowosielskogo st., 68/1</p>	
-	  </div>
-	  <div class="item ">
-			<p><i class="ion-clock"></i> Visiting hours</p>	
-	  </div>
-	  <div class="item ">
-			<p><i class="ion-ios-telephone"></i> <a href="tel:+38048772-64-89">38 (048) 772-64-89</a></p>	
-	  </div>
-	   <div class="item ">
-			<p><a href="http://delku.com.ua"><i class="ion-share"></i>delku.com.ua</a> <br/> <a href="http://kirha.od.ua"><i class="ion-share"></i>kirha.od.ua</a></p>	
-	  </div>	
-	</div>
-	
 	<script id="image-modal.html" type="text/ng-template">
-	  <div class="modal image-modal transparent" >
+	  <div class="modal image-modal transparent" ng-click="closeModal()">
 	      <ion-pane class="transparent">
-			 <a class="icon ion-close hide-btn" ng-click="closeModal()"></a>
 	         <img ng-src="{{imageSrc}}" class="fullscreen-image"/>
-			 <div class="slider-nav-wrapp">
-				<div class="slider-nav-left-side" >
-					<a class="button icon-left ion-arrow-left-b button-clear"  ng-click="slideLeft()"></a>
-				</div>
-				<div class="slider-nav-right-side" >
-					<a class="button icon-right ion-arrow-right-b button-clear" ng-click="slideRight()"></a>
-				</div>
-			 </div>
 	      </ion-pane>
 	  </div>
 	</script>
