@@ -104,7 +104,25 @@ angular.module('starter.controllers', ['starter.factories'])
     }).then(function(modal) {
       $scope.modal = modal;
     });
-
+	
+	$scope.slideLeft = function() {
+		var current_index = $scope.loctn.img.indexOf($scope.imageSrc);
+		current_index--;
+		
+		if(current_index < 0) current_index = $scope.loctn.img.length-1;
+		
+		$scope.imageSrc = $scope.loctn.img[current_index];
+    };
+	
+	$scope.slideRight = function() {
+		var current_index = $scope.loctn.img.indexOf($scope.imageSrc);
+		current_index++;
+		
+		if(current_index >=$scope.loctn.img.length) current_index = 0;
+		
+		$scope.imageSrc = $scope.loctn.img[current_index];
+    };
+	
     $scope.openModal = function() {
       $scope.modal.show();
     };
@@ -126,10 +144,11 @@ angular.module('starter.controllers', ['starter.factories'])
       // Execute action
     });
     $scope.$on('modal.shown', function() {
+	  $scope.imageSrc = $scope.loctn.img[0];
       console.log('Modal is shown!');
     });
 
-    $scope.imageSrc = $scope.loctn.img;
+    
 
     $scope.showImage = function(index) {
       // switch(index) {
