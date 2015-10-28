@@ -50,13 +50,15 @@
   	
 	.hide-btn {
 		font-size: 1.5em;
-    	background-color: white;
-    	padding: 0.25em .4em;
-    	display: inline-block;
-    	border-radius: 50%;
-    	position: absolute;
-    	right: .5em;
-    	top: .5em;
+		background-color: white;
+		padding: 0.25em .4em;
+		display: inline-block;
+		border-radius: 50%;
+		border: 1px solid rgba(0, 0, 0, 0.35);
+		position: absolute;
+		right: .5em;
+		top: .5em;
+		z-index: 2;
 	}
 
   	.slider-nav-wrapp {

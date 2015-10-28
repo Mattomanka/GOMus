@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['starter.factories'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -39,6 +39,11 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
+})
+
+.controller('HomeCtrl', function($scope, $http, ToursPost, LocationsPost) {
+  $scope.locations = LocationsPost.query();
+  $scope.tours = ToursPost.query();
 })
 
 .controller('ToursCtrl', function($scope, $http) {

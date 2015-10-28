@@ -7764,9 +7764,11 @@ a.button {
     padding: 0.25em .4em;
     display: inline-block;
     border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.35);
     position: absolute;
     right: .5em;
-    top: .5em; }
+    top: .5em;
+    z-index: 2; }
   .transparent .slider-nav-wrapp {
     width: 100%;
     height: 100%; }
