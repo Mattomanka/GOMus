@@ -1,6 +1,6 @@
 {
-  "name": "GOMus",
-  "app_id": "08823fc4",
+  "name": "manka",
+  "app_id": "9320bafb",
   "gulpStartupTasks": [
     "sass",
     "watch"
