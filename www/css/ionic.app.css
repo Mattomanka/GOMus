@@ -7725,6 +7725,7 @@ a.button {
 #home-screen .right {
   float: right; }
   #home-screen .right img {
+    width: auto;
     max-height: 60px; }
 
 #location-screen .ls-gallery ion-item {
