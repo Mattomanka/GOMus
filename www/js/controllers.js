@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['starter.factories'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -41,24 +41,9 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('HomeCtrl', function($scope, $http) {
-  console.log ('post' + ToursPost.query());
-  $http.get('http://gid.areyoualive.ru/api/locations.php').then(function(resp) {
-    console.log('Success', resp);
-    console.log(resp.data);
-    $scope.locations = resp.data;
-  }, function(err) {
-    console.error('ERR', err);
-  })
-
-  $http.get('http://gid.areyoualive.ru/api/tours.php').then(function(resp) {
-    console.log('Success', resp);
-    console.log(resp.data);
-    $scope.tours = resp.data;
-  }, function(err) {
-    console.error('ERR', err);
-  })
-
+.controller('HomeCtrl', function($scope, $http, ToursPost, LocationsPost) {
+  $scope.locations = LocationsPost.query();
+  $scope.tours = ToursPost.query();
 })
 
 .controller('ToursCtrl', function($scope, $http) {
