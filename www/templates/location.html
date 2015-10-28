@@ -1,6 +1,6 @@
 <ion-view id="location-screen" view-title="{{loctn.title}}">
   <ion-content>
-  	<ion-list class="ls-gallery">
+  	<!-- <ion-list class="ls-gallery">
       <ion-item>
         <div class="location-img" ng-click="showImage(1)"><img src="{{loctn.img}}" /></div>
       </ion-item>
@@ -13,11 +13,21 @@
       <ion-item>
         <div class="location-img" ng-click="showImage(1)"><img src="{{loctn.img}}" /></div>
       </ion-item>
-    </ion-list>
+    </ion-list> -->
 	<!--   <a class="button" ng-click="showImage(2)">Medium</a>
 	  <a class="button" ng-click="showImage(3)">Very large</a> -->
-    <h1>{{loctn.secTitle}}</h1>
-	<p>{{loctn.text}}</p>
+	<div class="big-img" ng-click="showImage(1)" style="background-image: url({{loctn.img}})"></div>
+	<div class="card">
+	  <div class="item item-divider">
+	    <h1>{{loctn.title}}</h1>
+    	<h4>{{loctn.secTitle}}</h4>
+	  </div>
+	  <div class="item item-text-wrap">
+	    <p >{{loctn.text}}</p>
+	  </div>
+	</div>
+    
+	
 
 	<script id="image-modal.html" type="text/ng-template">
 	  <div class="modal image-modal transparent" ng-click="closeModal()">
