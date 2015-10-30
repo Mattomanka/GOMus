@@ -41,55 +41,24 @@ angular.module('starter.controllers', ['starter.factories'])
   };
 })
 
-.controller('HomeCtrl', function($scope, $http, ToursPost, LocationsPost) {
+.controller('HomeCtrl', function($scope, ToursPost, LocationsPost) {
   $scope.locations = LocationsPost.query();
   $scope.tours = ToursPost.query();
 })
 
-.controller('ToursCtrl', function($scope, $http) {
-  $scope.locations = [
-    { id: 1, title: 'Kirha', img: 'img/ionic.png' },
-    { id: 2, title: 'Museum', img: 'img/shenok5.jpg' },
-    { id: 3, title: 'Church', img: 'img/shenok5.jpg' },
-    { id: 4, title: 'Church', img: 'img/shenok5.jpg' }
-  ];
-  $scope.tours = [
-    { title: 'Church', id: 1, img: 'img/ionic.png', description: 'Tour to the church!' },
-    { title: 'Museum', id: 2, img: 'img/ionic.png', description: 'Tour to the museum.' },
-    { title: 'Museum2', id: 3, img: 'img/ionic.png', description: 'Tour to the second more cool museum.' }
-  ];
-
-  $http.get('http://gid.areyoualive.ru/gid.php').then(function(resp) {
-    console.log('Success', resp);
-    // For JSON responses, resp.data contains the result
-  }, function(err) {
-    console.error('ERR', err);
-    // err.status will contain the status code
-  })
-
+.controller('ToursCtrl', function($scope, ToursPost) {
+  $scope.tours = ToursPost.query();
 })
 
-.controller('TourCtrl', function($scope, $stateParams) {
-  console.log($scope);
-  console.log($stateParams);
+.controller('TourCtrl', function($scope, $stateParams, LocationsPost) {
   $scope.params = {
     id: $stateParams.tourId
   };
-  $scope.locations = [
-    { id: 1, title: 'Kirha', description: 'Some location in this tour', img: 'img/kircha.jpg' },
-    { id: 2, title: 'Museum', description: 'Museum of nature science', img: 'img/shenok5.jpg' },
-    { id: 3, title: 'Church', description: 'Take me to church!', img: 'img/cat.jpg' },
-    { id: 4, title: 'Church', description: '.... church!', img: 'img/shenok5.jpg' }
-  ];
+  $scope.locations = LocationsPost.query();
 })
 
-.controller('LocationsCtrl', function($scope, $http) {
-  $scope.locations = [
-    { id: 1, title: 'Kirha', img: 'img/kircha.jpg' },
-    { id: 2, title: 'Museum', img: 'img/shenok5.jpg' },
-    { id: 3, title: 'Church', img: 'img/cat.jpg' },
-    { id: 4, title: 'Church', img: 'img/shenok5.jpg' }
-  ];
+.controller('LocationsCtrl', function($scope, LocationsPost) {
+  $scope.locations = LocationsPost.query();
 })
 
 .controller('LocationCtrl', ['$scope', '$ionicModal',
@@ -104,7 +73,25 @@ angular.module('starter.controllers', ['starter.factories'])
     }).then(function(modal) {
       $scope.modal = modal;
     });
-
+	
+	$scope.slideLeft = function() {
+		var current_index = $scope.loctn.img.indexOf($scope.imageSrc);
+		current_index--;
+		
+		if(current_index < 0) current_index = $scope.loctn.img.length-1;
+		
+		$scope.imageSrc = $scope.loctn.img[current_index];
+    };
+	
+	$scope.slideRight = function() {
+		var current_index = $scope.loctn.img.indexOf($scope.imageSrc);
+		current_index++;
+		
+		if(current_index >=$scope.loctn.img.length) current_index = 0;
+		
+		$scope.imageSrc = $scope.loctn.img[current_index];
+    };
+	
     $scope.openModal = function() {
       $scope.modal.show();
     };
@@ -126,10 +113,11 @@ angular.module('starter.controllers', ['starter.factories'])
       // Execute action
     });
     $scope.$on('modal.shown', function() {
+	  $scope.imageSrc = $scope.loctn.img[0];
       console.log('Modal is shown!');
     });
 
-    $scope.imageSrc = $scope.loctn.img;
+    
 
     $scope.showImage = function(index) {
       // switch(index) {

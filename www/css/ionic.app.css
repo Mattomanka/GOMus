@@ -7725,6 +7725,7 @@ a.button {
 #home-screen .right {
   float: right; }
   #home-screen .right img {
+    width: auto;
     max-height: 60px; }
 
 #location-screen .ls-gallery ion-item {
@@ -7743,14 +7744,75 @@ a.button {
       width: 100%;
       max-height: 100px; }
 #location-screen .big-img {
-  width: 100%;
   height: 40vh;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover; }
+  #location-screen .big-img .item {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.5em 0em;
+    margin-top: 32vh; }
+  #location-screen .big-img .item h1 {
+    color: #FFF;
+    font-size: 1.5em;
+    text-align: center; }
 
 .transparent {
   background: transparent !important; }
+  .transparent .hide-btn {
+    font-size: 1.5em;
+    background-color: white;
+    padding: 0.25em .4em;
+    display: inline-block;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    position: absolute;
+    right: .5em;
+    top: .5em;
+    z-index: 2; }
+  .transparent .slider-nav-wrapp {
+    width: 100%;
+    height: 100%; }
+    .transparent .slider-nav-wrapp .slider-nav-left-side, .transparent .slider-nav-wrapp .slider-nav-right-side {
+      width: 50%;
+      float: left;
+      padding: 40vh 0; }
+    .transparent .slider-nav-wrapp .slider-nav-right-side {
+      text-align: right; }
+    .transparent .slider-nav-wrapp a.button {
+      color: black; }
+
+.exhibit-item {
+  border-bottom: .1em solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 1em; }
+  .exhibit-item .item-number p {
+    text-align: center;
+    margin: 0;
+    padding: 0.2em 0;
+    color: #fff;
+    border-radius: 7px;
+    background: #ff478f;
+    font-weight: 100; }
+  .exhibit-item .item-content {
+    line-height: 1.2em;
+    padding: 0 0.5em; }
+    .exhibit-item .item-content h3, .exhibit-item .item-content p {
+      white-space: normal; }
+    .exhibit-item .item-content h3 {
+      font-size: 1.2em;
+      text-align: left; }
+    .exhibit-item .item-content p {
+      font-size: 0.8em;
+      line-height: 1em;
+      text-align: justify; }
+  .exhibit-item .item-thumb img {
+    max-width: 90%; }
+
+.sub-title-wrap .item p {
+  white-space: normal;
+  text-align: center; }
+.sub-title-wrap .item img {
+  max-width: 100%; }
 
 .image-modal {
   width: 100% !important;
@@ -7785,3 +7847,10 @@ a.button {
   float: right; }
   #tour-screen .right img {
     height: 100px; }
+
+#tours-screen .left {
+  float: left; }
+#tours-screen .right {
+  float: right; }
+  #tours-screen .right img {
+    max-height: 60px; }

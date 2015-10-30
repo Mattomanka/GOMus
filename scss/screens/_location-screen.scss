@@ -82,6 +82,46 @@
 
 }
 
+.exhibit-item {
+	    border-bottom: .1em solid rgba(0,0,0,0.2);
+    	margin-bottom: 1em;
+    
+	.item-number {
+		p {
+			text-align: center;
+    		margin: 0;
+    		padding: 0.2em 0;
+		    color: #fff;
+		    border-radius: 7px;
+		    background: #ff478f;
+		    font-weight: 100;
+		}
+	}
+
+	.item-content {
+    		line-height: 1.2em;
+    		padding: 0 0.5em;
+
+		h3,p{
+			white-space: normal;
+		}
+
+		h3 {
+			font-size: 1.2em;
+			text-align: left;
+		}
+		p {	
+		    font-size: 0.8em;
+		    line-height: 1em;
+		    text-align: justify;
+		}
+	}
+
+	.item-thumb img {
+		max-width: 90%;
+	}
+}
+
 .sub-title-wrap {
 	.item p{
 		white-space: normal;

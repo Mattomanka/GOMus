@@ -95,6 +95,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'LocationCtrl'
       }
     }
+  })
+  
+  .state('app.location-description', {
+    url: '/location/description',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/location/description.html'
+      }
+    }
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
