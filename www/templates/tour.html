@@ -1,8 +1,12 @@
 <ion-view id="tour-screen" view-title="Tour">
   <ion-content>
+    <div id="map" data-tap-disabled="true">
+        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+    </div>
     <h1>Tour</h1>
 	<h2>Id of this tour is {{params.id}}</h2>
 	<p>This tour show you kircha.</p>
+
 	<ion-list>
       <ion-item ng-repeat="location in locations" href="#/app/locations/{{location.id}}">
         <div class="left">
