@@ -55,7 +55,31 @@ angular.module('starter.controllers', ['starter.factories'])
     id: $stateParams.tourId
   };
   $scope.locations = LocationsPost.query();
-  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+  $scope.map = { center: { latitude: 40.1451, longitude: -99.6680 }, zoom: 8 };
+  $scope.marker = {
+    id: 0,
+    coords: {
+      latitude: 40.1451,
+      longitude: -99.6680
+    },
+    options: { draggable: true },
+    events: {
+      dragend: function (marker, eventName, args) {
+        $log.log('marker dragend');
+        var lat = marker.getPosition().lat();
+        var lon = marker.getPosition().lng();
+        $log.log(lat);
+        $log.log(lon);
+
+        $scope.marker.options = {
+          draggable: true,
+          labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
+          labelAnchor: "100 0",
+          labelClass: "marker-labels"
+        };
+      }
+    }
+  };
 })
 
 .controller('LocationsCtrl', function($scope, LocationsPost) {
@@ -119,22 +143,35 @@ angular.module('starter.controllers', ['starter.factories'])
     
 
     $scope.showImage = function(index) {
-      // switch(index) {
-      //   case 1:
-      //     $scope.imageSrc = 'http://ionicframework.com/img/ionic-logo-blog.png';
-      //     break;
-      //   case 2:
-      //     $scope.imageSrc  = 'http://ionicframework.com/img/ionic_logo.svg';
-      //     break;
-      //   case 3:
-      //     $scope.imageSrc  = 'http://ionicframework.com/img/homepage/phones-weather-demo@2x.png';
-      //     break;
-      // }
       $scope.openModal();
     }
 
-    
-  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+
+  $scope.map = { center: { latitude: 40.1451, longitude: -99.6680 }, zoom: 8 };
+  $scope.marker = {
+    id: 0,
+    coords: {
+      latitude: 40.1451,
+      longitude: -99.6680
+    },
+    options: { draggable: true },
+    events: {
+      dragend: function (marker, eventName, args) {
+        $log.log('marker dragend');
+        var lat = marker.getPosition().lat();
+        var lon = marker.getPosition().lng();
+        $log.log(lat);
+        $log.log(lon);
+
+        $scope.marker.options = {
+          draggable: true,
+          labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
+          labelAnchor: "100 0",
+          labelClass: "marker-labels"
+        };
+      }
+    }
+  };
   }
 
 

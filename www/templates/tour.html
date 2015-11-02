@@ -1,7 +1,10 @@
 <ion-view id="tour-screen" view-title="Tour">
   <ion-content>
-    <div id="map" data-tap-disabled="true">
-        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+    <div id="map" data-tap-disabled="true" href="#/app/map">
+        <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+          <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+        </ui-gmap-marker>
+        </ui-gmap-google-map>
     </div>
     <h1>Tour</h1>
 	<h2>Id of this tour is {{params.id}}</h2>
