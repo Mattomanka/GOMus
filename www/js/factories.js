@@ -11,3 +11,4 @@ angular.module('starter.factories', ['ngResource'])
 	.factory('InnerLocationsPost', function($resource) {
 		return $resource('http://gid.areyoualive.ru/api/inner_locations.php');
 	});
+	

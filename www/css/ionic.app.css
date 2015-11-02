@@ -7841,6 +7841,9 @@ a.button {
     background-color: #000;
     opacity: 0; } }
 
+.location-wrapper .location-logo img {
+  max-width: 100%; }
+
 #tour-screen #map {
   height: 200px; }
 #tour-screen .left {
