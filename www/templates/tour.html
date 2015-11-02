@@ -3,17 +3,15 @@
     <div id="map" data-tap-disabled="true">
         <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
     </div>
-    <h1>Tour</h1>
-	<h2>Id of this tour is {{params.id}}</h2>
-	<p>This tour show you kircha.</p>
-
-	<ion-list>
-      <ion-item ng-repeat="location in locations" href="#/app/locations/{{location.id}}">
-        <div class="left">
-        	<h3>{{location.title}}</h3>
+    <h1>Tour #{{params.id}}</h1>
+	<ion-list >
+      <ion-item ng-repeat="location in locations" class="row" href="#/app/locations/id{{location.id}}">
+        <div class="left col-67">
+        	<h3>{{location.name}}</h3>
         	<h4>{{location.description}}</h4>
+        	<h4>{{location.address}}</h4>
         </div>
-        <div class="right"><img src="{{location.img}}" /></div>
+        <div class="right col-33"><img ng-src="{{location.photo[0]}}" /></div>
       </ion-item>
     </ion-list>
   </ion-content>

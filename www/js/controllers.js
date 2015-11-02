@@ -61,18 +61,18 @@ angular.module('starter.controllers', ['starter.factories'])
   };
 })
 
-.controller('LocationsCtrl', function($scope, LocationsPost, SingleLocationsPost) {
+.controller('LocationsCtrl', function($scope, LocationsPost) {
   $scope.locations = LocationsPost.query();
-  
-  $scope.getLocation = function(id) {
-		SingleLocationsPost.currentLocationID = id;
-    };
-  
+ 
 })
 
-.controller('LocationCtrl', ['$scope', '$ionicModal',
-  function($scope, $ionicModal) {
-		
+.controller('LocationCtrl', ['$scope', '$stateParams', '$ionicModal', 'LocationsPost',
+  function($scope, $stateParams, $ionicModal, LocationsPost) {
+	
+	var currentLocationID = parseInt($stateParams.locationId.slice(2));
+	//console.log($resource('http://gid.areyoualive.ru/api/inner_locations.php',{id:currentLocationID}));
+	//$resource('http://gid.areyoualive.ru/api/inner_locations.php:id');
+	
     $scope.loctn = { title: 'ST. PAUL’S KIRCH', secTitle: '(ST. PAUL’S CATHEDRAL, GERMAN EVANGELICAL LUTHERAN CHURCH)', text: "St. Paul’s Cathedral (Kirch) - the Lutheran Cathedral of St. Paul's German Evangelical Lutheran Church in Ukraine, Ukrainian Lutheran religious center of the Gng.", img: ['img/kircha.jpg','img/kircha1.jpg','img/kircha2.jpg']};
 	
 
@@ -144,7 +144,7 @@ angular.module('starter.controllers', ['starter.factories'])
     }
 
     
-  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+  $scope.map = { center: { latitude: 46.4825832, longitude: 30.7226443 }, zoom: 17 };
   }
 
 

@@ -100,7 +100,8 @@ Glass door welcomes visitors with the words "Peace be with you" in eight languag
 	</div>
     
 	<div id="map" data-tap-disabled="true">
-          <ui-gmap-google-map center='map.center' zoom='map.zoom' aria-label="Google map">
+          <ui-gmap-google-map center='map.center' zoom='map.zoom' >
+				
 			</ui-gmap-google-map>
     </div>
 
@@ -120,22 +121,6 @@ Glass door welcomes visitors with the words "Peace be with you" in eight languag
 	      </ion-pane>
 	  </div>
 	</script>
-	
-	<script id="innerLocation-modal.html" type="text/ng-template">
-	  <div class="modal image-modal transparent" >
-	      <ion-pane class="transparent">
-			 <a class="icon ion-close hide-btn" ng-click="closeModal()"></a>
-	         <img ng-src="{{imageSrc}}" class="fullscreen-image"/>
-			 <div class="slider-nav-wrapp">
-				<div class="slider-nav-left-side" >
-					<a class="button icon-left ion-arrow-left-b button-clear"  ng-click="slideLeft()"></a>
-				</div>
-				<div class="slider-nav-right-side" >
-					<a class="button icon-right ion-arrow-right-b button-clear" ng-click="slideRight()"></a>
-				</div>
-			 </div>
-	      </ion-pane>
-	  </div>
-	</script>
+
   </ion-content>
 </ion-view>
