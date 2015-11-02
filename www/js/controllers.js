@@ -56,7 +56,7 @@ angular.module('starter.controllers', ['starter.factories'])
   };
   $scope.locations = LocationsPost.query();
    $scope.map = { 
-    center: { latitude: 46.460445, longitude: -30.7076676 }, 
+    center: { latitude: 46.4598865, longitude: 30.5717043 }, 
     zoom: 11 
   };
 })
