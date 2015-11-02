@@ -28,7 +28,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
   $stateProvider
 
     .state('app', {
@@ -107,4 +107,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
+
+  uiGmapGoogleMapApiProvider.configure({
+      libraries: 'geometry,visualization'
+  });
 });

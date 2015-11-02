@@ -1,29 +1,17 @@
 <ion-view id="location-screen" view-title="{{loctn.title}}">
   <ion-content>
-  	<!-- <ion-list class="ls-gallery">
-      <ion-item>
-        <div class="location-img" ng-click="showImage(1)"><img src="{{loctn.img}}" /></div>
-      </ion-item>
-      <ion-item>
-        <div class="location-img" ng-click="showImage(1)"><img src="{{loctn.img}}" /></div>
-      </ion-item>
-      <ion-item>
-        <div class="location-img" ng-click="showImage(1)"><img src="{{loctn.img}}" /></div>
-      </ion-item>
-      <ion-item>
-        <div class="location-img" ng-click="showImage(1)"><img src="{{loctn.img}}" /></div>
-      </ion-item>
-    </ion-list> -->
-	<!--   <a class="button" ng-click="showImage(2)">Medium</a>
-	  <a class="button" ng-click="showImage(3)">Very large</a> -->
-	<div class="big-img" ng-click="showImage(1)" style="background-image: url({{loctn.img}})"></div>
-	<div class="card">
+	<div class="big-img card" ng-click="showImage(1)" style="background-image: url({{loctn.img[0]}})">
+	  <div class="item">
+			<h1>{{loctn.title}}</h1>
+	  </div>
+	</div>
+	
+	<div class="card sub-title-wrap">
 	  <div class="item item-divider">
-	    <h1>{{loctn.title}}</h1>
-    	<h4>{{loctn.secTitle}}</h4>
+			<p> (St. Paul's Cathedral, German Evangelical Lutheran Church)</p>	
 	  </div>
 	  <div class="item item-text-wrap">
-		<p>St. Paul's Cathedral (Kirch) - the Lutheran Cathedral of St. Paul's German Evangelical Lutheran Church in Ukraine, Ukrainian Lutheran religious center of the German tradition of the Church - the historic building and architectural monument of national importance, which houses the Department of the Bishop of the whole Church in Ukraine. <a href="#/app/location/description" class="read-more-btn">Read more...</a></p>
+		<p>St. Paul's Cathedral (Kirch) - the Lutheran Cathedral of St. Paul's German Evangelical Lutheran Church in Ukraine, Ukrainian Lutheran religious center of the German tradition of the Church - the historic building and architectural monument of national importance, which houses the Department of the Bishop of the whole Church in Ukraine. <a href="#/app/tours" class="read-more-btn">Read more...</a></p>
 	  </div> 
 	</div>
 	
@@ -91,20 +79,33 @@ Glass door welcomes visitors with the words "Peace be with you" in eight languag
 			<p><i class="ion-ios-telephone"></i> <a href="tel:+38048772-64-89">38 (048) 772-64-89</a></p>	
 	  </div>
 	   <div class="item ">
-			<p><a href="http://delku.com.ua"><i class="ion-share"></i>delku.com.ua</a> <br/> <a href="http://kirha.od.ua"><i class="ion-share"></i>kirha.od.ua</a></p>	
+			<p><a href="http://delku.com.ua" target="_blank"><i class="ion-share"></i>delku.com.ua</a> <br/> <a href="http://kirha.od.ua" target="_blank"><i class="ion-share"></i>kirha.od.ua</a></p>	
 	  </div>	
 	</div>
     
 	<div id="map" data-tap-disabled="true">
-        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+         <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+          	<ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+        	</ui-gmap-marker>
+        </ui-gmap-google-map>
     </div>
 
 	<script id="image-modal.html" type="text/ng-template">
-	  <div class="modal image-modal transparent" ng-click="closeModal()">
+	  <div class="modal image-modal transparent" >
 	      <ion-pane class="transparent">
+			 <a class="icon ion-close hide-btn" ng-click="closeModal()"></a>
 	         <img ng-src="{{imageSrc}}" class="fullscreen-image"/>
+			 <div class="slider-nav-wrapp">
+				<div class="slider-nav-left-side" >
+					<a class="button icon-left ion-arrow-left-b button-clear"  ng-click="slideLeft()"></a>
+				</div>
+				<div class="slider-nav-right-side" >
+					<a class="button icon-right ion-arrow-right-b button-clear" ng-click="slideRight()"></a>
+				</div>
+			 </div>
 	      </ion-pane>
 	  </div>
 	</script>
+
   </ion-content>
 </ion-view>

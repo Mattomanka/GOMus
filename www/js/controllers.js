@@ -50,45 +50,84 @@ angular.module('starter.controllers', ['starter.factories'])
   $scope.tours = ToursPost.query();
 })
 
-.controller('TourCtrl', function($scope, $stateParams, LocationsPost) {
+.controller('TourCtrl', function($scope, $stateParams, LocationsPost, uiGmapGoogleMapApi) {
   $scope.params = {
     id: $stateParams.tourId
   };
   $scope.locations = LocationsPost.query();
-  $scope.map = { center: { latitude: 40.1451, longitude: -99.6680 }, zoom: 8 };
-  $scope.marker = {
-    id: 0,
-    coords: {
-      latitude: 40.1451,
-      longitude: -99.6680
-    },
-    options: { draggable: true },
-    events: {
-      dragend: function (marker, eventName, args) {
-        $log.log('marker dragend');
-        var lat = marker.getPosition().lat();
-        var lon = marker.getPosition().lng();
-        $log.log(lat);
-        $log.log(lon);
-
-        $scope.marker.options = {
-          draggable: true,
-          labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
-          labelAnchor: "100 0",
-          labelClass: "marker-labels"
-        };
-      }
-    }
-  };
+  $scope.map = {center: {latitude: 46.4825832, longitude: 30.7226443 }, zoom: 14, bounds: {}};
+        $scope.polylines = [];
+        uiGmapGoogleMapApi.then(function(){
+          $scope.polylines = [
+            {
+                id: 1,
+                path: [
+                    {
+                        latitude: 46.484,
+                        longitude: 30.71
+                    },
+                    {
+                        latitude: 46.4825833,
+                        longitude: 30.7226443
+                    },
+                    {
+                        latitude: 46.483,
+                        longitude: 30.73
+                    },
+                    {
+                        latitude: 46.2,
+                        longitude: 30.5
+                    }
+                ],
+                stroke: {
+                    color: '#6060FB',
+                    weight: 3
+                },
+                editable: false,
+                draggable: false,
+                geodesic: true,
+                visible: true,
+                icons: [{
+                    icon: {
+                        path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW
+                    },
+                    offset: '25px',
+                    repeat: '50px'
+                }]
+            }
+        ];
+        });
 })
 
 .controller('LocationsCtrl', function($scope, LocationsPost) {
   $scope.locations = LocationsPost.query();
+ 
 })
 
-.controller('LocationCtrl', ['$scope', '$ionicModal',
-  function($scope, $ionicModal) {
-    $scope.loctn = { title: 'ST. PAUL’S KIRCH', secTitle: '(ST. PAUL’S CATHEDRAL, GERMAN EVANGELICAL LUTHERAN CHURCH)', text: "St. Paul’s Cathedral (Kirch) - the Lutheran Cathedral of St. Paul's German Evangelical Lutheran Church in Ukraine, Ukrainian Lutheran religious center of the German tradition of the Church - the historic building and architectural monument of national importance, which houses the Department of the Bishop of the whole Church in Ukraine.<br />After signing a peace treaty between Russia and Turkey (1774-1775) Russian territory extended to the Crimea and Alexander I invited German colonists to populate those desert lands of south \"Novorosia\". In this way in young Odessa and its suburbs appeared many Lutheran communities, and in 1803-1804 the city governor, the Duke de Richelieu, had to ask the Russian Emperor to send a pastor to Odessa. 8 years passed before the first pastor came to South Palmyra. The first Lutheran Church was built much later, in 1827. According to the plan of Charles Boffoue it would be built on the highest point of the city, where still stands the Church of St. Paul (Lutheran Church - Kirha).<br />At the end of 19th century many buildings were built around the church, in which educational, cultural and social works were led. Over time, however, all these buildings became dilapidated and were demolished. The new church, which could accommodate 1200 people, was built on this place over two years. When Soviet rule came, the Church of St. Paul was closed. At the time of occupation of Odessa by German-Romanian forces (1941-1942) the religious life of the Lutheran Church improved.In post-war years the religious use of the church was suppressed and it was used as a music hall. In 1976 there was a fire, which destroyed all the nave of the church.<br />In the second time the Evangelical Lutheran Church was recorded in Odessa in 1990 and practically right away started to petit  for returning its church plot, the ruins of St. Paul's church and one of the neighbouring building, which had been built in the 19th century as an asylum for aged members of the community.With the assistance of the community of St. Paul, in 1993 the German Cultural Centre and \"Bavarian House\" were organized.<br />In 2002, at last reconstructed and completely rebuilt, the former asylum for the aged was revived as the \"Church Centre of St. Paul\". Restoration and construction works of the rest of the rooms are continuing.", img: 'img/kircha.jpg'};
+.controller('LocationCtrl', ['$scope', '$stateParams', '$ionicModal', 'LocationsPost',
+  function($scope, $stateParams, $ionicModal, LocationsPost) {
+	
+  	var currentLocationID = parseInt($stateParams.locationId.slice(2));
+    console.log(currentLocationID);
+    locationArray = LocationsPost.query();
+    console.log(locationArray);
+    console.log(111);
+
+    Promise.all(locationArray).then(function(value) { 
+      console.log(value);
+    }, function(reason) {
+      console.log(reason)
+    });
+
+    for(i=0; i<locationArray.length; i++) {
+      console.log(locationArray[i].id);
+      if (parseInt(locationArray[i].id) == currentLocationID) {
+        console.log(locationArray[i]);
+      }
+    }
+	
+    $scope.loctn = { title: 'ST. PAUL’S KIRCH', secTitle: '(ST. PAUL’S CATHEDRAL, GERMAN EVANGELICAL LUTHERAN CHURCH)', text: "St. Paul’s Cathedral (Kirch) - the Lutheran Cathedral of St. Paul's German Evangelical Lutheran Church in Ukraine, Ukrainian Lutheran religious center of the Gng.", img: ['img/kircha.jpg','img/kircha1.jpg','img/kircha2.jpg']};
+	
 
     $ionicModal.fromTemplateUrl('image-modal.html', {
       scope: $scope,
@@ -96,6 +135,32 @@ angular.module('starter.controllers', ['starter.factories'])
     }).then(function(modal) {
       $scope.modal = modal;
     });
+
+    $scope.map = { center: { latitude: 46.4825832, longitude: 30.7226443 }, zoom: 17 };
+    $scope.marker = {
+      id: 'l0',
+      coords: {
+        latitude: 46.4825832,
+        longitude: 30.7226443
+      },
+      options: { draggable: true },
+      events: {
+        dragend: function (marker, eventName, args) {
+          $log.log('marker dragend');
+          var lat = marker.getPosition().lat();
+          var lon = marker.getPosition().lng();
+          $log.log(lat);
+          $log.log(lon);
+
+          $scope.marker.options = {
+            draggable: true,
+            labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
+            labelAnchor: "100 0",
+            labelClass: "marker-labels"
+          };
+        }
+      }
+    };
 	
 	$scope.slideLeft = function() {
 		var current_index = $scope.loctn.img.indexOf($scope.imageSrc);
@@ -145,33 +210,6 @@ angular.module('starter.controllers', ['starter.factories'])
     $scope.showImage = function(index) {
       $scope.openModal();
     }
-
-
-  $scope.map = { center: { latitude: 40.1451, longitude: -99.6680 }, zoom: 8 };
-  $scope.marker = {
-    id: 0,
-    coords: {
-      latitude: 40.1451,
-      longitude: -99.6680
-    },
-    options: { draggable: true },
-    events: {
-      dragend: function (marker, eventName, args) {
-        $log.log('marker dragend');
-        var lat = marker.getPosition().lat();
-        var lon = marker.getPosition().lng();
-        $log.log(lat);
-        $log.log(lon);
-
-        $scope.marker.options = {
-          draggable: true,
-          labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
-          labelAnchor: "100 0",
-          labelClass: "marker-labels"
-        };
-      }
-    }
-  };
   }
 
 

@@ -1,6 +1,6 @@
 {
   "name": "manka",
-  "app_id": "9320bafb",
+  "app_id": "08823fc4",
   "gulpStartupTasks": [
     "sass",
     "watch"
