@@ -117,7 +117,9 @@ angular.module('starter.controllers', ['starter.factories'])
 		$scope.loctn.innerLocations = response.innerLocations;
 		coordArray = $scope.loctn.coordinates.split(',');
 		$scope.marker.coords.latitude = parseFloat(coordArray[0]);
-		$scope.marker.coords.longitude = parseFloat(coordArray[1]);		
+		$scope.marker.coords.longitude = parseFloat(coordArray[1]);
+		$scope.map.center.latitude = parseFloat(coordArray[0]);
+		$scope.map.center.longitude = parseFloat(coordArray[1]);
 	});
 
     Promise.all(locationArray).then(function(value) { 
