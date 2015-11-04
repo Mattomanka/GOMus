@@ -1,8 +1,8 @@
-<ion-view id="location-screen" view-title="{{loctn.title}}">
+<ion-view id="location-screen" view-title="{{loctn.name}}">
   <ion-content>
-	<div class="big-img card" ng-click="showImage(1)" style="background-image: url({{loctn.img[0]}})">
+	<div class="big-img card" ng-click="showImage()" style='background-image: url("{{loctn.photo[0]}}")'>
 	  <div class="item">
-			<h1>{{loctn.title}}</h1>
+			<h1>{{loctn.name}}</h1>
 	  </div>
 	</div>
 	
@@ -11,11 +11,11 @@
 			<p> (St. Paul's Cathedral, German Evangelical Lutheran Church)</p>	
 	  </div>
 	  <div class="item item-text-wrap">
-		<p>St. Paul's Cathedral (Kirch) - the Lutheran Cathedral of St. Paul's German Evangelical Lutheran Church in Ukraine, Ukrainian Lutheran religious center of the German tradition of the Church - the historic building and architectural monument of national importance, which houses the Department of the Bishop of the whole Church in Ukraine. <a href="#/app/tours" class="read-more-btn">Read more...</a></p>
+		<p>{{loctn.description}} <a href="#/app/tours" class="read-more-btn">Read more...</a></p>
 	  </div> 
 	</div>
 	
-	<div class="card sub-title-wrap">
+	<div class="card sub-title-wrap" ng-show="loctn.id==15">
 	  <div class="item item-divider">
 			<p>Main plan</p>
 	  </div>
@@ -24,43 +24,17 @@
 	  </div> 
 	</div>
 	
-		<div class="card exhibit-list list">
-	  <div class="row exhibit-item ">
+	<div class="card exhibit-list list" ng-hide="!loctn.innerLocations.length">
+	  <div class="row exhibit-item " ng-repeat="innerLocation in loctn.innerLocations" >
 		<div class="col-10 item-number ">
-			<p style="background: #999;">1</p>
+			<p  class="item_{{($index)%3}}">{{($index+1)}}</p>
 		</div>
 		<div class="col-67 item-content">
-			<h3>The church porch</h3>
-			<p>At the entrance under the bell tower a plaque in memory of the victims of persecution and violence is also placed. For all the victims there are presented the names of the pastor Carl Vogel and organist Theophil Richter. Both were shot during the Stalin's rule.
-A wooden cross is a gift by Andreas Loquai from Bavaria, and the two angels in Baroque style came from the Catholic Church in the Urals.
-Glass door welcomes visitors with the words "Peace be with you" in eight languages.</p>
+			<h3>{{innerLocation.name}}</h3>
+			<p>{{innerLocation.description}}</p>
 		</div>
 		<div class="col-25 item-thumb col-center">
-			<img ng-src="img/KO/01_01.jpg" />	
-		</div>
-	  </div>
-	  <div class="row exhibit-item">
-		<div class="col-10 item-number ">
-			<p style="background: #b88759;">2</p>
-		</div>
-		<div class="col-67 item-content">
-			<h3>Icon</h3>
-			<p>Icon of the Virgin at the entrance of the church was painted in the Western Ukraine. During the Revolution the icon was saved by an elderly woman from a burning rural church. She kept it at her home for many years. After the accident that happened to the woman’s daughter  and she miraculously survived, the woman handed over the icon as a gift for the St. Paul’s Church.</p>
-		</div>
-		<div class="col-25 item-thumb col-center">
-			<img ng-src="img/KO/02_01.jpg" />	
-		</div>
-	  </div>
-	  <div class="row exhibit-item">
-		<div class="col-10 item-number ">
-			<p >3</p>
-		</div>
-		<div class="col-67 item-content">
-			<h3>Information stand about the history of the Kirch</h3>
-			<p>A series of photographs and brief notes about how the Kirch was built in Odessa.</p>
-		</div>
-		<div class="col-25 item-thumb col-center">
-			<img ng-src="img/KO/03_01.jpg" />	
+			<img ng-src="{{innerLocation.photo}}" />	
 		</div>
 	  </div>
 	</div>
@@ -70,7 +44,7 @@ Glass door welcomes visitors with the words "Peace be with you" in eight languag
 			<p><i class="ion-ios-location-outline"></i> Contacts information</p>	
 	  </div>
 	  <div class="item ">
-			<p><i class="ion-ios-location"></i> Nowosielskogo st., 68/1</p>	
+			<p><i class="ion-ios-location"></i> {{loctn.address}}</p>	
 	  </div>
 	  <div class="item ">
 			<p><i class="ion-clock"></i> Visiting hours</p>	

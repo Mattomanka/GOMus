@@ -101,32 +101,41 @@ angular.module('starter.controllers', ['starter.factories'])
 
 .controller('LocationsCtrl', function($scope, LocationsPost) {
   $scope.locations = LocationsPost.query();
- 
+	
 })
 
-.controller('LocationCtrl', ['$scope', '$stateParams', '$ionicModal', 'LocationsPost',
-  function($scope, $stateParams, $ionicModal, LocationsPost) {
-	
+.controller('LocationCtrl', ['$scope','$http', '$stateParams', '$ionicModal', 'LocationsPost',
+  function($scope, $http, $stateParams, $ionicModal, LocationsPost) {
+	var coordArray =[];
   	var currentLocationID = parseInt($stateParams.locationId.slice(2));
-    console.log(currentLocationID);
+    //console.log(currentLocationID);
     locationArray = LocationsPost.query();
-    console.log(locationArray);
-    console.log(111);
+	
+	$http.get("http://gid.areyoualive.ru/api/location.php?id="+currentLocationID)
+    .success(function(response) { 
+		$scope.loctn = response[0];
+		$scope.loctn.innerLocations = response.innerLocations;
+		coordArray = $scope.loctn.coordinates.split(',');
+		$scope.marker.coords.latitude = parseFloat(coordArray[0]);
+		$scope.marker.coords.longitude = parseFloat(coordArray[1]);		
+	});
 
     Promise.all(locationArray).then(function(value) { 
-      console.log(value);
+      //console.log(value);
     }, function(reason) {
       console.log(reason)
     });
+	
+	
 
     for(i=0; i<locationArray.length; i++) {
-      console.log(locationArray[i].id);
+     // console.log(locationArray[i].id);
       if (parseInt(locationArray[i].id) == currentLocationID) {
-        console.log(locationArray[i]);
+       // console.log(locationArray[i]);
       }
     }
 	
-    $scope.loctn = { title: 'ST. PAUL’S KIRCH', secTitle: '(ST. PAUL’S CATHEDRAL, GERMAN EVANGELICAL LUTHERAN CHURCH)', text: "St. Paul’s Cathedral (Kirch) - the Lutheran Cathedral of St. Paul's German Evangelical Lutheran Church in Ukraine, Ukrainian Lutheran religious center of the Gng.", img: ['img/kircha.jpg','img/kircha1.jpg','img/kircha2.jpg']};
+	
 	
 
     $ionicModal.fromTemplateUrl('image-modal.html', {
@@ -163,21 +172,21 @@ angular.module('starter.controllers', ['starter.factories'])
     };
 	
 	$scope.slideLeft = function() {
-		var current_index = $scope.loctn.img.indexOf($scope.imageSrc);
+		var current_index = $scope.loctn.photo.indexOf($scope.imageSrc);
 		current_index--;
 		
-		if(current_index < 0) current_index = $scope.loctn.img.length-1;
+		if(current_index < 0) current_index = $scope.loctn.photo.length-1;
 		
-		$scope.imageSrc = $scope.loctn.img[current_index];
+		$scope.imageSrc = $scope.loctn.photo[current_index];
     };
 	
 	$scope.slideRight = function() {
-		var current_index = $scope.loctn.img.indexOf($scope.imageSrc);
+		var current_index = $scope.loctn.photo.indexOf($scope.imageSrc);
 		current_index++;
 		
-		if(current_index >=$scope.loctn.img.length) current_index = 0;
+		if(current_index >=$scope.loctn.photo.length) current_index = 0;
 		
-		$scope.imageSrc = $scope.loctn.img[current_index];
+		$scope.imageSrc = $scope.loctn.photo[current_index];
     };
 	
     $scope.openModal = function() {
@@ -201,7 +210,7 @@ angular.module('starter.controllers', ['starter.factories'])
       // Execute action
     });
     $scope.$on('modal.shown', function() {
-	  $scope.imageSrc = $scope.loctn.img[0];
+	  $scope.imageSrc = $scope.loctn.photo[0];
       console.log('Modal is shown!');
     });
 
