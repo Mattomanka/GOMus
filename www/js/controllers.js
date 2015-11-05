@@ -55,6 +55,8 @@ angular.module('starter.controllers', ['starter.factories'])
     id: $stateParams.tourId
   };
   $scope.locations = LocationsPost.query();
+	
+  
   $scope.map = {center: {latitude: 46.4825832, longitude: 30.7226443 }, zoom: 14, bounds: {}};
         $scope.polylines = [];
         uiGmapGoogleMapApi.then(function(){
@@ -81,7 +83,7 @@ angular.module('starter.controllers', ['starter.factories'])
                 ],
                 stroke: {
                     color: '#6060FB',
-                    weight: 3
+                    weight: 2
                 },
                 editable: false,
                 draggable: false,
@@ -110,9 +112,10 @@ angular.module('starter.controllers', ['starter.factories'])
   	var currentLocationID = parseInt($stateParams.locationId.slice(2));
     //console.log(currentLocationID);
     locationArray = LocationsPost.query();
-	
+
 	$http.get("http://gid.areyoualive.ru/api/location.php?id="+currentLocationID)
-    .success(function(response) { 
+    .success(function(response) {
+			console.log(response);
 		$scope.loctn = response[0];
 		$scope.loctn.innerLocations = response.innerLocations;
 		coordArray = $scope.loctn.coordinates.split(',');
@@ -137,14 +140,26 @@ angular.module('starter.controllers', ['starter.factories'])
       }
     }
 	
+	 $ionicModal.fromTemplateUrl('full-description-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.contentModal = modal;
+    })
 	
+	$scope.openContentModal = function() {
+      $scope.contentModal.show();
+    };
 	
+	$scope.closeContentModal = function() {
+      $scope.contentModal.hide();
+    };
 
     $ionicModal.fromTemplateUrl('image-modal.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
-      $scope.modal = modal;
+      $scope.modal= modal;
     });
 
     $scope.map = { center: { latitude: 46.4825832, longitude: 30.7226443 }, zoom: 17 };
@@ -154,7 +169,7 @@ angular.module('starter.controllers', ['starter.factories'])
         latitude: 46.4825832,
         longitude: 30.7226443
       },
-      options: { draggable: true },
+      options: { draggable: false },
       events: {
         dragend: function (marker, eventName, args) {
           $log.log('marker dragend');
@@ -164,7 +179,7 @@ angular.module('starter.controllers', ['starter.factories'])
           $log.log(lon);
 
           $scope.marker.options = {
-            draggable: true,
+            draggable: false,
             labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
             labelAnchor: "100 0",
             labelClass: "marker-labels"

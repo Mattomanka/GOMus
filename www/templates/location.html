@@ -11,7 +11,7 @@
 			<p> (St. Paul's Cathedral, German Evangelical Lutheran Church)</p>	
 	  </div>
 	  <div class="item item-text-wrap">
-		<p>{{loctn.description}} <a href="#/app/tours" class="read-more-btn">Read more...</a></p>
+		<p>{{loctn.excerpt}} <br/><a  class="read-more-btn button button-light" ng-click="openContentModal()"><i class="ion-arrow-expand"></i> Read more</a></p>
 	  </div> 
 	</div>
 	
@@ -80,6 +80,27 @@
 	      </ion-pane>
 	  </div>
 	</script>
-
+	
+	<script id="full-description-modal.html" type="text/ng-template">
+	  <ion-modal-view  >
+	  <ion-header-bar>
+		<h1 class="title">{{loctn.name}}</h1>
+		<div class="buttons">
+		  <button class="button button-clear" ng-click="closeContentModal()">Close</button>
+		</div>
+	  </ion-header-bar>
+	  <ion-content class="light-grey-background">
+		<div class="card sub-title-wrap">
+	  <div class="item item-text-wrap">
+		<p>{{loctn.description}}</p>
+	  </div> 
+	</div>
+	<div class="text-center">
+		<a  class="read-more-btn button button-light" ng-click="closeContentModal()">
+		<i class="ion-arrow-shrink"></i> Close</a>
+	</div>
+	  </ion-content>
+	</ion-modal-view>
+	</script>
   </ion-content>
 </ion-view>

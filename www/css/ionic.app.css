@@ -7747,6 +7747,7 @@ a.button {
       width: 100%;
       max-height: 100px; }
 #location-screen .big-img {
+  height: 16.2em;
   height: 40vh;
   background-position: center center;
   background-repeat: no-repeat;
@@ -7796,6 +7797,10 @@ a.button {
     border-radius: 7px;
     background: #ff478f;
     font-weight: 100; }
+  .exhibit-item .item-number .item_0 {
+    background: #999; }
+  .exhibit-item .item-number .item_1 {
+    background: #b88759; }
   .exhibit-item .item-content {
     line-height: 1.2em;
     padding: 0 0.5em; }
@@ -7843,6 +7848,14 @@ a.button {
     transition: opacity 300ms ease-in-out;
     background-color: #000;
     opacity: 0; } }
+
+.read-more-btn {
+  min-height: 30px;
+  font-size: 14px;
+  margin-top: 0.5em; }
+
+.light-grey-background {
+  background: #FDFDFD; }
 
 .location-wrapper .location-logo img {
   max-width: 100%; }
