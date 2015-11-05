@@ -8,7 +8,7 @@
 	
 	<div class="card sub-title-wrap">
 	  <div class="item item-divider">
-			<p> (St. Paul's Cathedral, German Evangelical Lutheran Church)</p>	
+			<p> {{loctn.name}}</p>	
 	  </div>
 	  <div class="item item-text-wrap">
 		<p>{{loctn.excerpt}} <br/><a  class="read-more-btn button button-light" ng-click="openContentModal()"><i class="ion-arrow-expand"></i> Read more</a></p>
@@ -26,6 +26,7 @@
 	
 	<div class="card exhibit-list list" ng-hide="!loctn.innerLocations.length">
 	  <div class="row exhibit-item " ng-repeat="innerLocation in loctn.innerLocations" >
+		
 		<div class="col-10 item-number ">
 			<p  class="item_{{($index)%3}}">{{($index+1)}}</p>
 		</div>
