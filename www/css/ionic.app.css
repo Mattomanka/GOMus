@@ -7703,7 +7703,7 @@ a.button {
 #home-screen #locations {
   height: 200px; }
   #home-screen #locations .location {
-    width: 25%;
+    width: 33%;
     max-height: 106px;
     display: inline-block;
     border: 0px; }
@@ -7789,6 +7789,12 @@ a.button {
 .exhibit-item {
   border-bottom: .1em solid rgba(0, 0, 0, 0.2);
   margin-bottom: 1em; }
+  .exhibit-item:hover, .exhibit-item:active, .exhibit-item:target {
+    background: #F1F1F1; }
+  .exhibit-item .item-eye {
+    position: absolute;
+    right: .5em;
+    font-size: 1.5em; }
   .exhibit-item .item-number p {
     text-align: center;
     margin: 0;
@@ -7848,6 +7854,14 @@ a.button {
     transition: opacity 300ms ease-in-out;
     background-color: #000;
     opacity: 0; } }
+
+.read-more-btn {
+  min-height: 30px;
+  font-size: 14px;
+  margin-top: 0.5em; }
+
+.light-grey-background {
+  background: #FDFDFD; }
 
 .location-wrapper .location-logo img {
   max-width: 100%; }

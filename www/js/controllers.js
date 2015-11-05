@@ -54,53 +54,89 @@ angular.module('starter.controllers', ['starter.factories'])
   $scope.tours = ToursPost.query();
 })
 
-.controller('TourCtrl', function($scope, $stateParams, LocationsPost, uiGmapGoogleMapApi) {
+.controller('TourCtrl', function($scope, $http,  $stateParams, LocationsPost, uiGmapGoogleMapApi) {
   $scope.params = {
     id: $stateParams.tourId
   };
   $scope.locations = LocationsPost.query();
-  $scope.map = {center: {latitude: 46.4825832, longitude: 30.7226443 }, zoom: 14, bounds: {}};
-        $scope.polylines = [];
-        uiGmapGoogleMapApi.then(function(){
-          $scope.polylines = [
-            {
-                id: 1,
-                path: [
-                    {
-                        latitude: 46.484,
-                        longitude: 30.71
-                    },
-                    {
-                        latitude: 46.4825833,
-                        longitude: 30.7226443
-                    },
-                    {
-                        latitude: 46.483,
-                        longitude: 30.73
-                    },
-                    {
-                        latitude: 46.2,
-                        longitude: 30.5
-                    }
-                ],
-                stroke: {
-                    color: '#6060FB',
-                    weight: 3
-                },
-                editable: false,
-                draggable: false,
-                geodesic: true,
-                visible: true,
-                icons: [{
-                    icon: {
-                        path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW
-                    },
-                    offset: '25px',
-                    repeat: '50px'
-                }]
-            }
-        ];
-        });
+	
+	$http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
+	.then(function successCallback(response) {
+		
+		var pathArray = [], centerCoordinates = {latitude:0, longitude:0};
+		for(var i = 0; i<response.data.length; i++){
+				coordinatesArray = response.data[i].coordinates.split(',');
+				pathArray[i]= {latitude: coordinatesArray[0], longitude:coordinatesArray[1]};
+				 centerCoordinates.latitude += coordinatesArray[0]/response.data.length;
+				 centerCoordinates.longitude += coordinatesArray[1]/response.data.length;
+			}
+			
+		return {pathArray,centerCoordinates};
+	},function errorCallback(response) {
+			
+	}).then(function successCallback(reseiveObj) {
+		
+			  $scope.map = {center: reseiveObj.centerCoordinates, zoom: 14};
+			$scope.polylines = [];
+			uiGmapGoogleMapApi.then(function(){
+			  $scope.polylines = [
+				{
+					id: 1,
+					path: reseiveObj.pathArray,
+					stroke: {
+						color: '#6060FB',
+						weight: 2
+					},
+					editable: false,
+					draggable: false,
+					geodesic: true,
+					visible: true,
+					icons: [{
+						icon: {
+							path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW
+						},
+						offset: '25px',
+						repeat: '50px'
+					}]
+				}
+			];
+			
+			});
+		  }, function errorCallback(response) {
+			
+		  });
+	
+	// $http.get("").then(function(response){
+		// console.log(response);
+	// }); /*.success(function(response) {
+			// console.log(response.length);
+					// $scope.polylines.path = [
+					  // {
+                        // latitude: 46.484,
+                        // longitude: 30.71
+                    // },
+                    // {
+                        // latitude: 46.4825833,
+                        // longitude: 30.7226443
+                    // },
+                    // {
+                        // latitude: 46.483,
+                        // longitude: 30.73
+                    // },
+                    // {
+                        // latitude: 46.2,
+                        // longitude: 30.5
+                    // }];*/
+			// console.log($scope.polylines.path);
+		// $scope.loctn = response[0];
+		// $scope.loctn.innerLocations = response.innerLocations;
+		// coordArray = $scope.loctn.coordinates.split(',');
+		// $scope.marker.coords.latitude = parseFloat(coordArray[0]);
+		// $scope.marker.coords.longitude = parseFloat(coordArray[1]);
+		// $scope.map.center.latitude = parseFloat(coordArray[0]);
+		// $scope.map.center.longitude = parseFloat(coordArray[1]);
+	// });	
+			
 })
 
 .controller('LocationsCtrl', function($scope, LocationsPost) {
@@ -114,9 +150,10 @@ angular.module('starter.controllers', ['starter.factories'])
   	var currentLocationID = parseInt($stateParams.locationId.slice(2));
     //console.log(currentLocationID);
     locationArray = LocationsPost.query();
-	
+
 	$http.get("http://gid.areyoualive.ru/api/location.php?id="+currentLocationID)
-    .success(function(response) { 
+    .success(function(response) {
+			console.log(response);
 		$scope.loctn = response[0];
 		$scope.loctn.innerLocations = response.innerLocations;
 		coordArray = $scope.loctn.coordinates.split(',');
@@ -127,7 +164,7 @@ angular.module('starter.controllers', ['starter.factories'])
 	});
 
     Promise.all(locationArray).then(function(value) { 
-      //console.log(value);
+      console.log(value);
     }, function(reason) {
       console.log(reason)
     });
@@ -141,14 +178,26 @@ angular.module('starter.controllers', ['starter.factories'])
       }
     }
 	
+	 $ionicModal.fromTemplateUrl('full-description-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.contentModal = modal;
+    })
 	
+	$scope.openContentModal = function() {
+      $scope.contentModal.show();
+    };
 	
+	$scope.closeContentModal = function() {
+      $scope.contentModal.hide();
+    };
 
     $ionicModal.fromTemplateUrl('image-modal.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
-      $scope.modal = modal;
+      $scope.modal= modal;
     });
 
     $scope.map = { center: { latitude: 46.4825832, longitude: 30.7226443 }, zoom: 17 };
@@ -158,7 +207,7 @@ angular.module('starter.controllers', ['starter.factories'])
         latitude: 46.4825832,
         longitude: 30.7226443
       },
-      options: { draggable: true },
+      options: { draggable: false },
       events: {
         dragend: function (marker, eventName, args) {
           $log.log('marker dragend');
@@ -168,7 +217,7 @@ angular.module('starter.controllers', ['starter.factories'])
           $log.log(lon);
 
           $scope.marker.options = {
-            draggable: true,
+            draggable: false,
             labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
             labelAnchor: "100 0",
             labelClass: "marker-labels"

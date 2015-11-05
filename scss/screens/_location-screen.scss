@@ -86,7 +86,16 @@
 .exhibit-item {
 	    border-bottom: .1em solid rgba(0,0,0,0.2);
     	margin-bottom: 1em;
-    
+   	&:hover,&:active,&:target {
+		background: #F1F1F1;
+   	}
+
+    .item-eye {
+    	position: absolute;
+	    right: .5em;
+	    font-size: 1.5em;
+    }
+
 	.item-number {
 		p {
 			text-align: center;
@@ -171,4 +180,14 @@
     background-color: #000;
     opacity: 0;
   }
+}
+
+.read-more-btn {
+	min-height: 30px;	
+    font-size: 14px;
+    margin-top: 0.5em;
+}
+
+.light-grey-background  {
+	background: #FDFDFD;
 }
