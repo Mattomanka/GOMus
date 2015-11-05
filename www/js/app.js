@@ -4,6 +4,8 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
+var appVersion = "0.0.0";
+
 angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
 
 .config(['$httpProvider', function($httpProvider) {
@@ -25,6 +27,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    cordova.getAppVersion(function(version) {
+        appVersion = version;
+    });
   });
 })
 
@@ -102,6 +107,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
     views: {
       'menuContent': {
         templateUrl: 'templates/location/description.html'
+      }
+    }
+  })
+
+  .state('app.about', {
+    url: '/about',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/about.html',
+        controller: 'AboutCtrl'
       }
     }
   });

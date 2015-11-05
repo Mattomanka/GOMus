@@ -7747,6 +7747,7 @@ a.button {
       width: 100%;
       max-height: 100px; }
 #location-screen .big-img {
+  height: 16.2em;
   height: 40vh;
   background-position: center center;
   background-repeat: no-repeat;
@@ -7796,6 +7797,10 @@ a.button {
     border-radius: 7px;
     background: #ff478f;
     font-weight: 100; }
+  .exhibit-item .item-number .item_0 {
+    background: #999; }
+  .exhibit-item .item-number .item_1 {
+    background: #b88759; }
   .exhibit-item .item-content {
     line-height: 1.2em;
     padding: 0 0.5em; }
@@ -7865,3 +7870,15 @@ a.button {
   float: right; }
   #tours-screen .right img {
     max-height: 60px; }
+
+#about-screen ion-content {
+  padding: 0 5px; }
+  #about-screen ion-content h1 {
+    color: #040367; }
+  #about-screen ion-content p, #about-screen ion-content h4 {
+    color: #02022F;
+    display: block;
+    margin-top: 20px; }
+  #about-screen ion-content img {
+    margin: 40px auto 0 auto;
+    display: block; }

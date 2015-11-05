@@ -46,6 +46,10 @@ angular.module('starter.controllers', ['starter.factories'])
   $scope.tours = ToursPost.query();
 })
 
+.controller('AboutCtrl',function($scope) {
+  $scope.aversion = appVersion;
+})
+
 .controller('ToursCtrl', function($scope, ToursPost) {
   $scope.tours = ToursPost.query();
 })

@@ -1,0 +1,17 @@
+#about-screen {
+	ion-content{
+		padding: 0 5px;
+		h1 {
+			color: #040367;
+		}
+		p,h4 {
+			color: #02022F;
+			display: block;
+			margin-top: 20px;
+		}
+		img {
+			margin: 40px auto 0 auto;
+			display: block;
+		}
+	}
+}
