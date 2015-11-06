@@ -41,12 +41,9 @@ angular.module('starter.controllers', ['starter.factories'])
   };
 })
 
-.controller('HomeCtrl', function($scope, $http, $ionicLoading) {
+.controller('HomeCtrl', function($scope, $http) {
   // $scope.locations = LocationsPost.query();
   // $scope.tours = ToursPost.query();
-  $ionicLoading.show({
-    template: 'loading'
-  })
   $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
   .then(function successCallback(response) {
     $ionicLoading.hide()
@@ -63,12 +60,8 @@ angular.module('starter.controllers', ['starter.factories'])
 })
 
 .controller('ToursCtrl', function($scope, ToursPost) {
-  $ionicLoading.show({
-    template: 'loading'
-  })
   $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/tours.php'})
   .then(function successCallback(response) {
-    $ionicLoading.hide()
     $scope.tours = response.data;
   })
 })
