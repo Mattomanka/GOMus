@@ -27,9 +27,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    cordova.getAppVersion(function(version) {
-        appVersion = version;
-    });
+    // cordova.getAppVersion(function(version) {
+    //     appVersion = version;
+    // });
   });
 })
 

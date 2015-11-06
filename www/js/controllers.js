@@ -41,9 +41,21 @@ angular.module('starter.controllers', ['starter.factories'])
   };
 })
 
-.controller('HomeCtrl', function($scope, ToursPost, LocationsPost) {
-  $scope.locations = LocationsPost.query();
-  $scope.tours = ToursPost.query();
+.controller('HomeCtrl', function($scope, $http, $ionicLoading) {
+  // $scope.locations = LocationsPost.query();
+  // $scope.tours = ToursPost.query();
+  $ionicLoading.show({
+    template: 'loading'
+  })
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
+  .then(function successCallback(response) {
+    $ionicLoading.hide()
+    $scope.locations = response.data;
+  })
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/tours.php'})
+  .then(function successCallback(response) {
+    $scope.tours = response.data;
+  })
 })
 
 .controller('AboutCtrl',function($scope) {
@@ -51,7 +63,14 @@ angular.module('starter.controllers', ['starter.factories'])
 })
 
 .controller('ToursCtrl', function($scope, ToursPost) {
-  $scope.tours = ToursPost.query();
+  $ionicLoading.show({
+    template: 'loading'
+  })
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/tours.php'})
+  .then(function successCallback(response) {
+    $ionicLoading.hide()
+    $scope.tours = response.data;
+  })
 })
 
 .controller('TourCtrl', function($scope, $http,  $stateParams, LocationsPost, uiGmapGoogleMapApi) {
@@ -105,38 +124,6 @@ angular.module('starter.controllers', ['starter.factories'])
 		  }, function errorCallback(response) {
 			
 		  });
-	
-	// $http.get("").then(function(response){
-		// console.log(response);
-	// }); /*.success(function(response) {
-			// console.log(response.length);
-					// $scope.polylines.path = [
-					  // {
-                        // latitude: 46.484,
-                        // longitude: 30.71
-                    // },
-                    // {
-                        // latitude: 46.4825833,
-                        // longitude: 30.7226443
-                    // },
-                    // {
-                        // latitude: 46.483,
-                        // longitude: 30.73
-                    // },
-                    // {
-                        // latitude: 46.2,
-                        // longitude: 30.5
-                    // }];*/
-			// console.log($scope.polylines.path);
-		// $scope.loctn = response[0];
-		// $scope.loctn.innerLocations = response.innerLocations;
-		// coordArray = $scope.loctn.coordinates.split(',');
-		// $scope.marker.coords.latitude = parseFloat(coordArray[0]);
-		// $scope.marker.coords.longitude = parseFloat(coordArray[1]);
-		// $scope.map.center.latitude = parseFloat(coordArray[0]);
-		// $scope.map.center.longitude = parseFloat(coordArray[1]);
-	// });	
-			
 })
 
 .controller('LocationsCtrl', function($scope, LocationsPost) {
@@ -146,7 +133,7 @@ angular.module('starter.controllers', ['starter.factories'])
 
 .controller('LocationCtrl', ['$scope','$http', '$stateParams', '$ionicModal', 'LocationsPost',
   function($scope, $http, $stateParams, $ionicModal, LocationsPost) {
-	var coordArray =[];
+    var coordArray =[];
   	var currentLocationID = parseInt($stateParams.locationId.slice(2));
     //console.log(currentLocationID);
     locationArray = LocationsPost.query();
