@@ -11,23 +11,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
 .config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
-
-        $httpProvider.interceptors.push(function($rootScope) {
-          return {
-            request: function(config) {
-              $rootScope.$broadcast('loading:show')
-              return config
-            },
-            response: function(response) {
-              $rootScope.$broadcast('loading:hide')
-              return response
-            }
-          }
-        })
     }
 ])
 
-.run(function($ionicPlatform, $rootScope, $ionicLoading) {
+.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -44,14 +31,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
         appVersion = version;
     });
   });
-
-  $rootScope.$on('loading:show', function() {
-    $ionicLoading.show({template: 'foo'})
-  })
-
-  $rootScope.$on('loading:hide', function() {
-    $ionicLoading.hide()
-  })
 })
 
 .config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {

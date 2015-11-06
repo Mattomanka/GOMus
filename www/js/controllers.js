@@ -41,9 +41,12 @@ angular.module('starter.controllers', ['starter.factories'])
   };
 })
 
-.controller('HomeCtrl', function($scope, $http) {
+.controller('HomeCtrl', function($scope, $http, $ionicLoading) {
   // $scope.locations = LocationsPost.query();
   // $scope.tours = ToursPost.query();
+   $ionicLoading.show({
+    template: 'loading'
+  })
   $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
   .then(function successCallback(response) {
     $ionicLoading.hide()
@@ -59,22 +62,28 @@ angular.module('starter.controllers', ['starter.factories'])
   $scope.aversion = appVersion;
 })
 
-.controller('ToursCtrl', function($scope, ToursPost) {
+.controller('ToursCtrl', function($scope, $http, $ionicLoading) {
+  $ionicLoading.show({
+    template: 'loading'
+  })
   $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/tours.php'})
   .then(function successCallback(response) {
+    $ionicLoading.hide()
     $scope.tours = response.data;
   })
 })
 
-.controller('TourCtrl', function($scope, $http,  $stateParams, LocationsPost, uiGmapGoogleMapApi) {
+.controller('TourCtrl', function($scope, $http, $ionicLoading, $stateParams, LocationsPost, uiGmapGoogleMapApi) {
   $scope.params = {
     id: $stateParams.tourId
   };
   $scope.locations = LocationsPost.query();
-	
+	$ionicLoading.show({
+    template: 'loading'
+  })
 	$http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
 	.then(function successCallback(response) {
-		
+		$ionicLoading.hide()
 		var pathArray = [], centerCoordinates = {latitude:0, longitude:0};
 		for(var i = 0; i<response.data.length; i++){
 				coordinatesArray = response.data[i].coordinates.split(',');
@@ -119,8 +128,16 @@ angular.module('starter.controllers', ['starter.factories'])
 		  });
 })
 
-.controller('LocationsCtrl', function($scope, LocationsPost) {
-  $scope.locations = LocationsPost.query();
+.controller('LocationsCtrl', function($scope, $http, $ionicLoading) {
+  //$scope.locations = LocationsPost.query();
+  $ionicLoading.show({
+    template: 'loading'
+  })
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
+  .then(function successCallback(response) {
+    $ionicLoading.hide()
+    $scope.locations = response.data;
+  })
 	
 })
 
