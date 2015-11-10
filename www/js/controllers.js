@@ -76,56 +76,107 @@ angular.module('starter.controllers', ['starter.factories'])
     id: $stateParams.tourId
   };
   $ionicLoading.show({
-    template: 'loading'
+    template: 'Loading...'
    })
 	$http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
-	.then(function successCallback(response) {
-		$ionicLoading.hide()
+  .then(function successCallback(response) {
+    $ionicLoading.hide()
     $scope.locations = response.data;
-		var pathArray = [], centerCoordinates = {latitude:0, longitude:0};
-		for(var i = 0; i<response.data.length; i++){
-				coordinatesArray = response.data[i].coordinates.split(',');
-				pathArray[i]= {latitude: coordinatesArray[0], longitude:coordinatesArray[1]};
-				 centerCoordinates.latitude += coordinatesArray[0]/response.data.length;
-				 centerCoordinates.longitude += coordinatesArray[1]/response.data.length;
-			}
-			
-      var parentCoordWrapp = {pathArray,centerCoordinates};
+    var pathArray = [], centerCoordinates = {latitude:0, longitude:0};
+    for(var i = 0; i<response.data.length; i++){
+        coordinatesArray = response.data[i].coordinates.split(',');
+        pathArray[i]= {latitude: coordinatesArray[0], longitude:coordinatesArray[1]};
+         centerCoordinates.latitude += coordinatesArray[0]/response.data.length;
+         centerCoordinates.longitude += coordinatesArray[1]/response.data.length;
+      }
+      
+      var parentCoordWrapp = [pathArray,centerCoordinates];
 
-		return parentCoordWrapp;
+    return parentCoordWrapp;
   }, function errorCallback(response) {
-			return 0;
-	}).then(function successCallback(reseiveObj) {
-			// $scope.map = {center: reseiveObj.centerCoordinates, zoom: 14};
-			// $scope.polylines = [];
-			// uiGmapGoogleMapApi.then(function(){
-			//   $scope.polylines = [
-			// 	{
-			// 		id: 1,
-			// 		path: reseiveObj.pathArray,
-			// 		stroke: {
-			// 			color: '#6060FB',
-			// 			weight: 2
-			// 		},
-			// 		editable: false,
-			// 		draggable: false,
-			// 		geodesic: true,
-			// 		visible: true,
-			// 		icons: [{
-			// 			icon: {
-			// 				path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW
-			// 			},
-			// 			offset: '25px',
-			// 			repeat: '50px'
-			// 		}]
-			// 	}
-			// ];
-			
-			// });
-		  }, function errorCallback(response) {
-			   return 0;
-		  });
+      return 0;
+  }).then(function successCallback(reseiveObj) {
+      $scope.map = {center: reseiveObj[1], zoom: 14};
+      $scope.polylines = [];
+      uiGmapGoogleMapApi.then(function(){
+        $scope.polylines = [
+       {
+         id: 1,
+         path: reseiveObj[0],
+         stroke: {
+           color: '#6060FB',
+           weight: 2
+         },
+         editable: false,
+         draggable: false,
+         geodesic: true,
+         visible: true,
+         icons: [{
+           icon: {
+             path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW
+           },
+           offset: '25px',
+           repeat: '50px'
+         }]
+       }
+      ];
+      
+      });
+      }, function errorCallback(reseiveObj) {
+         return 0;
+  });
 }])
+
+
+
+// .controller('TourCtrl', function($scope, $stateParams, uiGmapGoogleMapApi) {
+//   $scope.params = {
+//     id: $stateParams.tourId
+//   };
+//   $scope.locations = LocationsPost.query();
+//   $scope.map = {center: {latitude: 46.4825832, longitude: 30.7226443 }, zoom: 14, bounds: {}};
+//         $scope.polylines = [];
+//         uiGmapGoogleMapApi.then(function(){
+//           $scope.polylines = [
+//             {
+//                 id: 1,
+//                 path: [
+//                     {
+//                         latitude: 46.484,
+//                         longitude: 30.71
+//                     },
+//                     {
+//                         latitude: 46.4825833,
+//                         longitude: 30.7226443
+//                     },
+//                     {
+//                         latitude: 46.483,
+//                         longitude: 30.73
+//                     },
+//                     {
+//                         latitude: 46.2,
+//                         longitude: 30.5
+//                     }
+//                 ],
+//                 stroke: {
+//                     color: '#6060FB',
+//                     weight: 3
+//                 },
+//                 editable: false,
+//                 draggable: false,
+//                 geodesic: true,
+//                 visible: true,
+//                 icons: [{
+//                     icon: {
+//                         path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW
+//                     },
+//                     offset: '25px',
+//                     repeat: '50px'
+//                 }]
+//             }
+//         ];
+//         });
+// })
 
 .controller('LocationsCtrl', function($scope, $http, $ionicLoading) {
   $ionicLoading.show({
