@@ -7871,11 +7871,17 @@ a.button {
 #tour-screen #map {
   height: 200px; }
 #tour-screen .left {
-  float: left; }
+  width: 75%; }
+  #tour-screen .left h3, #tour-screen .left h4 {
+    max-width: 100%; }
 #tour-screen .right {
-  float: right; }
-  #tour-screen .right img {
-    height: 100px; }
+  width: 24%; }
+  #tour-screen .right .img {
+    height: 6em;
+    width: 8em;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover; }
 
 .angular-google-map-container {
   height: 200px; }

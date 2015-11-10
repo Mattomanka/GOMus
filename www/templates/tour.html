@@ -15,7 +15,9 @@
         	<h4>{{location.description}}</h4>
         	<h4>{{location.address}}</h4>
         </div>
-        <div class="right col-33"><img ng-src="{{location.photo[0]}}" /></div>
+        <div class="right col-33">
+          <div class="img" style="background-image: url({{location.photo[0]}})" ></div>
+        </div>
       </ion-item>
     </ion-list>
   </ion-content>

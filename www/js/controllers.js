@@ -90,19 +90,19 @@ angular.module('starter.controllers', ['starter.factories'])
          centerCoordinates.longitude += coordinatesArray[1]/response.data.length;
       }
       
-      var parentCoordWrapp = [pathArray,centerCoordinates];
+      var parentCoordWrapp = {'pathArray':pathArray,'centerCoordinates':centerCoordinates};
 
     return parentCoordWrapp;
   }, function errorCallback(response) {
       return 0;
   }).then(function successCallback(reseiveObj) {
-      $scope.map = {center: reseiveObj[1], zoom: 14};
+      $scope.map = {center: reseiveObj.centerCoordinates, zoom: 14};
       $scope.polylines = [];
       uiGmapGoogleMapApi.then(function(){
         $scope.polylines = [
        {
          id: 1,
-         path: reseiveObj[0],
+         path: reseiveObj.pathArray,
          stroke: {
            color: '#6060FB',
            weight: 2
