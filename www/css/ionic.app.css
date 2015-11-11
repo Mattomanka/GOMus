@@ -7756,8 +7756,8 @@ a.button {
   #location-screen .big-img .item {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 0.5em 0em;
-    margin-top: 11.5em;
-    margin-top: 32vh; }
+    margin-top: 13.5em;
+    margin-top: 33vh; }
   #location-screen .big-img .item h1 {
     color: #FFF;
     font-size: 1.5em;
@@ -7870,18 +7870,20 @@ a.button {
 
 #tour-screen #map {
   height: 200px; }
+#tour-screen .item-content {
+  padding: 16px; }
+#tour-screen .left, #tour-screen .right {
+  display: inline-block; }
 #tour-screen .left {
-  width: 75%; }
+  width: calc(100% - 8em); }
   #tour-screen .left h3, #tour-screen .left h4 {
     max-width: 100%; }
-#tour-screen .right {
-  width: 24%; }
-  #tour-screen .right .img {
-    height: 6em;
-    width: 8em;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: cover; }
+#tour-screen .right .img {
+  height: 6em;
+  width: 8em;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover; }
 
 .angular-google-map-container {
   height: 200px; }

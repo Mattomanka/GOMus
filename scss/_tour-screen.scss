@@ -3,17 +3,20 @@
 		height: 200px;
 
 	}
-
+	.item-content {
+		padding: 16px;	
+	}
+	.left, .right {
+		display: inline-block;
+	}
 	.left {
-		width: 75%;
+		width: calc(100% - 8em);
 
 		h3, h4 {
 			max-width: 100%;
 		}
 	}
 	.right{
-		width: 24%;
-
 		.img {
 			height: 6em;
 			width: 8em;

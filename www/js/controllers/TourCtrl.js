@@ -4,8 +4,14 @@ angular.module('starter.controllers').controller('TourCtrl', ['$scope', '$http',
   };
   $ionicLoading.show({
     template: 'Loading...'
-   })
-	$http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
+  })
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/tours.php'})
+  .then(function successCallback(response) {  
+    $scope.tour = response.data[0].name;
+  }, function errorCallback(response) {
+    return 0;
+  });
+ 	$http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
   .then(function successCallback(response) {
     $ionicLoading.hide()
     $scope.locations = response.data;
@@ -17,7 +23,7 @@ angular.module('starter.controllers').controller('TourCtrl', ['$scope', '$http',
          centerCoordinates.longitude += coordinatesArray[1]/response.data.length;
       }
       
-      var parentCoordWrapp = {'pathArray':pathArray,'centerCoordinates':centerCoordinates};
+      var parentCoordWrapp = {'pathArray':pathArray, 'centerCoordinates':centerCoordinates};
 
     return parentCoordWrapp;
   }, function errorCallback(response) {

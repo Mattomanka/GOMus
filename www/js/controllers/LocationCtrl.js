@@ -1,16 +1,15 @@
-angular.module('starter.controllers').controller('LocationCtrl', ['$scope','$http', '$stateParams', '$ionicModal',
-  function($scope, $http, $stateParams, $ionicModal, $ionicLoading) {
-    var coordArray =[];
-  	var currentLocationID = parseInt($stateParams.locationId.slice(2));
-    // $ionicLoading.show({
-    //   template: 'loading'
-    // })
-    $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
-    .then(function successCallback(response) {
-      //$ionicLoading.hide()
-      $scope.locations = response.data;
-    })
-
+angular.module('starter.controllers').controller('LocationCtrl', function($scope, $http, $stateParams, $ionicModal, $ionicLoading) {
+  var coordArray =[];
+	var currentLocationID = parseInt($stateParams.locationId.slice(2));
+  $scope.currID = currentLocationID;
+  $ionicLoading.show({
+    template: 'loading'
+  })
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
+  .then(function successCallback(response) {
+    $ionicLoading.hide()
+    $scope.locations = response.data;
+  })
 	$http.get("http://gid.areyoualive.ru/api/location.php?id="+currentLocationID)
     .success(function(response) {
 			console.log(response);
@@ -23,12 +22,12 @@ angular.module('starter.controllers').controller('LocationCtrl', ['$scope','$htt
 		$scope.map.center.longitude = parseFloat(coordArray[1]);
 	});
 	
-	 $ionicModal.fromTemplateUrl('full-description-modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.contentModal = modal;
-    })
+	$ionicModal.fromTemplateUrl('full-description-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.contentModal = modal;
+  })
 	
 	$scope.openContentModal = function() {
       $scope.contentModal.show();
@@ -87,39 +86,34 @@ angular.module('starter.controllers').controller('LocationCtrl', ['$scope','$htt
 		if(current_index >=$scope.loctn.photo.length) current_index = 0;
 		
 		$scope.imageSrc = $scope.loctn.photo[current_index];
-    };
+  };
 	
-    $scope.openModal = function() {
-      $scope.modal.show();
-    };
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
 
-    $scope.closeModal = function() {
-      $scope.modal.hide();
-    };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
 
-    //Cleanup the modal when we're done with it!
-    $scope.$on('$destroy', function() {
-      $scope.modal.remove();
-    });
-    // Execute action on hide modal
-    $scope.$on('modal.hide', function() {
-      // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('modal.removed', function() {
-      // Execute action
-    });
-    $scope.$on('modal.shown', function() {
-	  $scope.imageSrc = $scope.loctn.photo[0];
-      console.log('Modal is shown!');
-    });
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hide', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
+  $scope.$on('modal.shown', function() {
+  $scope.imageSrc = $scope.loctn.photo[0];
+    console.log('Modal is shown!');
+  });
 
-    
-
-    $scope.showImage = function(index) {
-      $scope.openModal();
-    }
+  $scope.showImage = function(index) {
+    $scope.openModal();
   }
-
-
-]);
+});

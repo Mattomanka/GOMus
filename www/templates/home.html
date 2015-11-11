@@ -1,4 +1,4 @@
-<ion-view id="home-screen">
+<ion-view id="home-screen" view-title="Home">
   <ion-content>
     <ion-list id="locations">
       <ion-item class="location" ng-repeat="location in locations" href="#/app/locations/id{{location.id}}">
@@ -6,7 +6,7 @@
         <div class="location-title">
           <h3>{{location.name}}</h3>
         </div>
-      </ion-item
+      </ion-item>
     </ion-list>
     <ion-list>
       <ion-item ng-repeat="tour in tours" href="#/app/tours/{{tour.id}}">
