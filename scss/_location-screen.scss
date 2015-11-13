@@ -1,4 +1,6 @@
 #location-screen {
+	text-align: center;
+
 	.ls-gallery {
 		ion-item {
 			width: 24%;
@@ -20,6 +22,16 @@
 				}
 			}
 		}
+	}
+
+	.button-full {
+		display: inline-block;
+		width: 80%;
+		margin: 0 auto;
+
+		border-color: rgba(12, 96, 238, 0.58);
+	    background-color: rgba(56, 126, 245, 0.27);
+	    color: #3C3C3C;
 	}
 
 	.big-img {
@@ -138,7 +150,7 @@
 	}
 
 	.item-thumb img {
-		max-width: 90%;
+		max-width: 60%;
 	}
 }
 

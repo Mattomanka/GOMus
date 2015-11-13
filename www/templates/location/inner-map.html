@@ -1,0 +1,31 @@
+<ion-nav-bar class="bar-positive">
+</ion-nav-bar>
+<ion-nav-view>
+	<ion-view id="inner-map-screen" view-title="Main plan">
+		<ion-content ng-controller="innerMapCtrl">
+		  	<div class="card sub-title-wrap" ng-show="loctn.id==15">
+			  <div class="item item-divider">
+					<p>Main plan</p>
+			  </div>
+			  <div class="item item-text-wrap">
+				<img ng-src="img/kicrh_plan_2.jpg" />	
+			  </div> 
+			</div>
+			
+			<div class="card exhibit-list list" ng-hide="!loctn.innerLocations.length">
+			  <div class="row exhibit-item " ng-repeat="innerLocation in loctn.innerLocations" ng-href="#/app/inner-location/lc{{innerLocation.id}}" >
+				
+				<div class="col-10 item-number ">
+					<p  class="item_{{($index)%3}}" style="background-color: {{innerLocation.positionColor}}">{{($index+1)}}</p>
+				</div>
+				<div class="col-67 item-content">
+					<h3>{{innerLocation.name}}</h3>
+				</div>
+				<div class="col-25 item-thumb col-center">
+					<img ng-src="{{innerLocation.photo[0]}}" />	
+				</div>
+			  </div>
+			</div>
+		</ion-content>
+	</ion-view>
+</ion-nav-view>

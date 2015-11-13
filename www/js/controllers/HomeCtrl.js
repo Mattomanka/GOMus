@@ -5,7 +5,7 @@ angular.module('starter.controllers').controller('HomeCtrl', function($scope, $h
   $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
   .then(function successCallback(response) {
     $ionicLoading.hide()
-    $scope.locations = response.data;
+    $scope.locations = response.data.slice(0, 3);
   })
   $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/tours.php'})
   .then(function successCallback(response) {
