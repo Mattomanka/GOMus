@@ -1,0 +1,21 @@
+<ion-view id="home-screen" view-title="Home">
+  <ion-content>
+    <ion-list id="locations">
+      <ion-item class="location" ng-repeat="location in locations" href="#/app/locations/id{{location.id}}">
+        <div class="location-img"><img src="{{location.photo[0]}}" /></div>
+        <div class="location-title">
+          <h3>{{location.name}}</h3>
+        </div>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item ng-repeat="tour in tours" href="#/app/tours/{{tour.id}}">
+        <div class="left">
+        	<h3>{{tour.name}}</h3>
+        	<h4>If need description</h4>
+        </div>
+        <div class="right"><img src="{{tour.photo}}" /></div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
