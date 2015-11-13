@@ -1,0 +1,24 @@
+<ion-view id="tour-screen" view-title="{{tour}}">
+  <ion-content>
+  <div id="map_canvas" ng-controller="TourCtrl">
+      <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
+          <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible'
+                    geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></ui-gmap-polyline>
+					 
+      </ui-gmap-google-map>
+  </div>
+    <h1>{{tour}}</h1>
+	<ion-list >
+      <ion-item ng-repeat="location in locations" class="row" href="#/app/locations/id{{location.id}}">
+        <div class="left col-67">
+        	<h3>{{location.name}}</h3>
+        	<h4>{{location.description}}</h4>
+        	<h4>{{location.address}}</h4>
+        </div>
+        <div class="right col-33">
+          <div class="img" style="background-image: url({{location.photo[0]}})" ></div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

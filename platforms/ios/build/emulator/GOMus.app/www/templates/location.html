@@ -1,0 +1,108 @@
+<ion-view id="location-screen" view-title="{{loctn.name}}">
+  <ion-content>
+	<div class="big-img card" ng-click="showImage()" style='background-image: url("{{loctn.photo[0]}}")'>
+	  <div class="item">
+			<h1>{{loctn.name}}</h1>
+	  </div>
+	</div>
+	
+	<div class="card sub-title-wrap">
+	  <div class="item item-divider">
+			<p> {{loctn.name}}</p>	
+	  </div>
+	  <div class="item item-text-wrap">
+		<p>{{loctn.excerpt}} <br/><a  class="read-more-btn button button-light" ng-click="openContentModal()"><i class="ion-arrow-expand"></i> Read more</a></p>
+	  </div> 
+	</div>
+	
+	<div class="card sub-title-wrap" ng-show="loctn.id==15">
+	  <div class="item item-divider">
+			<p>Main plan</p>
+	  </div>
+	  <div class="item item-text-wrap">
+		<img ng-src="img/kicrh_plan_2.jpg" />	
+	  </div> 
+	</div>
+	
+	<div class="card exhibit-list list" ng-hide="!loctn.innerLocations.length">
+	  <div class="row exhibit-item " ng-repeat="innerLocation in loctn.innerLocations" >
+		
+		<div class="col-10 item-number ">
+			<p  class="item_{{($index)%3}}">{{($index+1)}}</p>
+		</div>
+		<div class="col-67 item-content">
+			<h3>{{innerLocation.name}}</h3>
+			<p>{{innerLocation.description}}</p>
+		</div>
+		<div class="col-25 item-thumb col-center">
+			<img ng-src="{{innerLocation.photo}}" />	
+		</div>
+	  </div>
+	</div>
+	
+		<div class="card address-wrap text-center">
+	  <div class="item item-divider">
+			<p><i class="ion-ios-location-outline"></i> Contacts information</p>	
+	  </div>
+	  <div class="item ">
+			<p><i class="ion-ios-location"></i> {{loctn.address}}</p>	
+	  </div>
+	  <div class="item ">
+			<p><i class="ion-clock"></i> Visiting hours</p>	
+	  </div>
+	  <div class="item ">
+			<p><i class="ion-ios-telephone"></i> <a href="tel:+38048772-64-89">38 (048) 772-64-89</a></p>	
+	  </div>
+	   <div class="item ">
+			<p><a href="http://delku.com.ua" target="_blank"><i class="ion-share"></i>delku.com.ua</a> <br/> <a href="http://kirha.od.ua" target="_blank"><i class="ion-share"></i>kirha.od.ua</a></p>	
+	  </div>	
+	</div>
+    
+	<div id="map" data-tap-disabled="true">
+         <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+          	<ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+        	</ui-gmap-marker>
+        </ui-gmap-google-map>
+    </div>
+    <a id="go-to-quest" href="#/app/quest/quest{{currID}}">Test yourself</a>
+
+	<script id="image-modal.html" type="text/ng-template">
+	  <div class="modal image-modal transparent" >
+	      <ion-pane class="transparent">
+			 <a class="icon ion-close hide-btn" ng-click="closeModal()"></a>
+	         <img ng-src="{{imageSrc}}" class="fullscreen-image"/>
+			 <div class="slider-nav-wrapp">
+				<div class="slider-nav-left-side" >
+					<a class="button icon-left ion-arrow-left-b button-clear"  ng-click="slideLeft()"></a>
+				</div>
+				<div class="slider-nav-right-side" >
+					<a class="button icon-right ion-arrow-right-b button-clear" ng-click="slideRight()"></a>
+				</div>
+			 </div>
+	      </ion-pane>
+	  </div>
+	</script>
+	
+	<script id="full-description-modal.html" type="text/ng-template">
+	  <ion-modal-view  >
+	  <ion-header-bar>
+		<h1 class="title">{{loctn.name}}</h1>
+		<div class="buttons">
+		  <button class="button button-clear" ng-click="closeContentModal()">Close</button>
+		</div>
+	  </ion-header-bar>
+	  <ion-content class="light-grey-background">
+		<div class="card sub-title-wrap">
+	  <div class="item item-text-wrap">
+		<p>{{loctn.description}}</p>
+	  </div> 
+	</div>
+	<div class="text-center">
+		<a  class="read-more-btn button button-light" ng-click="closeContentModal()">
+		<i class="ion-arrow-shrink"></i> Close</a>
+	</div>
+	  </ion-content>
+	</ion-modal-view>
+	</script>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,14 @@
+<ion-nav-bar class="bar-positive">
+</ion-nav-bar>
+<ion-nav-view>
+	<ion-view id="quest-screen" view-title="Test">
+		<ion-content ng-controller="QuestCtrl">
+			<div class="quest-item" ng-repeat="q in questions">
+				<div ng-show="q.type == 1">{{q.question}}</div>
+				<div ng-show="q.type == 2"><img src="{{q.question}}"/></div>
+				<div ng-show="q.type == 3">{{q.question}}</div>
+				<ion-checkbox ng-model="isChecked" ng-repeat="answer in q.answers">{{answer}}</ion-checkbox>
+			</div>
+		</ion-content>
+	</ion-view>
+</ion-nav-view>

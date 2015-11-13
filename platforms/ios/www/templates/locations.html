@@ -1,0 +1,17 @@
+<ion-view view-title="Locations">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="location in locations" href="#/app/locations/id{{location.id}}" >
+        <div class="location-wrapper row">
+			<div class="location-logo col-33">
+				<img ng-src="{{location.photo[0]}}" /> 
+			</div>
+			<div class="location-content col-offset-10 col-67">
+				<h3>{{location.name}}</h3>
+				<h4>{{location.description}}</h4>
+			</div>
+		</div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
