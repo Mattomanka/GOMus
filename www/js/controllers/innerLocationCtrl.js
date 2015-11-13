@@ -1,6 +1,7 @@
 angular.module('starter.controllers').controller('innerLocationCtrl', function($scope, $http, $stateParams, $ionicModal, $ionicLoading) {
   var coordArray =[];
   //var currentInLocationID = parseInt($stateParams.locationId.slice(2));
+  console.log(currentInLocationID)
   var currentInLocationID = 29;
   $scope.currID = currentInLocationID;
   $ionicLoading.show({
@@ -11,16 +12,11 @@ angular.module('starter.controllers').controller('innerLocationCtrl', function($
     $ionicLoading.hide()
     $scope.locations = response.data;
   })
-	$http.get("http://gid.areyoualive.ru/api/get_inner_location.php?id="+currentInLocationID)
+	$http.get("http://gid.areyoualive.ru/api/inner_loc.php?id="+currentInLocationID)
     .success(function(response) {
-			console.log(response);
+		console.log(response);
 		$scope.loctn = response[0];
 		$scope.loctn.innerLocations = response.innerLocations;
-		coordArray = $scope.loctn.coordinates.split(',');
-		$scope.marker.coords.latitude = parseFloat(coordArray[0]);
-		$scope.marker.coords.longitude = parseFloat(coordArray[1]);
-		$scope.map.center.latitude = parseFloat(coordArray[0]);
-		$scope.map.center.longitude = parseFloat(coordArray[1]);
 	});
 	
 	
