@@ -44,7 +44,7 @@ angular.module('starter.controllers').controller('LocationCtrl', function($scope
       $scope.modal= modal;
     });
 
-    $scope.map = { center: { latitude: 46.4825832, longitude: 30.7226443 }, zoom: 17 };
+    $scope.map = { center: { latitude: 46.4825832, longitude: 30.7226443 }, zoom: 17, disableDefaultUI: true };
     $scope.marker = {
       id: 'l0',
       coords: {

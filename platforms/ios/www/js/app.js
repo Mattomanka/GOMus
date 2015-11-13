@@ -121,6 +121,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
     }
   })
 
+  .state('app.inner-map', {
+    url: '/inner-map/:mpId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/location/inner-map.html',
+        controller: 'innerMapCtrl'
+      }
+    }
+  })
+
+  .state('app.inner-location', {
+    url: '/inner-location/:lcId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/location/inner-location.html',
+        controller: 'innerLocationCtrl'
+      }
+    }
+  })
+
   .state('app.quest', {
     url: '/quest/:questId',
     views: {
