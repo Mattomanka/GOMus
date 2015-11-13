@@ -1,8 +1,8 @@
 angular.module('starter.controllers').controller('innerLocationCtrl', function($scope, $http, $stateParams, $ionicModal, $ionicLoading) {
   var coordArray =[];
-  //var currentInLocationID = parseInt($stateParams.locationId.slice(2));
+  var currentInLocationID = parseInt($stateParams.lcId.slice(2));
   console.log(currentInLocationID)
-  var currentInLocationID = 29;
+  //var currentInLocationID = 29;
   $scope.currID = currentInLocationID;
   $ionicLoading.show({
     template: 'loading'
@@ -16,7 +16,7 @@ angular.module('starter.controllers').controller('innerLocationCtrl', function($
     .success(function(response) {
 		console.log(response);
 		$scope.loctn = response[0];
-		$scope.loctn.innerLocations = response.innerLocations;
+		console.log(response[0].description);
 	});
 	
 	
