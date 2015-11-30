@@ -7713,7 +7713,7 @@ a.button {
       margin: 0 auto; }
       #home-screen #locations .location .item-content .location-img {
         display: inline-block;
-        border-radius: 50%;
+        /*border-radius: 50%;*/
         overflow: hidden; }
         #home-screen #locations .location .item-content .location-img img {
           width: 100%;
@@ -7733,6 +7733,8 @@ a.button {
 
 #location-screen {
   text-align: center; }
+  #location-screen .short-description {
+    text-align: justify; }
   #location-screen .ls-gallery ion-item {
     width: 24%;
     display: inline-block;
@@ -7840,7 +7842,8 @@ a.button {
 
 .exhibit-item {
   border-bottom: .1em solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  text-decoration: none; }
   .exhibit-item:hover, .exhibit-item:active, .exhibit-item:target {
     background: #F1F1F1; }
   .exhibit-item .item-eye {
@@ -7914,6 +7917,9 @@ a.button {
 
 .light-grey-background {
   background: #FDFDFD; }
+
+.full-description {
+  text-align: justify; }
 
 .location-wrapper .location-logo img {
   max-width: 100%; }

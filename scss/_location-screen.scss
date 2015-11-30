@@ -1,5 +1,10 @@
 #location-screen {
 	text-align: center;
+	
+
+	.short-description {
+				text-align: justify;
+			}
 
 	.ls-gallery {
 		ion-item {
@@ -161,6 +166,7 @@
 .exhibit-item {
 	    border-bottom: .1em solid rgba(0,0,0,0.2);
     	margin-bottom: 1em;
+    	text-decoration: none;
    	&:hover,&:active,&:target {
 		background: #F1F1F1;
    	}
@@ -266,3 +272,7 @@
 .light-grey-background  {
 	background: #FDFDFD;
 }
+
+.full-description {
+				text-align: justify;
+			}

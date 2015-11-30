@@ -16,15 +16,49 @@ angular.module('starter.controllers').controller('TourCtrl', ['$scope', '$http',
     $ionicLoading.hide()
     $scope.locations = response.data;
     var pathArray = [], centerCoordinates = {latitude:0, longitude:0};
+	
+	$scope.markersArray = [];
+	
     for(var i = 0; i<response.data.length; i++){
-        coordinatesArray = response.data[i].coordinates.split(',');
+		
+		//Calculating route
+        coordinatesArray = response.data[i].coordinates.split(',');// Separate current location coordinates 
         if(coordinatesArray.length>1){
-          //pathArray[i]= {latitude: coordinatesArray[0], longitude:coordinatesArray[1]};
-         // centerCoordinates.latitude += coordinatesArray[0]/response.data.length;
-         // centerCoordinates.longitude += coordinatesArray[1]/response.data.length;
+          pathArray[i]= {latitude: coordinatesArray[0], longitude:coordinatesArray[1]};
+          centerCoordinates.latitude += coordinatesArray[0]/response.data.length;
+          centerCoordinates.longitude += coordinatesArray[1]/response.data.length;
         }
+		//Calculating route \\
         
+		//Creating markers on the map
+		var tempMarker = {};
+		tempMarker = {
+		  options: { draggable: false },
+		  events: {
+			dragend: function (marker, eventName, args) {
+			  $log.log('marker dragend');
+			  var lat = marker.getPosition().lat();
+			  var lon = marker.getPosition().lng();
+			  $log.log(lat);
+			  $log.log(lon);
+
+			 marker.options = {
+				draggable: false,
+				labelContent: "lat: " + marker.coords.latitude + ' ' + 'lon: ' +marker.coords.longitude,
+				labelAnchor: "100 0",
+				labelClass: "marker-labels"
+			  };
+			}
+		  }
+		};
+		tempMarker.id = 'l'+i;
+		tempMarker.coords = {};
+		tempMarker.coords.latitude = coordinatesArray[0];
+		tempMarker.coords.longitude = coordinatesArray[1];
+		$scope.markersArray[i] = tempMarker;
+		
       }
+	  
       coordArray = response.data[0].coordinates.split(',');
       centerCoordinates.latitude = coordArray[0];
       centerCoordinates.longitude = coordArray[1];
@@ -35,7 +69,7 @@ angular.module('starter.controllers').controller('TourCtrl', ['$scope', '$http',
   }, function errorCallback(response) {
       return 0;
   }).then(function successCallback(reseiveObj) {
-      $scope.map = {center: reseiveObj.centerCoordinates, zoom: 14};
+      $scope.map = {center: reseiveObj.centerCoordinates, zoom: 12};
       $scope.polylines = [];
       uiGmapGoogleMapApi.then(function(){
         $scope.polylines = [
@@ -52,7 +86,7 @@ angular.module('starter.controllers').controller('TourCtrl', ['$scope', '$http',
          visible: true,
          icons: [{
            icon: {
-             path: google.maps.SymbolPath.BACKWARD_OPEN_ARROW
+             path: google.maps.SymbolPath.FORWARD_OPEN_ARROW
            },
            offset: '25px',
            repeat: '50px'
