@@ -18,10 +18,16 @@ angular.module('starter.controllers').controller('TourCtrl', ['$scope', '$http',
     var pathArray = [], centerCoordinates = {latitude:0, longitude:0};
     for(var i = 0; i<response.data.length; i++){
         coordinatesArray = response.data[i].coordinates.split(',');
-        pathArray[i]= {latitude: coordinatesArray[0], longitude:coordinatesArray[1]};
-         centerCoordinates.latitude += coordinatesArray[0]/response.data.length;
-         centerCoordinates.longitude += coordinatesArray[1]/response.data.length;
+        if(coordinatesArray.length>1){
+          //pathArray[i]= {latitude: coordinatesArray[0], longitude:coordinatesArray[1]};
+         // centerCoordinates.latitude += coordinatesArray[0]/response.data.length;
+         // centerCoordinates.longitude += coordinatesArray[1]/response.data.length;
+        }
+        
       }
+      coordArray = response.data[0].coordinates.split(',');
+      centerCoordinates.latitude = coordArray[0];
+      centerCoordinates.longitude = coordArray[1];
       
       var parentCoordWrapp = {'pathArray':pathArray, 'centerCoordinates':centerCoordinates};
 
