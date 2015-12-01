@@ -2,7 +2,7 @@
   <ion-content>
 	<div class="big-img card" ng-click="showImage()" style='background-image: url("{{loctn.photo[0]}}")'>
 	  <div class="item">
-			<h1>{{loctn.name}}</h1>
+			<h1>{{loctn.shortname}}</h1>
 	  </div>
 	</div>
 	
@@ -11,7 +11,8 @@
 			<p> {{loctn.name}}</p>	
 	  </div>
 	  <div class="item item-text-wrap">
-		<p>{{loctn.excerpt}} <br/><a  class="read-more-btn button button-light" ng-click="openContentModal()"><i class="ion-arrow-expand"></i> Read more</a></p>
+		<p class="short-description">{{loctn.excerpt}} </p>
+		<p><a  class="read-more-btn button button-light" ng-click="openContentModal()"><i class="ion-arrow-expand"></i> Read more</a></p>
 	  </div> 
 	</div>
 
@@ -31,10 +32,10 @@
 			<p><i class="ion-clock"></i> Visiting hours</p>	
 	  </div>
 	  <div class="item ">
-			<p><i class="ion-ios-telephone"></i> <a href="tel:+38048772-64-89">38 (048) 772-64-89</a></p>	
+			<p><i class="ion-ios-telephone"></i> <a href="tel:+{{loctn.phone}}">{{loctn.phone}}</a></p>	
 	  </div>
-	   <div class="item ">
-			<p><a href="http://delku.com.ua" target="_blank"><i class="ion-share"></i>delku.com.ua</a> <br/> <a href="http://kirha.od.ua" target="_blank"><i class="ion-share"></i>kirha.od.ua</a></p>	
+	   <div class="item ">			
+			<p ng-repeat="website in loctn.websites"><a href="{{website}}" target="_blank"><i class="ion-share"></i>{{website}}</a></p>	
 	  </div>	
 	</div>
     
@@ -44,6 +45,7 @@
         	</ui-gmap-marker>
         </ui-gmap-google-map>
     </div>
+    
     <a id="go-to-quest" href="#/app/quest/quest{{currID}}">Test yourself</a>
 
 	<script id="image-modal.html" type="text/ng-template">
@@ -72,9 +74,9 @@
 		</div>
 	  </ion-header-bar>
 	  <ion-content class="light-grey-background">
-		<div class="card sub-title-wrap">
+		<div class="card ">
 	  <div class="item item-text-wrap">
-		<p>{{loctn.description}}</p>
+		<p class="full-description">{{loctn.description}}</p>
 	  </div> 
 	</div>
 	<div class="text-center">
