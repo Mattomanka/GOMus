@@ -11,7 +11,7 @@
 	                    <div class="input-label">
 	                        &nbsp;
 	                    </div>
-	                    <select>
+	                    <select ng-model="mySelect1">
 	                        <option selected>Default</option>
 	                        <option >Green</option>
 	                        <option>Red</option>
@@ -22,7 +22,7 @@
 	                    <div class="input-label">
 	                        &nbsp;
 	                    </div>
-	                    <select>
+	                    <select ng-model="mySelect2">
 	                        <option selected>Default</option>
 	                        <option >Green</option>
 	                        <option>Red</option>
@@ -38,7 +38,7 @@
 	                    <div class="input-label">
 	                        &nbsp;
 	                    </div>
-	                    <select>
+	                    <select ng-model="mySelect3">
 	                        <option selected>Default</option>
 	                        <option >Green</option>
 	                        <option>Red</option>
@@ -49,7 +49,7 @@
 	                    <div class="input-label">
 	                        &nbsp;
 	                    </div>
-	                    <select>
+	                    <select ng-model="mySelect4">
 	                        <option selected>Default</option>
 	                        <option >Green</option>
 	                        <option>Red</option>
@@ -94,6 +94,11 @@
 	                    </select>
 	                </label>
 	                 magna aliqua.
+			    </div>
+			  </ion-slide>
+			  <ion-slide>
+			    <div class="check-button" ng-click="showSelectValues([mySelect1, mySelect2, mySelect3])">
+			    CHECK!
 			    </div>
 			  </ion-slide>
 			</ion-slide-box>

@@ -2,6 +2,12 @@ angular.module('starter.controllers').controller('QuestCtrl', ['$scope', '$ionic
   	
   console.log($stateParams);
 
+
+  $scope.showSelectValues = function(mySelect) {
+    console.log(mySelect);
+  }
+
+
   $scope.questions = [
     { 'question': 'Text question', 
       'answers': ['first', 'second', 'third', 'fourth'], 
