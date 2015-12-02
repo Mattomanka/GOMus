@@ -2,42 +2,53 @@ angular.module('starter.controllers').controller('QuestCtrl', ['$scope', '$ionic
   	
   console.log($stateParams);
 
-  var testSTR = "Hello my name is {*Max, Ann,Yan}! How are you, {brother,*pal,fellow}?";
-
+  //var testSTR = "Hello my name is {*Max, Ann,Yan}! How are you, {brother,*pal,fellow}?";
+  $scope.resulting = "";
   $scope.showSelectValues = function(mySelect) {
     console.log(mySelect);
+    if (mySelect[0]=='Right' && mySelect[1]=='Right') {
+      $scope.resulting = 'All answers are right!!!';
+    } else if (mySelect[0]=='Right') {
+      $scope.resulting = 'Not bad. 1/2';
+    } else if (mySelect[1]=='Right') {
+      $scope.resulting = 'Not bad. 1/2';
+    } else {
+      $scope.resulting = 'All answers are wrong.';
+    }
   }
-	function qmaxParser(str){
-			str = str.substr(1,str.length-2); // Separate { }
-			var variants = str.split(','); // Separate each variant
+ //  var currentID = 0;
+	// function qmaxParser(str){
+	// 		str = str.substr(1,str.length-2); // Separate { }
+	// 		var variants = str.split(','); // Separate each variant
 			
-			var currentID = Math.round((Math.random(2)*20)); //Generated rand model ID
-			var output = '<label class="item item-input item-select" ng-class="qmax'+currentID+'"> 	\
-	                    <div class="input-label">	\
-	                        &nbsp;	\
-	                    </div>	\
-	                    <select ng-model="qmax'+currentID+'" > \
-						';
-						
-			for(var i = 0; i < variants.length; i++){
-				var currentVariant = variants[i].trim();
-				var currentValue = false;
-				if(currentVariant[0]=='*'){ 
-					currentValue = true; 
-					currentVariant = currentVariant.substr(1);// remove *
-				}else {
-					currentValue = false;
-				}
-				
-				output += '<option value="'+currentValue+'">'+currentVariant+'</option>';	
+	// 		//var currentID = Math.round((Math.random(2)*20)); //Generated rand model ID
+	// 		var output = '<label class="item item-input item-select" ng-class="qmax'+currentID+'class"> 	\
+	//                     <div class="input-label">	\
+	//                         &nbsp;	\
+	//                     </div>	\
+	//                     <select ng-model="qmax'+currentID+'" > \
+	// 					';
 					
-			}
-			 output += '</select>	\
-	                </label>';
-		return output;
-	}
+	// 		for(var i = 0; i < variants.length; i++){
+	// 			var currentVariant = variants[i].trim();
+	// 			var currentValue = false;
+	// 			if(currentVariant[0]=='*'){ 
+	// 				currentValue = true; 
+	// 				currentVariant = currentVariant.substr(1);// remove *
+	// 			}else {
+	// 				currentValue = false;
+	// 			}
+				
+	// 			output += '<option value="'+currentValue+'">'+currentVariant+'</option>';	
+					
+	// 		}
+	// 		output += '</select>	\
+	//                 </label>';
+ //      currentID++;
+	// 	return output;
+	// }
 	
-  $scope.CurrenHTML = $sce.trustAsHtml(testSTR.replace(/[{]([*]{0,}[\w]+[,]{0,}[ ]{0,})*[}]/g,qmaxParser));
+ //  $scope.CurrenHTML = $sce.trustAsHtml(testSTR.replace(/[{]([*]{0,}[\w]+[,]{0,}[ ]{0,})*[}]/g,qmaxParser));
   
   $scope.questions = [
     { 'question': 'Text question', 

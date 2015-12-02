@@ -5,17 +5,17 @@
 		<ion-content ng-controller="QuestCtrl">
 			<ion-slide-box on-slide-changed="slideHasChanged($index)">
 			  <ion-slide>
-			    <div class="box blue" ng-bind-html="CurrenHTML">
+			    <div class="box blue">
 				
 			    	Lorem ipsum
                     <label class="item item-input item-select">
 	                    <div class="input-label">
 	                        &nbsp;
 	                    </div>
-	                    <select ng-model="mySelect1">
+	                    <select ng-model="qmax0">
 	                        <option selected>Default</option>
-	                        <option >Green</option>
-	                        <option>Red</option>
+	                        <option >Wrong</option>
+	                        <option>Right</option>
 	                    </select>
 	                </label>
 					sit amet, consectetur adipiscing elit, sed do eiusmod 
@@ -23,84 +23,24 @@
 	                    <div class="input-label" ng-class="textType" >
 	                        &nbsp;
 	                    </div>
-	                    <select ng-model="mySelect2">
+	                    <select ng-model="qmax1">
 	                        <option selected>Default</option>
-	                        <option >Green</option>
-	                        <option>Red</option>
+	                        <option >Right</option>
+	                        <option>Wrong</option>
 	                    </select>
 	                </label>
 					incididunt ut labore et dolore magna aliqua.
 				</div>
 			  </ion-slide>
 			  <ion-slide>
-			    <div class="box yellow">
-					Lorem ipsum
-                    <label class="item item-input item-select">
-	                    <div class="input-label">
-	                        &nbsp;
-	                    </div>
-	                    <select ng-model="mySelect3">
-	                        <option selected>Default</option>
-	                        <option >Green</option>
-	                        <option>Red</option>
-	                    </select>
-	                </label>
-					sit amet, consectetur adipiscing 
-					<label class="item item-input item-select">
-	                    <div class="input-label">
-	                        &nbsp;
-	                    </div>
-	                    <select ng-model="mySelect4">
-	                        <option selected>Default</option>
-	                        <option >Green</option>
-	                        <option>Red</option>
-	                    </select>
-	                </label>
-					, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-			    </div>
-			  </ion-slide>
-			  <ion-slide>
-			    <div class="box pink">
-					Lorem ipsum sit amet, consectetur 
-					<label class="item item-input item-select">
-	                    <div class="input-label">
-	                        &nbsp;
-	                    </div>
-	                    <select>
-	                        <option selected>Default</option>
-	                        <option >Green</option>
-	                        <option>Red</option>
-	                    </select>
-	                </label>
-	                 elit, sed do eiusmod 
-					<label class="item item-input item-select">
-	                    <div class="input-label">
-	                        &nbsp;
-	                    </div>
-	                    <select>
-	                        <option selected>Default</option>
-	                        <option >Green</option>
-	                        <option>Red</option>
-	                    </select>
-	                </label>
-	                 incididunt ut labore et 
-					<label class="item item-input item-select">
-	                    <div class="input-label">
-	                        &nbsp;
-	                    </div>
-	                    <select>
-	                        <option selected>Default</option>
-	                        <option >Green</option>
-	                        <option>Red</option>
-	                    </select>
-	                </label>
-	                 magna aliqua.
-			    </div>
-			  </ion-slide>
-			  <ion-slide>
-			    <div class="check-button" ng-click="showSelectValues([mySelect1, mySelect2, mySelect3])">
-			    CHECK!
-			    </div>
+			  	<div class="box center">
+				    <div class="check-button" ng-click="showSelectValues([qmax0, qmax1])">
+				    	CHECK!
+				    </div>
+				    <div ng-model="resulting">
+				    	{{resulting}}
+				    </div>
+				</div>
 			  </ion-slide>
 			</ion-slide-box>
 		</ion-content>
