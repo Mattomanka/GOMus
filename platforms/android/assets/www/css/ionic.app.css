@@ -8007,6 +8007,19 @@ a.button {
 .slider-pager {
   bottom: 0px; }
 
+.check-button {
+  display: inline-block;
+  margin: 0 auto;
+  background-color: #485DC3;
+  color: #fff;
+  border: 0px solid;
+  border-radius: 2px;
+  text-align: center;
+  padding: 2px 15px; }
+
+.center {
+  text-align: center; }
+
 /* Fix modal backdrop for smaller devices */
 @media (max-width: 679px) {
   .active .modal-backdrop-bg {
