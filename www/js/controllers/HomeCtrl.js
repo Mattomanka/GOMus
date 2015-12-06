@@ -1,8 +1,7 @@
-angular.module('starter.controllers').controller('HomeCtrl', ['$scope', '$http', '$ionicModal', '$ionicLoading', 'user', function($scope, $http, $ionicModal, $ionicLoading, user) {
+angular.module('starter.controllers').controller('HomeCtrl', ['$scope', '$http', '$ionicModal', '$ionicLoading', function($scope, $http, $ionicModal, $ionicLoading) {
    $ionicLoading.show({
     template: 'loading'
   });
-  console.log(user.lang);
   $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
   .then(function successCallback(response) {
     $ionicLoading.hide()
@@ -29,10 +28,12 @@ angular.module('starter.controllers').controller('HomeCtrl', ['$scope', '$http',
   };
   $scope.chooseEN = function() {
     user.lang = '[en:]';
+    window.localStorage.setItem('lang','en');
     $scope.modal.hide();
   };
   $scope.chooseRU = function() {
     user.lang = '[ru:]';
+    window.localStorage.setItem('lang','ru');
     $scope.modal.hide();
   };
   //Cleanup the modal when we're done with it!
@@ -49,7 +50,7 @@ angular.module('starter.controllers').controller('HomeCtrl', ['$scope', '$http',
   });
 
   showLangOnNull = function () {
-    if (!user.lang)
+    if (!window.localStorage.getItem('lang'))
         $scope.openModal();
   };
 
