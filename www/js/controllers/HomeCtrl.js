@@ -1,7 +1,8 @@
-angular.module('starter.controllers').controller('HomeCtrl', function($scope, $http, $ionicLoading) {
+angular.module('starter.controllers').controller('HomeCtrl', ['$scope', '$http', '$ionicModal', '$ionicLoading', 'user', function($scope, $http, $ionicModal, $ionicLoading, user) {
    $ionicLoading.show({
     template: 'loading'
-  })
+  });
+  console.log(user.lang);
   $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
   .then(function successCallback(response) {
     $ionicLoading.hide()
@@ -12,4 +13,44 @@ angular.module('starter.controllers').controller('HomeCtrl', function($scope, $h
   .then(function successCallback(response) {
     $scope.tours = response.data;
   })
-});
+
+  $ionicModal.fromTemplateUrl('lang-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+    showLangOnNull();
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  $scope.chooseEN = function() {
+    user.lang = '[en:]';
+    $scope.modal.hide();
+  };
+  $scope.chooseRU = function() {
+    user.lang = '[ru:]';
+    $scope.modal.hide();
+  };
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
+
+  showLangOnNull = function () {
+    if (!user.lang)
+        $scope.openModal();
+  };
+
+}]);

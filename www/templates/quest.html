@@ -4,41 +4,17 @@
 	<ion-view id="quest-screen" view-title="Test">
 		<ion-content ng-controller="QuestCtrl">
 			<ion-slide-box on-slide-changed="slideHasChanged($index)">
-			  <ion-slide>
-			    <div class="box blue">
+			<ion-slide>
+			    <div compile class="box blue" ng-bind-html="CurrenHTML">
 				
-			    	Lorem ipsum
-                    <label class="item item-input item-select">
-	                    <div class="input-label">
-	                        &nbsp;
-	                    </div>
-	                    <select ng-model="qmax0">
-	                        <option selected>Default</option>
-	                        <option >Wrong</option>
-	                        <option>Right</option>
-	                    </select>
-	                </label>
-					sit amet, consectetur adipiscing elit, sed do eiusmod 
-					<label class="item item-input item-select">
-	                    <div class="input-label" ng-class="textType" >
-	                        &nbsp;
-	                    </div>
-	                    <select ng-model="qmax1">
-	                        <option selected>Default</option>
-	                        <option >Right</option>
-	                        <option>Wrong</option>
-	                    </select>
-	                </label>
-					incididunt ut labore et dolore magna aliqua.
 				</div>
 			  </ion-slide>
 			  <ion-slide>
 			  	<div class="box center">
-				    <div class="check-button" ng-click="showSelectValues([qmax0, qmax1])">
+				    <div class="check-button" ng-click="showSelectValues(inputs)">
 				    	CHECK!
 				    </div>
-				    <div ng-model="resulting">
-				    	{{resulting}}
+				    <div ng-model="resulting" ng-bind-html="resulting">
 				    </div>
 				</div>
 			  </ion-slide>

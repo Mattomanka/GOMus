@@ -156,4 +156,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
   uiGmapGoogleMapApiProvider.configure({
       libraries: 'geometry,visualization'
   });
+})
+
+.directive('compile',function($compile, $timeout){
+    return{
+        restrict:'A',
+        link: function(scope,elem,attrs){
+            $timeout(function(){
+                
+            $compile(elem.contents())(scope);    
+            });
+        }
+        
+    }
+})
+.value('user', {
+    lang: '',
+    name: ''
 });

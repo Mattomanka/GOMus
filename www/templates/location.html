@@ -12,11 +12,11 @@
 	  </div>
 	  <div class="item item-text-wrap">
 		<p class="short-description">{{loctn.excerpt}} </p>
-		<p><a  class="read-more-btn button button-light" ng-click="openContentModal()"><i class="ion-arrow-expand"></i> Read more</a></p>
+		<p><a  class="read-more-btn button check-button" ng-click="openContentModal()"><i class="ion-arrow-expand"></i> Read more</a></p>
 	  </div> 
 	</div>
 
-    <a class="button button-full button-positive" ng-href="#/app/inner-map/mp{{currID}}" ng-show="loctn.id==15">
+    <a class="button check-button" ng-href="#/app/inner-map/mp{{currID}}" ng-show="loctn.id==15">
 	  Look inside
 	</a>
 	
@@ -46,7 +46,7 @@
         </ui-gmap-google-map>
     </div>
     
-    <a id="go-to-quest" href="#/app/quest/quest{{currID}}">Test yourself</a>
+    <a id="go-to-quest" class="button check-button" href="#/app/quest/quest{{currID}}">Test yourself</a>
 
 	<script id="image-modal.html" type="text/ng-template">
 	  <div class="modal image-modal transparent" >
