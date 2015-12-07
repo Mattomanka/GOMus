@@ -22,7 +22,7 @@ angular.module('starter.controllers').controller('QuestCtrl', ['$scope', '$ionic
       };
     }
     percent = (result/mySelect.length)*100;
-    if (mySelect.length == 0) percent = 0;
+    //if (mySelect.length == 0) percent = 0;
     if (percent == 100) {
       $scope.resulting = 'You\'re good.<br /> All answers are right!!!';
     } else if (percent > 75) {

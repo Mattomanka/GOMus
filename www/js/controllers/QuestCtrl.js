@@ -46,7 +46,7 @@ angular.module('starter.controllers').controller('QuestCtrl', ['$scope', '$ionic
 	                        &nbsp;	\
 	                    </div>	\
 	                    <select ng-model="inputs['+currentID+']" > \
-						';
+                      <option value="false" style="display:none;"> </option>';
 					
 			for(var i = 0; i < variants.length; i++){
 				var currentVariant = variants[i].trim();
