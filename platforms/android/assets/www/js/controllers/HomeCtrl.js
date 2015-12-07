@@ -1,20 +1,21 @@
-angular.module('starter.controllers').controller('HomeCtrl', ['$scope', '$http', '$ionicModal', '$ionicLoading', 'user', function($scope, $http, $ionicModal, $ionicLoading, user) {
-   $ionicLoading.show({
+angular.module('starter.controllers').controller('HomeCtrl', ['$scope', '$http', '$ionicModal', '$ionicLoading', function($scope, $http, $ionicModal, $ionicLoading) {
+  $ionicLoading.show({
     template: 'loading'
   });
-  console.log(user.lang);
-  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
+  lang = window.localStorage.getItem('lang');
+  console.log(lang);
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=id,name,photo&count=3&where=Location&lang='+lang})
   .then(function successCallback(response) {
     $ionicLoading.hide()
-    console.log(response.data);
-    $scope.locations = [ response.data[0], response.data[1], response.data[3] ];
-  })
-  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/tours.php'})
+    $scope.locations = response.data;
+  });
+
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=id,name,photo,description&count=10&where=Tour&lang='+lang})
   .then(function successCallback(response) {
     $scope.tours = response.data;
   })
 
-  $ionicModal.fromTemplateUrl('lang-modal.html', {
+  $ionicModal.fromTemplateUrl('templates/lang-modal.html', {
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {
@@ -28,12 +29,14 @@ angular.module('starter.controllers').controller('HomeCtrl', ['$scope', '$http',
     $scope.modal.hide();
   };
   $scope.chooseEN = function() {
-    user.lang = '[en:]';
+    window.localStorage.setItem('lang','en');
     $scope.modal.hide();
+    window.location.reload(true);
   };
   $scope.chooseRU = function() {
-    user.lang = '[ru:]';
+    window.localStorage.setItem('lang','ru');
     $scope.modal.hide();
+    window.location.reload(true);
   };
   //Cleanup the modal when we're done with it!
   $scope.$on('$destroy', function() {
@@ -49,7 +52,7 @@ angular.module('starter.controllers').controller('HomeCtrl', ['$scope', '$http',
   });
 
   showLangOnNull = function () {
-    if (!user.lang)
+    if (!window.localStorage.getItem('lang'))
         $scope.openModal();
   };
 

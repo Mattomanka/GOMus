@@ -5,11 +5,10 @@ angular.module('starter.controllers').controller('QuestCtrl', ['$scope', '$ionic
   var currentInLocationID = parseInt($stateParams.questId.slice(5));
   console.log(currentInLocationID)
 
-  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/quests_location.php?questID=' + currentInLocationID })
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/quests.php?questID=' + currentInLocationID })
   .then(function successCallback(response) {
-    console.log(response.data);
 
-    $scope.CurrenHTML = $sce.trustAsHtml(response.data[0].question.replace(/([ ]{0,}[*]{0,}[\w]{0,}[.]{0,}[ ]{0,})/g,qmaxParser));
+    $scope.CurrenHTML = $sce.trustAsHtml(response.data[0].question.replace(/[{][\S]{0,}[\s]{0,}[\S]{0,}[\s]{0,}[\S]{0,}[\s]{0,}[}]/g,qmaxParser));
   })
 
   $scope.resulting = "";
@@ -23,6 +22,7 @@ angular.module('starter.controllers').controller('QuestCtrl', ['$scope', '$ionic
       };
     }
     percent = (result/mySelect.length)*100;
+    if (mySelect.length == 0) percent = 0;
     if (percent == 100) {
       $scope.resulting = 'You\'re good.<br /> All answers are right!!!';
     } else if (percent > 75) {
@@ -149,5 +149,4 @@ angular.module('starter.controllers').controller('QuestCtrl', ['$scope', '$ionic
   //   $scope.currSrc = src;
   //   $scope.openModal();
   // }
-}
-]);
+}]);

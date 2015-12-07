@@ -2,18 +2,18 @@ angular.module('starter.controllers').controller('TourCtrl', ['$scope', '$http',
   $scope.params = {
     id: $stateParams.tourId
   };
+  lang = window.localStorage.getItem('lang');
   $ionicLoading.show({
     template: 'Loading...'
   })
-  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/tours.php'})
-  .then(function successCallback(response) {  
-    $scope.tour = response.data[0].name;
-  }, function errorCallback(response) {
-    return 0;
-  });
- 	$http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=id,name&sfield=id&count=1&sfieldValue=' + $stateParams.tourId + '&where=Tour&lang='+lang})
   .then(function successCallback(response) {
-    $ionicLoading.hide()
+    $scope.tour = response.data[0];
+  })
+
+ 	$http({method: 'GET', url: 'http://gid.areyoualive.ru/api/tour_locations.php?tour_id=' + $stateParams.tourId + '&lang='+lang})
+  .then(function successCallback(response) {
+    $ionicLoading.hide();
     $scope.locations = response.data;
     var pathArray = [], centerCoordinates = {latitude:0, longitude:0};
 	

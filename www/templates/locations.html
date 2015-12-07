@@ -1,6 +1,6 @@
 <ion-view view-title="Locations">
   <ion-content>
-	<div id="map_canvas" ng-controller="TourCtrl">
+	<div id="map_canvas">
       <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
 			<ui-gmap-marker ng-repeat="qmarker in markersArray"  coords="qmarker.coords" options="qmarker.options" events="qmarker.events" idkey="qmarker.id">
         	</ui-gmap-marker>		 

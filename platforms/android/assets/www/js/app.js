@@ -169,8 +169,4 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
         }
         
     }
-})
-.value('user', {
-    lang: '',
-    name: ''
 });

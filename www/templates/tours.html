@@ -4,7 +4,7 @@
       <ion-item ng-repeat="tour in tours" href="#/app/tours/{{tour.id}}">
         <div class="left">
         	<h3>{{tour.name}}</h3>
-        	<h4>Here may be description</h4>
+        	<h4>{{tour.description}}</h4>
         </div>
         <div class="right"><img src="{{tour.photo}}" /></div>
       </ion-item>

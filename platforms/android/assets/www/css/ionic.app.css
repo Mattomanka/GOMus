@@ -7734,7 +7734,12 @@ a.button {
 #location-screen {
   text-align: center; }
   #location-screen .short-description {
-    text-align: justify; }
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; }
   #location-screen .ls-gallery ion-item {
     width: 24%;
     display: inline-block;
@@ -7929,7 +7934,8 @@ a.button {
 #tour-screen .item-content {
   padding: 16px; }
 #tour-screen .left, #tour-screen .right {
-  display: inline-block; }
+  display: inline-block;
+  vertical-align: middle; }
 #tour-screen .left {
   width: calc(100% - 8em); }
   #tour-screen .left h3, #tour-screen .left h4 {

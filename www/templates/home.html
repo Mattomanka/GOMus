@@ -12,34 +12,10 @@
       <ion-item ng-repeat="tour in tours" href="#/app/tours/{{tour.id}}">
         <div class="left">
         	<h3>{{tour.name}}</h3>
-        	<h4>If need description</h4>
+        	<h4>{{tour.description}}</h4>
         </div>
         <div class="right"><img src="{{tour.photo}}" /></div>
       </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>
-
-<script id="lang-modal.html" type="text/ng-template">
-  <ion-modal-view>
-  <ion-header-bar>
-    <h1 class="title">Choose language</h1>
-    <div class="buttons">
-      <button class="button button-clear" ng-click="closeModal()">Close</button>
-    </div>
-  </ion-header-bar>
-  <ion-content>
-    <form>
-      <div class="list">
-        <label class="item">
-          <button class="button button-block button-positive" ng-click="chooseRU()">RU</button>
-        </label>
-        <label class="item">
-          <button class="button button-block button-positive" ng-click="chooseEN()">EN</button>
-        </label>
-      </div>
-    </form>
-  </ion-content>
-</ion-modal-view>
-
-</script>
