@@ -27,9 +27,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    cordova.getAppVersion(function(version) {
-        appVersion = version;
-    });
+    ;
   });
 })
 
@@ -101,7 +99,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
       }
     }
   })
-  
+
   .state('app.location-description', {
     url: '/location/description',
     views: {
@@ -145,8 +143,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
     url: '/quest/:questId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/quest.html',
-        controller: 'QuestCtrl'
+        templateUrl: 'templates/quest.html'
       }
     }
   });
@@ -156,17 +153,4 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
   uiGmapGoogleMapApiProvider.configure({
       libraries: 'geometry,visualization'
   });
-})
-
-.directive('compile',function($compile, $timeout){
-    return{
-        restrict:'A',
-        link: function(scope,elem,attrs){
-            $timeout(function(){
-                
-            $compile(elem.contents())(scope);    
-            });
-        }
-        
-    }
 });
