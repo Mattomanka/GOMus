@@ -34,7 +34,7 @@
 	  <div class="item ">
 			<p><i class="ion-ios-telephone"></i><a href="tel:+{{loctn.phone}}">{{loctn.phone}}</a></p>	
 	  </div>			
-	  <div class="item " ng-repeat="website in loctn.websites"><a href="#" onclick="window.open({{website}}, '_system', 'location=yes'); return false;">{{website}}</a></div>	
+	  <div class="item " ng-repeat="website in loctn.websites"><a ng-href="{{website}}" target="_blank">{{website}}</a></div>	
 	</div>
     
 	<div id="map" data-tap-disabled="true">
