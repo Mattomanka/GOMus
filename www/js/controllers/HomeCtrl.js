@@ -3,7 +3,7 @@ angular.module('starter.controllers').controller('HomeCtrl', ['$scope', '$http',
     template: '{{"loading" | translate}}'
   });
   lang = window.localStorage.getItem('lang');
-  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=id,name,photo&count=3&where=Location&lang='+lang})
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=id,name,rating,photo&order=rating&count=3&where=Location&lang='+lang})
   .then(function successCallback(response) {
     $scope.locations = response.data;
   });

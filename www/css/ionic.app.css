@@ -7704,13 +7704,16 @@ a.button {
   height: 200px; }
   #home-screen #locations .location {
     width: 33%;
-    max-height: 106px;
+    max-height: 175px;
     display: inline-block;
-    border: 0px; }
+    border: 0;
+    vertical-align: top;
+    white-space: normal !important; }
     #home-screen #locations .location .item-content {
       width: 90%;
       padding: 0;
-      margin: 0 auto; }
+      margin: 0 auto;
+      white-space: normal !important; }
       #home-screen #locations .location .item-content .location-img {
         display: inline-block;
         /*border-radius: 50%;*/
@@ -7724,7 +7727,13 @@ a.button {
 #home-screen .tours-footer {
   text-align: center; }
 #home-screen .left {
-  float: left; }
+  float: left;
+  width: 60%;
+  height: 50px; }
+  #home-screen .left h4 {
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: normal; }
 #home-screen .right {
   float: right; }
   #home-screen .right img {
@@ -8030,6 +8039,9 @@ ion-nav-bar .back-text .default-title {
 
 .center {
   text-align: center; }
+
+#quest-screen .item-select select {
+  padding: 0 22px 0 4px; }
 
 /* Fix modal backdrop for smaller devices */
 @media (max-width: 679px) {

@@ -156,7 +156,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 
       test_yourself: "Test yourself",
       version: "Version",
       about_text: "Application developed by Ukrainian and Germany teams.",
-      full_about: "Full about page"
+      full_about: "Full about page",
+      main_plan: "Main plan"
 
   });
   $translateProvider.translations('ru', {
@@ -177,7 +178,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 
       test_yourself: "Перевір себе",
       version: "Версія",
       about_text: "Додаток розроблено українською та німецькою командами.",
-      full_about: "Переглянути повну сторінку"
+      full_about: "Переглянути повну сторінку",
+      main_plan: "План будівлі"
   });
   $translateProvider.preferredLanguage(window.localStorage.getItem('lang'));
   $translateProvider.fallbackLanguage(window.localStorage.getItem('lang'));

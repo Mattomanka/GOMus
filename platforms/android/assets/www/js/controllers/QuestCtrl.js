@@ -23,15 +23,15 @@ angular.module('starter.controllers').controller('QuestCtrl', ['$scope', '$ionic
     percent = (result/mySelect.length)*100;
     if (mySelect.length == 0) percent = 0;
     if (percent == 100) {
-      $scope.resulting = 'You\'re good.<br /> All answers are right!!!';
+      $scope.resulting1 = 'You\'re good.'; $scope.resulting2 = 'All answers are right!!!';
     } else if (percent > 75) {
-      $scope.resulting = 'Almoust perfect.' + Number(percent).toFixed(2) + '% answers are right';
+      $scope.resulting1 = 'Almoust perfect.'; $scope.resulting2 = Number(percent).toFixed(2) + '% answers are right';
     } else if (percent > 50) {
-      $scope.resulting = 'Not bad.<br />' + Number(percent).toFixed(2) + '% answers are right';
+      $scope.resulting1 = 'Not bad.'; $scope.resulting2 = Number(percent).toFixed(2) + '% answers are right';
     } else if (percent > 25) {
-      $scope.resulting = 'You can do it better.' + Number(percent).toFixed(2) + '% answers are right';
+      $scope.resulting1 = 'You can do it better.'; $scope.resulting2 = Number(percent).toFixed(2) + '% answers are right';
     } else {
-      $scope.resulting = 'You fail this quest.' + Number(percent).toFixed(2) + '% answers are right';
+      $scope.resulting1 = 'You fail this quest.'; $scope.resulting2 = Number(percent).toFixed(2) + '% answers are right';
     }
   }
   var currentID = 0;
