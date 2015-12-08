@@ -15,6 +15,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 
 ])
 
 .config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider, $translateProvider) {
+
   $stateProvider
 
   .state('app', {
@@ -82,7 +83,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 
       }
     }
   })
-  
+
   .state('app.location-description', {
     url: '/location/description',
     views: {
@@ -126,8 +127,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 
     url: '/quest/:questId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/quest.html',
-        controller: 'QuestCtrl'
+        templateUrl: 'templates/quest.html'
       }
     }
   });
@@ -137,7 +137,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 
   uiGmapGoogleMapApiProvider.configure({
       libraries: 'geometry,visualization'
   });
-
   
   $translateProvider.translations('en', {
       hello_message: "Howdy",
@@ -178,17 +177,4 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 
         }, null);
     }
   });
-})
-
-.directive('compile',function($compile, $timeout){
-    return{
-        restrict:'A',
-        link: function(scope,elem,attrs){
-            $timeout(function(){
-                
-            $compile(elem.contents())(scope);    
-            });
-        }
-        
-    }
 });
