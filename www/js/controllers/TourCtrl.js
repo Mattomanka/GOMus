@@ -4,7 +4,7 @@ angular.module('starter.controllers').controller('TourCtrl', ['$scope', '$http',
   };
   lang = window.localStorage.getItem('lang');
   $ionicLoading.show({
-    template: 'Loading...'
+    template: '{{"loading" | translate}}'
   })
   $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=id,name&sfield=id&count=1&sfieldValue=' + $stateParams.tourId + '&where=Tour&lang='+lang})
   .then(function successCallback(response) {

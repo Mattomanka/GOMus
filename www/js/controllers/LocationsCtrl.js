@@ -1,6 +1,6 @@
 angular.module('starter.controllers').controller('LocationsCtrl', ['$scope', '$http', '$ionicLoading', 'uiGmapGoogleMapApi', function($scope, $http, $ionicLoading, uiGmapGoogleMapApi) {
   $ionicLoading.show({
-    template: 'loading'
+    template: '{{"loading" | translate}}'
   })
   lang = window.localStorage.getItem('lang');
 

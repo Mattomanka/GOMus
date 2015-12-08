@@ -1,8 +1,8 @@
-<ion-view id="about-screen" view-title="About">
+<ion-view id="about-screen" view-title='{{"about" | translate}}'>
   <ion-content>
     <h1>GO MUSeums</h1>
-    <p>Version: 0.8.2<!-- {{aversion}} --></p>
-    <h4>Application developed by Ukrainian and Germany teams.</h4>
+    <p>{{"version" | translate}}: 0.8.2<!-- {{aversion}} --></p>
+    <h4>{{"about_text" | translate}}</h4>
     <div class="card address-wrap text-center">
 	  <div class="item item-divider">
 	  </div>
@@ -22,7 +22,9 @@
 	   <div class="item item-divider">
 	  </div>
 	   <div class="item ">			
-			<a href="http://gid.areyoualive.ru/desktop/about.php" target="_blank">Full about page</a>
+			<a href="#" onclick="window.open('http://gid.areyoualive.ru/desktop/about.php', '_system', 'location=yes'); return false;">
+                {{"full_about" | translate}}
+            </a>
 	  </div>	
 	</div>
   </ion-content>

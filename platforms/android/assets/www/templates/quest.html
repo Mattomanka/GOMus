@@ -5,16 +5,15 @@
 		<ion-content ng-controller="QuestCtrl">
 			<ion-slide-box on-slide-changed="slideHasChanged($index)">
 			<ion-slide>
-			    <div compile class="box blue" ng-bind-html="CurrenHTML">
-				
-				</div>
+        <div question-box="CurrenHTML" class="box blue" ></div>
 			  </ion-slide>
 			  <ion-slide>
 			  	<div class="box center">
 				    <div class="check-button" ng-click="showSelectValues(inputs)">
 				    	CHECK!
 				    </div>
-				    <div ng-model="resulting" ng-bind-html="resulting">
+				    <div ng-model="resulting">
+				    	{{resulting}}
 				    </div>
 				</div>
 			  </ion-slide>

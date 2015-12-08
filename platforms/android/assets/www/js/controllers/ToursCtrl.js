@@ -1,6 +1,6 @@
 angular.module('starter.controllers').controller('ToursCtrl', function($scope, $http, $ionicLoading) {
   $ionicLoading.show({
-    template: 'loading'
+    template: '{{"loading" | translate}}'
   })
   lang = window.localStorage.getItem('lang');
 

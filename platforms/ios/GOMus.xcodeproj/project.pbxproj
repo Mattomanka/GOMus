@@ -40,6 +40,7 @@
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		9E39D124A6FB4CC896881747 /* CDVGlobalization.m in Sources */ = {isa = PBXBuildFile; fileRef = F890A66F7D9D49CDA849CD2C /* CDVGlobalization.m */; };
+		1B7C955AB3554E249B103A2E /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1821070157FE4E918CBCEF27 /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,8 @@
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = GOMus/config.xml; sourceTree = "<group>"; };
 		F890A66F7D9D49CDA849CD2C /* CDVGlobalization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVGlobalization.m"; path = "cordova-plugin-globalization/CDVGlobalization.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		F96D4CBF86504810967928F1 /* CDVGlobalization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVGlobalization.h"; path = "cordova-plugin-globalization/CDVGlobalization.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		1821070157FE4E918CBCEF27 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		EEDB5598923D4BFCB72CE1C3 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +208,8 @@
 			children = (
 				F890A66F7D9D49CDA849CD2C /* CDVGlobalization.m */,
 				F96D4CBF86504810967928F1 /* CDVGlobalization.h */,
+				1821070157FE4E918CBCEF27 /* CDVInAppBrowser.m */,
+				EEDB5598923D4BFCB72CE1C3 /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = GOMus/Plugins;
@@ -395,6 +400,7 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				9E39D124A6FB4CC896881747 /* CDVGlobalization.m in Sources */,
+				1B7C955AB3554E249B103A2E /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

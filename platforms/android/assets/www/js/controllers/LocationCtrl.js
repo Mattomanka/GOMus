@@ -3,7 +3,7 @@ angular.module('starter.controllers').controller('LocationCtrl', function($scope
 	var currentLocationID = parseInt($stateParams.locationId.slice(2));
   $scope.currID = currentLocationID;
   $ionicLoading.show({
-    template: 'loading'
+    template: '{{"loading" | translate}}'
   })
 	lang = window.localStorage.getItem('lang');
   console.log(lang);

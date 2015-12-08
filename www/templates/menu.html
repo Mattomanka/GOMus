@@ -14,24 +14,24 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
-      <h1 class="title">Menu</h1>
+      <h1 class="title">{{"menu" | translate}}</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
         <ion-item menu-close href="#/app/home">
-          Home
+          {{"home" | translate}}
         </ion-item>
         <ion-item menu-close href="#/app/tours">
-          Tours
+          {{"tours" | translate}}
         </ion-item>
         <ion-item menu-close href="#/app/locations">
-          Locations
+          {{"locations" | translate}}
         </ion-item>
         <ion-item menu-close href="#/app/about">
-          About
+          {{"about" | translate}}
         </ion-item>
         <ion-item menu-close ng-click="openModal()">
-          Language
+          {{"language" | translate}}
         </ion-item>
       </ion-list>
     </ion-content>

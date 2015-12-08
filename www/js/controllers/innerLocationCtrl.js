@@ -5,7 +5,7 @@ angular.module('starter.controllers').controller('innerLocationCtrl', function($
   //var currentInLocationID = 29;
   $scope.currID = currentInLocationID;
   $ionicLoading.show({
-    template: 'loading'
+    template: '{{"loading" | translate}}'
   })
   $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/inner_locations.php'})
   .then(function successCallback(response) {

@@ -139,18 +139,54 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 
   });
   
   $translateProvider.translations('en', {
-      hello_message: "Howdy",
-      goodbye_message: "Goodbye"
+      home: "Home",
+      tours: "Tours",
+      locations: "Locations",
+      about: "About",
+      language: "Language",
+      choose_lang: "Choose language:",
+      close: "Close",
+      menu: "Menu",
+      loading: "Loading...",
+      backBtn: "Back",
+      read_more: "Read more",
+      look_inside: "Look inside",
+      contact_inf: "Contacts information",
+      visit_hours: "Visiting hours",
+      test_yourself: "Test yourself",
+      version: "Version",
+      about_text: "Application developed by Ukrainian and Germany teams.",
+      full_about: "Full about page"
+
   });
-  $translateProvider.translations('es', {
-      hello_message: "Hola",
-      goodbye_message: "Adios"
+  $translateProvider.translations('ru', {
+      home: "Головна сторінка",
+      tours: "Тури",
+      locations: "Локації",
+      about: "О нас",
+      language: "Зміна мови",
+      choose_lang: "Оберіть мову:",
+      close: "Закрити",
+      menu: "Меню",
+      loading: "Завантаження...",
+      backBtn: "Назад",
+      read_more: "Читати далі",
+      look_inside: "Оглянути з середини",
+      contact_inf: "Контактна інформація",
+      visit_hours: "Часи роботи",
+      test_yourself: "Перевір себе",
+      version: "Версія",
+      about_text: "Додаток розроблено українською та німецькою командами.",
+      full_about: "Переглянути повну сторінку"
   });
-  $translateProvider.preferredLanguage("en");
-  $translateProvider.fallbackLanguage("en");
+  $translateProvider.preferredLanguage(window.localStorage.getItem('lang'));
+  $translateProvider.fallbackLanguage(window.localStorage.getItem('lang'));
 })
 
 .run(function($ionicPlatform, $rootScope, $translate) {
+
+  $translate.use(window.localStorage.getItem('lang'));
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -166,15 +202,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 
     cordova.getAppVersion(function(version) {
         appVersion = version;
     });
-
-    if(typeof navigator.globalization !== "undefined") {
-        navigator.globalization.getPreferredLanguage(function(language) {
-            $translate.use((language.value).split("-")[0]).then(function(data) {
-                console.log("SUCCESS -> " + data);
-            }, function(error) {
-                console.log("ERROR -> " + error);
-            });
-        }, null);
-    }
   });
 });

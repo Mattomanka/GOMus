@@ -1,17 +1,17 @@
-angular.module('starter.controllers').controller('HomeCtrl', ['$scope', '$http', '$ionicModal', '$ionicLoading', function($scope, $http, $ionicModal, $ionicLoading) {
+angular.module('starter.controllers').controller('HomeCtrl', ['$scope', '$http', '$ionicModal', '$ionicLoading', '$translate', function($scope, $http, $ionicModal, $ionicLoading, $translate) {
   $ionicLoading.show({
-    template: 'loading'
+    template: '{{"loading" | translate}}'
   });
   lang = window.localStorage.getItem('lang');
-  console.log(lang);
   $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=id,name,photo&count=3&where=Location&lang='+lang})
   .then(function successCallback(response) {
-    $ionicLoading.hide()
     $scope.locations = response.data;
   });
 
   $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=id,name,photo,description&count=10&where=Tour&lang='+lang})
   .then(function successCallback(response) {
+    $ionicLoading.hide()
+
     $scope.tours = response.data;
   })
 

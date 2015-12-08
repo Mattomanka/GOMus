@@ -1,18 +1,18 @@
 <ion-modal-view>
   <ion-header-bar>
-    <h1 class="title">Choose language</h1>
+    <h1 class="title">{{"choose_lang" | translate}}</h1>
     <div class="buttons">
-      <button class="button button-clear" ng-click="closeModal()">Close</button>
+      <button class="button button-clear" ng-click="closeModal()">{{"close" | translate}}</button>
     </div>
   </ion-header-bar>
   <ion-content>
     <form>
       <div class="list">
         <label class="item">
-          <button class="button button-block button-positive" ng-click="chooseRU()">UA</button>
+          <button class="button button-block button-positive" ng-click="chooseRU()">Українська мова</button>
         </label>
         <label class="item">
-          <button class="button button-block button-positive" ng-click="chooseEN()">EN</button>
+          <button class="button button-block button-positive" ng-click="chooseEN()">English language</button>
         </label>
       </div>
     </form>

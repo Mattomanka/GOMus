@@ -1,4 +1,4 @@
-<ion-view id="location-screen" view-title="{{loctn.name}}">
+<ion-view id="location-screen" view-title="{{loctn.shortname}}" hide-back-button='false'>
   <ion-content>
 	<div class="big-img card" ng-click="showImage()" style='background-image: url("{{loctn.photo[0]}}")'>
 	  <div class="item">
@@ -12,31 +12,29 @@
 	  </div>
 	  <div class="item item-text-wrap">
 		<p class="short-description">{{loctn.description}} </p>
-		<p><a  class="read-more-btn button check-button" ng-click="openContentModal()"><i class="ion-arrow-expand"></i> Read more</a></p>
+		<p><a  class="read-more-btn button check-button" ng-click="openContentModal()"><i class="ion-arrow-expand"></i>{{"read_more" | translate}}</a></p>
 	  </div> 
 	</div>
 
     <a class="button check-button" ng-href="#/app/inner-map/mp{{currID}}" ng-show="check_inner_loc==1">
-	  Look inside
+	  {{"look_inside" | translate}}
 	</a>
 	
 	
 	<div class="card address-wrap text-center">
 	  <div class="item item-divider">
-			<p><i class="ion-ios-location-outline"></i> Contacts information</p>	
+			<p><i class="ion-ios-location-outline"></i> {{"contact_inf" | translate}}</p>	
 	  </div>
 	  <div class="item ">
 			<p><i class="ion-ios-location"></i> {{loctn.address}}</p>	
 	  </div>
 	  <div class="item ">
-			<p><i class="ion-clock"></i> Visiting hours</p>	
+			<p><i class="ion-clock"></i> {{"visit_hours" | translate}}</p>	
 	  </div>
 	  <div class="item ">
-			<p><i class="ion-ios-telephone"></i> <a href="tel:+{{loctn.phone}}">{{loctn.phone}}</a></p>	
-	  </div>
-	   <div class="item ">			
-			<p ng-repeat="website in loctn.websites"><a href="{{website}}" target="_blank"><i class="ion-share"></i>{{website}}</a></p>	
-	  </div>	
+			<p><i class="ion-ios-telephone"></i><a href="tel:+{{loctn.phone}}">{{loctn.phone}}</a></p>	
+	  </div>			
+	  <div class="item " ng-repeat="website in loctn.websites"><a href="#" onclick="window.open({{website}}, '_system', 'location=yes'); return false;">{{website}}</a></div>	
 	</div>
     
 	<div id="map" data-tap-disabled="true">
@@ -46,7 +44,7 @@
         </ui-gmap-google-map>
     </div>
     
-    <a id="go-to-quest" class="button check-button" href="#/app/quest/quest{{currID}}" ng-show="check_quest==1">Test yourself</a>
+    <a id="go-to-quest" class="button check-button" href="#/app/quest/quest{{currID}}" ng-show="check_quest==1">{{"test_yourself" | translate}}</a>
 
 	<script id="image-modal.html" type="text/ng-template">
 	  <div class="modal image-modal transparent" >
