@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 var appVersion = "0.6.4";
 
-angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
+angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 'pascalprecht.translate'])
 
 .config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
@@ -14,26 +14,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
     }
 ])
 
-.run(function($ionicPlatform, $rootScope) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-    cordova.getAppVersion(function(version) {
-        appVersion = version;
-    });
-  });
-})
-
-.config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
+.config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider, $translateProvider) {
   $stateProvider
 
   .state('app', {
@@ -155,6 +136,47 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
 
   uiGmapGoogleMapApiProvider.configure({
       libraries: 'geometry,visualization'
+  });
+
+  
+  $translateProvider.translations('en', {
+      hello_message: "Howdy",
+      goodbye_message: "Goodbye"
+  });
+  $translateProvider.translations('es', {
+      hello_message: "Hola",
+      goodbye_message: "Adios"
+  });
+  $translateProvider.preferredLanguage("en");
+  $translateProvider.fallbackLanguage("en");
+})
+
+.run(function($ionicPlatform, $rootScope, $translate) {
+  $ionicPlatform.ready(function() {
+    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
+    if (window.cordova && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      cordova.plugins.Keyboard.disableScroll(true);
+
+    }
+    if (window.StatusBar) {
+      // org.apache.cordova.statusbar required
+      StatusBar.styleDefault();
+    }
+    cordova.getAppVersion(function(version) {
+        appVersion = version;
+    });
+
+    if(typeof navigator.globalization !== "undefined") {
+        navigator.globalization.getPreferredLanguage(function(language) {
+            $translate.use((language.value).split("-")[0]).then(function(data) {
+                console.log("SUCCESS -> " + data);
+            }, function(error) {
+                console.log("ERROR -> " + error);
+            });
+        }, null);
+    }
   });
 })
 
