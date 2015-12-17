@@ -7740,9 +7740,6 @@ a.button {
     width: auto;
     max-height: 60px; }
 
-.item-content {
-  white-space: normal !important; }
-
 #location-screen {
   text-align: center; }
   #location-screen .short-description {
