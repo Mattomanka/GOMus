@@ -1,24 +1,19 @@
 angular.module('starter.controllers').controller('innerLocationCtrl', function($scope, $http, $stateParams, $ionicModal, $ionicLoading) {
   var coordArray =[];
   var currentInLocationID = parseInt($stateParams.lcId.slice(2));
-  console.log(currentInLocationID)
+  console.log(currentInLocationID);
   //var currentInLocationID = 29;
   $scope.currID = currentInLocationID;
   $ionicLoading.show({
-    template: 'loading'
+    template: '{{"loading" | translate}}'
   })
-  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/inner_locations.php'})
+  lang = window.localStorage.getItem('lang');
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=*&where=InnerLocation&sfield=id&count=1&sfieldValue=' + currentInLocationID + '&lang='+lang})
   .then(function successCallback(response) {
+    console.log(response.data);
     $ionicLoading.hide()
-    $scope.locations = response.data;
-  })
-	$http.get("http://gid.areyoualive.ru/api/inner_loc.php?id="+currentInLocationID)
-    .success(function(response) {
-		console.log(response);
-		$scope.loctn = response[0];
-		console.log(response[0].description);
-	});
-	
+    $scope.loctn = response.data[0];
+	})
 	
 	$scope.openContentModal = function() {
       $scope.contentModal.show();

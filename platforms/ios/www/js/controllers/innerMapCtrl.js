@@ -1,21 +1,16 @@
 angular.module('starter.controllers').controller('innerMapCtrl', function($scope, $http, $stateParams, $ionicLoading) {
 	var coordArray =[];
-	console.log($stateParams);
-	var currentLocationID = 15;
-	$scope.currID = currentLocationID;
+	var currID = parseInt($stateParams.mpId.slice(2));
+	$scope.currID = currID;
 	$ionicLoading.show({
-		template: 'loading'
-	})
-	$http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
-	.then(function successCallback(response) {
-		$ionicLoading.hide()
-		$scope.locations = response.data;
-	})
-	$http.get("http://gid.areyoualive.ru/api/location.php?id="+currentLocationID)
-	.success(function(response) {
-			console.log(response);
-		$scope.loctn = response[0];
-		$scope.loctn.innerLocations = response.innerLocations;
-		console.log(response.innerLocations)
+		template: '{{"loading" | translate}}'
 	});
+ 	lang = window.localStorage.getItem('lang');
+	$http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=*&where=InnerLocation&lang='+lang})
+  	.then(function successCallback(response) {
+	  	console.log(response.data);
+	    $ionicLoading.hide()
+	    $scope.innerLocations = response.data;
+	});
+
 });

@@ -3,24 +3,32 @@ angular.module('starter.controllers').controller('LocationCtrl', function($scope
 	var currentLocationID = parseInt($stateParams.locationId.slice(2));
   $scope.currID = currentLocationID;
   $ionicLoading.show({
-    template: 'loading'
+    template: '{{"loading" | translate}}'
   })
-  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/locations.php'})
+	lang = window.localStorage.getItem('lang');
+  console.log(lang);
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=*&sfield=id&count=1&sfieldValue=' + currentLocationID + '&where=Location&lang='+lang})
   .then(function successCallback(response) {
-    $ionicLoading.hide()
-    $scope.locations = response.data;
-  })
-	$http.get("http://gid.areyoualive.ru/api/location.php?id="+currentLocationID)
-    .success(function(response) {
-			console.log(response);
-		$scope.loctn = response[0];
-		$scope.loctn.innerLocations = response.innerLocations;
+    console.log(response.data);
+		$ionicLoading.hide();
+		$scope.loctn = response.data[0];
+    console.log($scope.loctn.name)
 		coordArray = $scope.loctn.coordinates.split(',');
 		$scope.marker.coords.latitude = parseFloat(coordArray[0]);
 		$scope.marker.coords.longitude = parseFloat(coordArray[1]);
 		$scope.map.center.latitude = parseFloat(coordArray[0]);
 		$scope.map.center.longitude = parseFloat(coordArray[1]);
 	});
+
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/check_inner_loc.php?ID=' + currentLocationID + '&bool=1'})
+  .then(function successCallback(response) {
+      $scope.check_inner_loc = response.data;
+  });
+
+  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/check_quest.php?ID=' + currentLocationID + '&bool=1'})
+  .then(function successCallback(response) {
+      $scope.check_quest = response.data;
+  });
 	
 	$ionicModal.fromTemplateUrl('full-description-modal.html', {
     scope: $scope,

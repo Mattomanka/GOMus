@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 var appVersion = "0.6.4";
 
-angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
+angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 'pascalprecht.translate'])
 
 .config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
@@ -14,26 +14,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
     }
 ])
 
-.run(function($ionicPlatform, $rootScope) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+.config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider, $translateProvider) {
 
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-    cordova.getAppVersion(function(version) {
-        appVersion = version;
-    });
-  });
-})
-
-.config(function($stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
   $stateProvider
 
   .state('app', {
@@ -101,7 +83,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
       }
     }
   })
-  
+
   .state('app.location-description', {
     url: '/location/description',
     views: {
@@ -145,8 +127,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
     url: '/quest/:questId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/quest.html',
-        controller: 'QuestCtrl'
+        templateUrl: 'templates/quest.html'
       }
     }
   });
@@ -155,5 +136,73 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps'])
 
   uiGmapGoogleMapApiProvider.configure({
       libraries: 'geometry,visualization'
+  });
+  
+  $translateProvider.translations('en', {
+      home: "Home",
+      tours: "Tours",
+      locations: "Locations",
+      about: "About",
+      language: "Language",
+      choose_lang: "Choose language:",
+      close: "Close",
+      menu: "Menu",
+      loading: "Loading...",
+      backBtn: "Back",
+      read_more: "Read more",
+      look_inside: "Look inside",
+      contact_inf: "Contacts information",
+      visit_hours: "Visiting hours",
+      test_yourself: "Test yourself",
+      version: "Version",
+      about_text: "Application developed by Ukrainian and Germany teams.",
+      full_about: "Full about page",
+      main_plan: "Main plan"
+
+  });
+  $translateProvider.translations('ru', {
+      home: "Головна сторінка",
+      tours: "Тури",
+      locations: "Локації",
+      about: "О нас",
+      language: "Зміна мови",
+      choose_lang: "Оберіть мову:",
+      close: "Закрити",
+      menu: "Меню",
+      loading: "Завантаження...",
+      backBtn: "Назад",
+      read_more: "Читати далі",
+      look_inside: "Оглянути з середини",
+      contact_inf: "Контактна інформація",
+      visit_hours: "Часи роботи",
+      test_yourself: "Перевір себе",
+      version: "Версія",
+      about_text: "Додаток розроблено українською та німецькою командами.",
+      full_about: "Переглянути повну сторінку",
+      main_plan: "План будівлі"
+  });
+  $translateProvider.preferredLanguage(window.localStorage.getItem('lang'));
+  $translateProvider.fallbackLanguage(window.localStorage.getItem('lang'));
+})
+
+.run(function($ionicPlatform, $rootScope, $translate) {
+
+  $translate.use(window.localStorage.getItem('lang'));
+
+  $ionicPlatform.ready(function() {
+    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
+    if (window.cordova && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      cordova.plugins.Keyboard.disableScroll(true);
+
+    }
+    if (window.StatusBar) {
+      // org.apache.cordova.statusbar required
+      StatusBar.styleDefault();
+    }
+    cordova.getAppVersion(function(version) {
+        appVersion = version;
+    });
   });
 });

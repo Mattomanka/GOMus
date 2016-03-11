@@ -3,35 +3,22 @@
 <ion-nav-view>
 	<ion-view id="quest-screen" view-title="Test">
 		<ion-content ng-controller="QuestCtrl">
-			<div class="quest-item" ng-repeat="q in questions">
-				<div ng-show="q.type == 1" class="item-divider">{{($index+1) + '. ' + q.question}}</div>
-				<div ng-show="q.type == 2" class="item-divider" ng-click="openImage(q.question)">{{$index+1 + '. '}}<img src="{{q.question}}"/></div>
-				<div ng-show="q.type == 3" class="item-divider">{{($index+1) + '. ' + q.question}}</div>
-				<ion-radio ng-model="qstn" ng-show="q.type == 1" ng-value="{{$index+1}}" ng-repeat="answer in q.answers">{{answer}}</ion-radio>
-				<ion-radio ng-model="qstn" ng-show="q.type == 2" ng-value="{{$index+1}}" ng-repeat="answer in q.answers">{{answer}}</ion-radio>
-				<ion-radio ng-model="qstn" ng-show="q.type == 3" ng-value="{{$index+1}}" ng-repeat="answer in q.answers"><img ng-click="openImage(answer)" src="{{answer}}" /></ion-radio>
-			</div>
-
-			<button class="button button-full button-positive" ng-disabled="!qstn" ng-click="submitAnswer()">
-			  Check it!
-			</button>
-
-			<script id="image-quest-modal.html" type="text/ng-template">
-				<div class="modal image-modal transparent">
-			      <ion-pane class="transparent">
-					 <a class="icon ion-close hide-btn" ng-click="closeModal()"></a>
-			         <img ng-src="{{currSrc}}" class="fullscreen-image"/>
-					 <div class="slider-nav-wrapp">
-						<div class="slider-nav-left-side" >
-							<a class="button icon-left ion-arrow-left-b button-clear"  ng-click="slideLeft()"></a>
-						</div>
-						<div class="slider-nav-right-side" >
-							<a class="button icon-right ion-arrow-right-b button-clear" ng-click="slideRight()"></a>
-						</div>
-					 </div>
-			      </ion-pane>
-			  </div>
-			</script>
+			<ion-slide-box on-slide-changed="slideHasChanged($index)">
+			<ion-slide>
+        <div question-box="CurrenHTML" class="box blue" ></div>
+			  </ion-slide>
+			  <ion-slide>
+			  	<div class="box center">
+				    <div class="check-button" ng-click="showSelectValues(inputs)">
+				    	CHECK!
+				    </div>
+				    <div ng-model="resulting1">
+				    	<p>{{resulting1}}</p>
+				    	<p>{{resulting2}}</p>
+				    </div>
+				</div>
+			  </ion-slide>
+			</ion-slide-box>
 		</ion-content>
 	</ion-view>
 </ion-nav-view>

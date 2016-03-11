@@ -7704,16 +7704,19 @@ a.button {
   height: 200px; }
   #home-screen #locations .location {
     width: 33%;
-    max-height: 106px;
+    max-height: 175px;
     display: inline-block;
-    border: 0px; }
+    border: 0;
+    vertical-align: top;
+    white-space: normal !important; }
     #home-screen #locations .location .item-content {
       width: 90%;
       padding: 0;
-      margin: 0 auto; }
+      margin: 0 auto;
+      white-space: normal !important; }
       #home-screen #locations .location .item-content .location-img {
         display: inline-block;
-        border-radius: 50%;
+        /*border-radius: 50%;*/
         overflow: hidden; }
         #home-screen #locations .location .item-content .location-img img {
           width: 100%;
@@ -7724,7 +7727,13 @@ a.button {
 #home-screen .tours-footer {
   text-align: center; }
 #home-screen .left {
-  float: left; }
+  float: left;
+  width: 60%;
+  height: 50px; }
+  #home-screen .left h4 {
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: normal; }
 #home-screen .right {
   float: right; }
   #home-screen .right img {
@@ -7733,6 +7742,13 @@ a.button {
 
 #location-screen {
   text-align: center; }
+  #location-screen .short-description {
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; }
   #location-screen .ls-gallery ion-item {
     width: 24%;
     display: inline-block;
@@ -7840,7 +7856,8 @@ a.button {
 
 .exhibit-item {
   border-bottom: .1em solid rgba(0, 0, 0, 0.2);
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  text-decoration: none; }
   .exhibit-item:hover, .exhibit-item:active, .exhibit-item:target {
     background: #F1F1F1; }
   .exhibit-item .item-eye {
@@ -7897,6 +7914,9 @@ a.button {
   right: 0;
   top: 0; }
 
+ion-nav-bar .back-text .default-title {
+  display: none; }
+
 /* Fix modal backdrop for smaller devices */
 @media (max-width: 679px) {
   .active .modal-backdrop-bg {
@@ -7915,6 +7935,9 @@ a.button {
 .light-grey-background {
   background: #FDFDFD; }
 
+.full-description {
+  text-align: justify; }
+
 .location-wrapper .location-logo img {
   max-width: 100%; }
 
@@ -7923,7 +7946,8 @@ a.button {
 #tour-screen .item-content {
   padding: 16px; }
 #tour-screen .left, #tour-screen .right {
-  display: inline-block; }
+  display: inline-block;
+  vertical-align: middle; }
 #tour-screen .left {
   width: calc(100% - 8em); }
   #tour-screen .left h3, #tour-screen .left h4 {
@@ -7954,8 +7978,10 @@ a.button {
     display: block;
     margin-top: 20px; }
   #about-screen ion-content img {
-    margin: 40px auto 0 auto;
-    display: block; }
+    margin: 0 auto 0 auto;
+    display: block;
+    max-width: 100%;
+    max-height: 150px; }
 
 .transparent {
   background: transparent !important; }
@@ -7976,6 +8002,46 @@ a.button {
   position: fixed;
   right: 0;
   top: 0; }
+
+.box {
+  display: block;
+  padding: 50px 10px;
+  line-height: 2; }
+
+.item-input {
+  display: inline-block;
+  padding: 2px 0 2px 10px;
+  vertical-align: middle; }
+
+.item-select {
+  width: 140px; }
+
+.item-select .input-label {
+  padding: 0 32px 0 0;
+  max-width: 100%;
+  width: 100%; }
+.item-select select {
+  left: 0;
+  max-width: 100%; }
+
+.slider-pager {
+  bottom: 0px; }
+
+.check-button {
+  display: inline-block;
+  margin: 0 auto;
+  background-color: #485DC3;
+  color: #fff;
+  border: 0px solid;
+  border-radius: 2px;
+  text-align: center;
+  padding: 2px 15px; }
+
+.center {
+  text-align: center; }
+
+#quest-screen .item-select select {
+  padding: 0 22px 0 4px; }
 
 /* Fix modal backdrop for smaller devices */
 @media (max-width: 679px) {

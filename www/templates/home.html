@@ -1,13 +1,13 @@
 <ion-view id="home-screen" view-title='{{"home" | translate}}'>
   <ion-content>
-    <ion-list id="locations">
-      <ion-item class="location" ng-repeat="location in locations" ng-href="#/app/locations/id{{location.id}}">
-        <div class="location-img"><img src="{{location.photo[0]}}" /></div>
-        <div class="location-title">
-          <h3>{{location.name}}</h3>
+    <ion-scroll id="locations" zooming="true" direction="xy" style="width: 500px;">
+      <div style="min-width: 1500px;">
+        <div class="location" ng-repeat="location in locations" ng-href="#/app/locations/id{{location.id}}">
+          <div class="location-img"><img src="{{location.photo[0]}}" /></div>
+          <div class="location-title">{{location.name}}</div>
         </div>
-      </ion-item>
-    </ion-list>
+      </div>
+    </ion-scroll>
     <ion-list>
       <ion-item ng-repeat="tour in tours" href="#/app/tours/{{tour.id}}">
         <div class="left">

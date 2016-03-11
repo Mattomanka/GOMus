@@ -1,41 +1,40 @@
-<ion-view id="location-screen" view-title="{{loctn.name}}">
+<ion-view id="location-screen" view-title="{{loctn.shortname}}" hide-back-button='false'>
   <ion-content>
 	<div class="big-img card" ng-click="showImage()" style='background-image: url("{{loctn.photo[0]}}")'>
 	  <div class="item">
-			<h1>{{loctn.name}}</h1>
+			<h1>{{loctn.shortname}}</h1>
 	  </div>
 	</div>
 	
 	<div class="card sub-title-wrap">
 	  <div class="item item-divider">
-			<p> {{loctn.name}}</p>	
+			<p>{{loctn.name}}</p>	
 	  </div>
 	  <div class="item item-text-wrap">
-		<p>{{loctn.excerpt}} <br/><a  class="read-more-btn button button-light" ng-click="openContentModal()"><i class="ion-arrow-expand"></i> Read more</a></p>
+		<p class="short-description">{{loctn.description}} </p>
+		<p><a  class="read-more-btn button check-button" ng-click="openContentModal()"><i class="ion-arrow-expand"></i>{{"read_more" | translate}}</a></p>
 	  </div> 
 	</div>
 
-    <a class="button button-full button-positive" ng-href="#/app/inner-map/mp{{currID}}" ng-show="loctn.id==15">
-	  Look inside
+    <a class="button check-button" ng-href="#/app/inner-map/mp{{currID}}" ng-show="check_inner_loc==1">
+	  {{"look_inside" | translate}}
 	</a>
 	
 	
 	<div class="card address-wrap text-center">
 	  <div class="item item-divider">
-			<p><i class="ion-ios-location-outline"></i> Contacts information</p>	
+			<p><i class="ion-ios-location-outline"></i> {{"contact_inf" | translate}}</p>	
 	  </div>
 	  <div class="item ">
 			<p><i class="ion-ios-location"></i> {{loctn.address}}</p>	
 	  </div>
 	  <div class="item ">
-			<p><i class="ion-clock"></i> Visiting hours</p>	
+			<p><i class="ion-clock"></i> {{"visit_hours" | translate}}</p>	
 	  </div>
 	  <div class="item ">
-			<p><i class="ion-ios-telephone"></i> <a href="tel:+38048772-64-89">38 (048) 772-64-89</a></p>	
-	  </div>
-	   <div class="item ">
-			<p><a href="http://delku.com.ua" target="_blank"><i class="ion-share"></i>delku.com.ua</a> <br/> <a href="http://kirha.od.ua" target="_blank"><i class="ion-share"></i>kirha.od.ua</a></p>	
-	  </div>	
+			<p><i class="ion-ios-telephone"></i><a href="tel:+{{loctn.phone}}">{{loctn.phone}}</a></p>	
+	  </div>			
+	  <div class="item " ng-repeat="website in loctn.websites"><a ng-href="{{website}}" target="_blank">{{website}}</a></div>	
 	</div>
     
 	<div id="map" data-tap-disabled="true">
@@ -44,7 +43,8 @@
         	</ui-gmap-marker>
         </ui-gmap-google-map>
     </div>
-    <a id="go-to-quest" href="#/app/quest/quest{{currID}}">Test yourself</a>
+    
+    <a id="go-to-quest" class="button check-button" href="#/app/quest/quest{{currID}}" ng-show="check_quest==1">{{"test_yourself" | translate}}</a>
 
 	<script id="image-modal.html" type="text/ng-template">
 	  <div class="modal image-modal transparent" >
@@ -72,9 +72,9 @@
 		</div>
 	  </ion-header-bar>
 	  <ion-content class="light-grey-background">
-		<div class="card sub-title-wrap">
+		<div class="card ">
 	  <div class="item item-text-wrap">
-		<p>{{loctn.description}}</p>
+		<p class="full-description">{{loctn.description}}</p>
 	  </div> 
 	</div>
 	<div class="text-center">

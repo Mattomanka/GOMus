@@ -1,9 +1,31 @@
-<ion-view id="about-screen" view-title="About">
+<ion-view id="about-screen" view-title='{{"about" | translate}}'>
   <ion-content>
-    <h1>Germany museums<br />in Odessa</h1>
-    <p>Version: 0.6.5<!-- {{aversion}} --></p>
-    <h4>Application developed using Ionic by young team.</h4>
-    <h4>Copyright © 2015 ONPU</h4>
-    <img src="img/g-u.jpg"/>
+    <h1>GO MUSeums</h1>
+    <p>{{"version" | translate}}: 0.8.2<!-- {{aversion}} --></p>
+    <h4>{{"about_text" | translate}}</h4>
+    <div class="card address-wrap text-center">
+	  <div class="item item-divider">
+	  </div>
+	  <div class="item ">
+			<img src="img/u1.jpg"/>	
+	  </div>
+	   <div class="item item-divider">
+	  </div>
+	  <div class="item ">
+			<img src="img/u2.png"/>	
+	  </div>
+	   <div class="item item-divider">
+	  </div>
+	  <div class="item ">
+			<img src="img/l1.png"/>	
+	  </div>
+	   <div class="item item-divider">
+	  </div>
+	   <div class="item ">			
+			<a href="#" onclick="window.open('http://gid.areyoualive.ru/desktop/about.php', '_system', 'location=yes'); return false;">
+                {{"full_about" | translate}}
+            </a>
+	  </div>	
+	</div>
   </ion-content>
 </ion-view>
