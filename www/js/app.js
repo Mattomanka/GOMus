@@ -5,8 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 var appVersion = "0.6.4";
+var db = null;
 
-angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 'pascalprecht.translate'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'uiGmapgoogle-maps', 'pascalprecht.translate'])
 
 .config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
@@ -185,7 +186,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 
   $translateProvider.fallbackLanguage(window.localStorage.getItem('lang'));
 })
 
-.run(function($ionicPlatform, $rootScope, $translate) {
+.run(function($ionicPlatform, $rootScope, $translate, $cordovaSQLite) {
 
   $translate.use(window.localStorage.getItem('lang'));
 
@@ -201,8 +202,32 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    //var db = $cordovaSQLite.openDB({ name: "my.db" });
+
+    // // for opening a background db:
+    // var db = $cordovaSQLite.openDB({ name: "my.db", bgType: 1 });
+
+    // $scope.execute = function() {
+    //   var query = "INSERT INTO test_table (data, data_num) VALUES (?,?)";
+    //   $cordovaSQLite.execute(db, query, ["test", 100]).then(function(res) {
+    //     console.log("insertId: " + res.insertId);
+    //   }, function (err) {
+    //     console.error(err);
+    //   });
+    // };
+ 
+    console.log(window);
+
+    window.plugins.sqlDB.copy("populated.sqlite", function() {
+      db = $cordovaSQLite.openDB("populated.db");
+    }, 0, function(error) {
+      console.error("There was an error copying the database: " + error);
+      db = $cordovaSQLite.openDB("populated.db");
+    });
+
     cordova.getAppVersion(function(version) {
-        appVersion = version;
+      appVersion = version;
     });
   });
 });

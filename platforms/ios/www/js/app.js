@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 var appVersion = "0.6.4";
 
-angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 'pascalprecht.translate'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'uiGmapgoogle-maps', 'pascalprecht.translate'])
 
 .config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
@@ -201,8 +201,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'uiGmapgoogle-maps', 
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    window.plugins.sqlDB.copy("populated.db", function() {
+      db = $cordovaSQLite.openDB("populated.db");
+    }, function(error) {
+      console.error("There was an error copying the database: " + error);
+      db = $cordovaSQLite.openDB("populated.db");
+    });
+
     cordova.getAppVersion(function(version) {
-        appVersion = version;
+      appVersion = version;
     });
   });
 });
