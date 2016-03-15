@@ -15,6 +15,10 @@
                         {
                             "xml": "<feature name=\"sqlDB\"><param name=\"android-package\" value=\"me.rahul.plugins.sqlDB.sqlDB\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" value=\"io.ionic.keyboard.IonicKeyboard\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -37,6 +41,9 @@
         },
         "me.rahul.plugins.sqlDB": {
             "PACKAGE_NAME": "com.ionicframework.gomus147549"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.gomus147549"
         }
     },
     "dependent_plugins": {},
@@ -54,10 +61,19 @@
             "clobbers": [
                 "window.plugins.sqlDB"
             ]
+        },
+        {
+            "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
+            "id": "ionic-plugin-keyboard.keyboard",
+            "clobbers": [
+                "cordova.plugins.Keyboard"
+            ],
+            "runs": true
         }
     ],
     "plugin_metadata": {
         "cordova-sqlite-storage": "0.8.4-dev",
-        "me.rahul.plugins.sqlDB": "1.0.3"
+        "me.rahul.plugins.sqlDB": "1.0.3",
+        "ionic-plugin-keyboard": "1.0.8"
     }
 }

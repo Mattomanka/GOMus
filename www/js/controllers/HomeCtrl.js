@@ -15,20 +15,37 @@ angular.module('starter.controllers').controller('HomeCtrl', ['$scope', '$http',
     $scope.tours = response.data;
   })
 
+  var firstname = "Anna";
+  var lastname = "AAA";
+  var query = "INSERT INTO people (firstname, lastname) VALUES (?,?)";
+  $cordovaSQLite.execute(db, query, [firstname, lastname]).then(function(res) {
+      console.log("INSERT ID -> " + res.insertId);
+  }, function (err) {
+      console.error(err);
+  });
 
-
-  var query = "SELECT * FROM firstid";
-        $cordovaSQLite.execute(db, query, []).then(function(res) {
-            if(res.rows.length > 0) {
-                for(var i = 0; i < res.rows.length; i++) {
-                    console.log("SELECTED -> " + res.rows.item(i).firstname + " " + res.rows.item(i).lastname);
-                }
-            } else {
-                console.log("No results found");
-            }
-        }, function (err) {
-            console.error(err);
-        });
+  var query = "SELECT firstname, lastname FROM people";
+  $cordovaSQLite.execute(db, query).then(function(res) {
+      if(res.rows.length > 0) {
+          console.log("SELECTED -> " + res.rows.item(0).firstname + " " + res.rows.item(0).lastname);
+      } else {
+          console.log("No results found");
+      }
+  }, function (err) {
+      console.error(err);
+  });
+  // var query = "SELECT * FROM firstid";
+  //       $cordovaSQLite.execute(db, query, []).then(function(res) {
+  //           if(res.rows.length > 0) {
+  //               for(var i = 0; i < res.rows.length; i++) {
+  //                   console.log("SELECTED -> " + res.rows.item(i).firstname + " " + res.rows.item(i).lastname);
+  //               }
+  //           } else {
+  //               console.log("No results found");
+  //           }
+  //       }, function (err) {
+  //           console.error(err);
+  //       });
 
 
 

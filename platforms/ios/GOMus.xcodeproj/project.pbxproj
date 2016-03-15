@@ -45,6 +45,8 @@
 		C86B769DB9B742B8887DD34D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 968188C52EC845539A1B6ED7 /* libsqlite3.dylib */; };
 		9564901ABED24E76974A5CE5 /* sqlDB.h in Resources */ = {isa = PBXBuildFile; fileRef = 9022BA97B4EE40529BC0CA36 /* sqlDB.h */; };
 		42BCD03982C74D17B7A3814C /* sqlDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B49C2BCB0104CF2BECF51B7 /* sqlDB.m */; };
+		9D4746DA788540CC8C93C3B3 /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD002DC3C584140A1599742 /* IonicKeyboard.m */; };
+		B23D24D8730740A3BBB68FC5 /* UIWebViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1D354AF35140A2B89A3F74 /* UIWebViewExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,10 @@
 		968188C52EC845539A1B6ED7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsqlite3.dylib"; path = "usr/lib/libsqlite3.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
 		9022BA97B4EE40529BC0CA36 /* sqlDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sqlDB.h"; path = "me.rahul.plugins.sqlDB/sqlDB.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		8B49C2BCB0104CF2BECF51B7 /* sqlDB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "sqlDB.m"; path = "me.rahul.plugins.sqlDB/sqlDB.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		9AD002DC3C584140A1599742 /* IonicKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "IonicKeyboard.m"; path = "ionic-plugin-keyboard/IonicKeyboard.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		0C1D354AF35140A2B89A3F74 /* UIWebViewExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIWebViewExtension.m"; path = "ionic-plugin-keyboard/UIWebViewExtension.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		1F1B819BFAD042C8B5A778D1 /* IonicKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "IonicKeyboard.h"; path = "ionic-plugin-keyboard/IonicKeyboard.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		4ED5A18B7804411A990518F5 /* UIWebViewExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIWebViewExtension.h"; path = "ionic-plugin-keyboard/UIWebViewExtension.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +231,10 @@
 				51E2E3EE15E443149DC41887 /* SQLitePlugin.h */,
 				9022BA97B4EE40529BC0CA36 /* sqlDB.h */,
 				8B49C2BCB0104CF2BECF51B7 /* sqlDB.m */,
+				9AD002DC3C584140A1599742 /* IonicKeyboard.m */,
+				0C1D354AF35140A2B89A3F74 /* UIWebViewExtension.m */,
+				1F1B819BFAD042C8B5A778D1 /* IonicKeyboard.h */,
+				4ED5A18B7804411A990518F5 /* UIWebViewExtension.h */,
 			);
 			name = Plugins;
 			path = GOMus/Plugins;
@@ -419,6 +429,8 @@
 				D2ABB5CAECE14649A6993026 /* SQLitePlugin.m in Sources */,
 				9564901ABED24E76974A5CE5 /* sqlDB.h in Resources */,
 				42BCD03982C74D17B7A3814C /* sqlDB.m in Sources */,
+				9D4746DA788540CC8C93C3B3 /* IonicKeyboard.m in Sources */,
+				B23D24D8730740A3BBB68FC5 /* UIWebViewExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

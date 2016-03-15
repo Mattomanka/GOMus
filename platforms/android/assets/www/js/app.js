@@ -182,8 +182,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'uiGmapg
       full_about: "Переглянути повну сторінку",
       main_plan: "План будівлі"
   });
-  $translateProvider.preferredLanguage(window.localStorage.getItem('lang'));
-  $translateProvider.fallbackLanguage(window.localStorage.getItem('lang'));
+  console.log('aaaaaaaaaaaa');
+  console.log(window.localStorage.getItem('lang'));
+  if (window.localStorage.getItem('lang')) {
+    $translateProvider.preferredLanguage(window.localStorage.getItem('lang'));
+    $translateProvider.fallbackLanguage(window.localStorage.getItem('lang'));
+  } else {
+    $translateProvider.preferredLanguage('en');
+    $translateProvider.fallbackLanguage('en');
+  }
 })
 
 .run(function($ionicPlatform, $rootScope, $translate, $cordovaSQLite) {
@@ -216,18 +223,36 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'uiGmapg
     //     console.error(err);
     //   });
     // };
+
+    // window.plugins.sqlDB.copy("populated.sqlite", function() {
+    //   db = $cordovaSQLite.openDB("populated.db");
+    // }, 0, function(error) {
+    //   console.error("There was an error copying the database: " + error);
+    //   db = $cordovaSQLite.openDB("populated.db");
+    // });
+
+    // Wait for Cordova to load
+    document.addEventListener('deviceready', onDeviceReady, false);
+
+    // Cordova is ready
+    function onDeviceReady() {
+      window.plugins.sqlDB.copy("populated.db", function() {
+        console.log('successdbaaaaaaaaaaaaaaaaaaaaaaa');
+        db = $cordovaSQLite.openDB("populated.db");
+        $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS people (id integer primary key, firstname text, lastname text)");
  
-    console.log(window);
+        console.log(db);
+        console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
+      }, 0, function(error) {
+        console.error("There was an error copying the database: " + error);
+        console.log(error);
+        db = $cordovaSQLite.openDB("populated.db");
+        $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS people (id integer primary key, firstname text, lastname text)");
+      });
+    }
 
-    window.plugins.sqlDB.copy("populated.sqlite", function() {
-      db = $cordovaSQLite.openDB("populated.db");
-    }, 0, function(error) {
-      console.error("There was an error copying the database: " + error);
-      db = $cordovaSQLite.openDB("populated.db");
-    });
-
-    cordova.getAppVersion(function(version) {
-      appVersion = version;
-    });
+    // cordova.getAppVersion(function(version) {
+    //   appVersion = version;
+    // });
   });
 });
