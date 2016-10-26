@@ -117,8 +117,6 @@ angular.module('starter.controllers', ['starter.factories'])
       console.log('Modal is shown!');
     });
 
-    
-
     $scope.showImage = function(index) {
       $scope.openModal();
     }
