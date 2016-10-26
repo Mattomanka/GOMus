@@ -120,17 +120,6 @@ angular.module('starter.controllers', ['starter.factories'])
     
 
     $scope.showImage = function(index) {
-      // switch(index) {
-      //   case 1:
-      //     $scope.imageSrc = 'http://ionicframework.com/img/ionic-logo-blog.png';
-      //     break;
-      //   case 2:
-      //     $scope.imageSrc  = 'http://ionicframework.com/img/ionic_logo.svg';
-      //     break;
-      //   case 3:
-      //     $scope.imageSrc  = 'http://ionicframework.com/img/homepage/phones-weather-demo@2x.png';
-      //     break;
-      // }
       $scope.openModal();
     }
   }
