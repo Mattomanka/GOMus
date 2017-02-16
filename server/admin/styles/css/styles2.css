@@ -1,0 +1,135 @@
+body {
+	background-color: #ffffff;
+	font-family: 'Arimo', sans-serif;
+	color: #000000;
+    font-size: 16px;
+	
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;    
+}
+h1 {
+    line-height: 50px;
+    font-size: 40px;
+}
+h2 {
+    line-height: 40px;
+    font-size: 30px;
+}
+.numbers-fon{
+    background-color: #ffc000;
+    height: 225px;
+    margin-top: 20px;
+}
+.ramka{
+    border: 2px solid #ffc000;
+}
+.header1{
+    height: 130px;
+    background: rgba(0, 0, 0, 0.5);
+} 
+.header2{
+    height: 570px;
+    text-align: center;
+    text-shadow: 1px 1px #000000;
+}
+.first {
+    height: 700px;
+	background: url(../images/fon.jpg) no-repeat;
+	color: #ffffff;
+}
+.numbers{
+    height: 245px;
+    text-align: center;
+    font-size: 18px;
+    color: #ffffff;
+} 
+.power{
+    height: 600px;
+    text-align: center;
+} 
+.callnow{
+    height: 200px;
+} 
+.uslugi{
+    height: 1189px;
+    text-align: center;
+} 
+.partneri{
+    height: 360px;
+    text-align: center;
+} 
+.katalog{
+    height: 400px;
+    background: url(../images/fon2.jpg) no-repeat;
+    color: #ffffff;
+} 
+.video{
+    height: 470px;
+    text-align: center;
+} 
+.about{
+    height: 225px;
+    text-align: center;
+    font-size: 18px;
+} 
+.umeem{
+    height: 360px;
+    text-align: center;
+} 
+.komanda{
+    height: 880px;
+} 
+.portfolio{
+    height: 670px;
+    text-align: center;
+} 
+.etapi{
+    height: 650px;
+    text-align: center;
+} 
+.otzivi{
+    height: 530px;
+} 
+.map{
+    height: 630px;
+    text-align: center;
+} 
+.forma{
+    height: 400px;
+    background: url(../images/fon2.jpg) no-repeat;
+    color: #ffffff;
+} 
+.footer{
+    height: 180px;
+} 
+.caps{
+	text-transform: uppercase;
+} 
+
+.thanks {
+    color: #ffffff;
+	text-align: left;
+	background-color: #ffffff;
+	line-height: 25px;
+	font-family: "Proxima Nova", sans;
+}
+
+.office__inner, .form_div, .question {
+  height: 139px;
+  resize: none;
+}
+
+.form_div, .form_div__input {
+    -moz-appearance: none;
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 2px solid #b8b8b8;
+    border-radius: 5px;
+    color: #a7a7a7;
+    font-family: "Open Sans",sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 15px 10px;
+    width: 286px;
+}

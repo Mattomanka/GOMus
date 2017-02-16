@@ -1,0 +1,39 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+}
+html, body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+body {
+	font: 14px/18px Verdana, Tahoma, Arial, sans-serif;
+}
+h2, h3, h4, h5, h6 {font-weight: bold; }
+h2 { font-size: 23px;}
+h3 {font-size: 21px;}
+h4 {font-size: 18px;}
+h5 {font-size: 16px;}
+h6 {font-size: 14px;}
+a {
+	text-decoration: none;
+	color: #000;
+}
+a:hover {
+	text-decoration: underline;
+}
+ol, ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+::selection {
+background: #ffb7b7;
+}
+::-moz-selection {
+background: #ffb7b7;
+}

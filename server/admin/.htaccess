@@ -1,0 +1,4 @@
+AuthName ProtectedZone
+AuthType Basic
+AuthUserFile /home/areyoual/areyoualive.ru/gid/admin/.htpasswd
+require valid-user

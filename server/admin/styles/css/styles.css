@@ -1,0 +1,401 @@
+@import "http://webfonts.ru/import/fira.css";
+
+body {
+	font-family: 'Fira Sans', sans-serif;
+	color: #4e4c4c;
+  font-size: 14px;
+  height: 100%;
+  background-color: #e4f6f8;
+	
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;    
+}
+h1 {
+    line-height: 55px;
+    font-size: 50px;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: bold;
+    color: #e25d3a; 
+    text-align: center;
+
+}
+h2 {
+    line-height: 40px;
+    font-size: 29px;
+    font-weight: 600;
+    font-style: normal;
+    font-family: 'Fira Sans Light', sans-serif;
+}
+h3 {
+    line-height: 40px;
+    font-size: 24px;
+    font-weight: 800;
+    font-style: normal;
+    font-family: 'Fira Sans Light', sans-serif;
+}
+.polosa {
+  background: rgba(0,0,0, 0.22);
+  height: 1px;
+}
+.ability div img {
+  margin-top: 10px;
+}
+.ability h2 {
+  line-height: 60px;
+  margin-top: 10px;
+}
+@media screen and (max-height: 1000px) { 
+ .first {
+  height: 1000px;
+}
+ .work {
+  height: 1000px;
+}
+ .ability {
+  height: 1000px;
+}
+.title {
+  margin-top: 80px;
+}
+ .first h1 {
+  margin-top: 220px;
+}
+ .work h1 {
+  margin-top: 150px;
+}
+.ability h1 {
+  margin-top: 150px;
+}
+.login h1 {
+  margin-top: 300px;
+}
+}
+@media screen and (max-height: 768px) { 
+  .first {
+  height: 700px;
+}
+ .work {
+  height: 700px;
+}
+.work {
+  height: 700px;
+}
+.title {
+  margin-top: 40px;
+}
+ .first h1 {
+  margin-top: 75px;
+}
+ .work h1 {
+  margin-top: 50px;
+}
+ .ability h1 {
+  margin-top: 50px;
+}
+.login h1 {
+  margin-top: 200px;
+}
+}
+.work p{
+  margin-top: -10px;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  font-family: 'Fira Sans Light', sans-serif;
+}
+
+.hi-icon {
+  display: inline-block;
+  font-size: 0px;
+  cursor: pointer;
+  margin: 15px 28px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+.hi-icon:after {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  content: '';
+  -webkit-box-sizing: content-box; 
+  -moz-box-sizing: content-box; 
+  box-sizing: content-box;
+}
+
+.hi-icon:before {
+  speak: none;
+  font-size: 48px;
+  line-height: 90px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  display: block;
+  -webkit-font-smoothing: antialiased;
+}
+.hi-icon-wrap {
+  text-align: center;
+  padding: 8em 0 3em;
+}
+
+.hi-icon-effect-8 .hi-icon {
+  background: rgba(226,93,58,1);
+  -webkit-transition: -webkit-transform ease-out 0.1s, background 0.2s;
+  -moz-transition: -moz-transform ease-out 0.1s, background 0.2s;
+  transition: transform ease-out 0.1s, background 0.2s;
+}
+
+.hi-icon-effect-8 .hi-icon:after {
+  top: 0;
+  left: 0;
+  padding: 0;
+  z-index: -1;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  transform: scale(0.9);
+}
+/*
+.no-touch .hi-icon-effect-8 .hi-icon:hover {
+  background: rgba(226,93,58,1);
+  -webkit-transform: scale(0.93);
+  -moz-transform: scale(0.93);
+  -ms-transform: scale(0.93);
+  transform: scale(0.93);
+  color: #fff;
+}
+*/
+.hi-icon:hover {
+  background: rgba(226,93,58,0.8);
+  -webkit-transform: scale(0.92);
+  -moz-transform: scale(0.92);
+  -ms-transform: scale(0.92);
+  transform: scale(0.92);
+  color: #fff;
+}
+
+.hi-icon-effect-8 .hi-icon:hover:after {
+  -webkit-animation: sonarEffect 1.3s ease-out 75ms;
+  -moz-animation: sonarEffect 1.3s ease-out 75ms;
+  animation: sonarEffect 1.3s ease-out 75ms;
+}
+
+@-webkit-keyframes sonarEffect {
+  0% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 0.5;
+    box-shadow: 0 0 0 2px rgba(226,93,58,0.8), 0 0 10px 10px #a6d5e1, 0 0 0 10px rgba(226,93,58,0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(226,93,58,0.8), 0 0 10px 10px #a6d5e1, 0 0 0 10px rgba(226,93,58,0.5);
+    -webkit-transform: scale(1.5);
+    opacity: 0;
+  }
+}
+@-moz-keyframes sonarEffect {
+  0% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 0.5;
+    box-shadow: 0 0 0 2px rgba(226,93,58,0.8), 0 0 10px 10px #a6d5e1, 0 0 0 10px rgba(226,93,58,0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(226,93,58,0.8), 0 0 10px 10px #a6d5e1, 0 0 0 10px rgba(226,93,58,0.5);
+    -moz-transform: scale(1.5);
+    opacity: 0;
+  }
+}
+@keyframes sonarEffect {
+  0% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 0.5;
+    box-shadow: 0 0 0 2px rgba(226,93,58,0.8), 0 0 10px 10px #a6d5e1, 0 0 0 10px rgba(226,93,58,0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(226,93,58,0.8), 0 0 10px 10px #a6d5e1, 0 0 0 10px rgba(226,93,58,0.5);
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+.fragment {
+  position: relative;
+}
+/*.fragcaption {
+  position: absolute;
+  height: 75px;
+  width: 300px;
+  bottom: 0;
+  display: none;
+  color: #e4f6f8;
+  
+
+
+}
+.fragment:hover .fragcaption {
+  display: block;
+  -webkit-transition: -webkit-transform 4s;
+  -moz-transition: -moz-transform 4s;
+  transition: transform 4s;
+  -webkit-transform: translateY(-75px);
+  -moz-transform: translateY(-75px);
+  -ms-transform: translateY(-75px);
+  transform: translateY(-75px);
+*/
+.fragcaption {
+  position: absolute;
+  height: 75px;
+  width: 300px;
+  top: auto;
+  bottom: 0px;
+  opacity: 0;
+  color: #e4f6f8;
+  -webkit-transition: -webkit-transform 0.4s;
+  -moz-transition: -moz-transform 0.4s;
+  transition: transform 0.4s;
+  -webkit-transform: translateY(20px);
+  -moz-transform: translateY(20px);
+  -ms-transform: translateY(20px);
+  transform: translateY(20px);
+
+  
+
+
+}
+.fragment:hover .fragcaption {
+  opacity: 1;
+  -webkit-transition: -webkit-transform 0.4s,
+  -moz-transition: -moz-transform 0.4s, 
+  transition: transform 0.4s, 
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+
+}
+}
+
+nav.m-nav {
+    background-color: #000;
+    border-radius: 19px;
+    margin-top: -122px;
+    padding: 5px 0 5px;
+    position: fixed;
+    right: 17px;
+    top: 50%;
+    width: 37px;
+    z-index: 7777;
+}
+
+.m-nav-item div{
+    border: 2px solid #b3b3b3;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 7px;
+    margin: 12px auto;
+    position: relative;
+    width: 7px;
+}
+
+.m-nav-item-hov {
+	background: #ffe400;
+   border-radius: 50%;
+    display: none;
+	 left: 0.8em;
+    height: 15px;
+    position: absolute;
+    width: 15px;
+}
+
+.m-nav-arrs {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.prev, .next {
+    transform: rotate(90deg);
+}
+.input {
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 40px;
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 218px;
+  height: 25px;
+  padding: 10px 20px;
+  padding-left: 60px;
+  border: 1px solid rgba(0,0,0,0.22);
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  color: rgba(0,142,198,1);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgba(252,252,252,1);
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.66);
+  margin-bottom: 10px;
+}
+.input:focus {
+  outline: none;
+  border: 1px solid #e25d3a;
+}
+.h-polosa {
+  background: rgba(0,0,0, 0.22);
+  width: 1px;
+  height: 43px;
+  position: absolute;
+  top: 2px;
+  left: 45px;
+}
+.enter {
+  font-family: 'Fira Sans Light', sans-serif;
+  font-weight: 800;
+  outline: none;
+  font-size: 24px;
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 260px;
+  height: 25px;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid rgba(0,0,0,0.22);
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  color: #4e4c4c;
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgba(255,255,255,1);
+  -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.enter:hover {
+  color: rgba(255,255,255,0.9);
+  background: #e25d3a;
+}
+.enter:focus {
+  outline: none;
+  border: 1px solid #e25d3a;
