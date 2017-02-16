@@ -6,7 +6,7 @@ angular.module('starter.controllers').controller('innerMapCtrl', function($scope
 		template: '{{"loading" | translate}}'
 	});
  	lang = window.localStorage.getItem('lang');
-	$http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=*&where=InnerLocation&lang='+lang})
+	$http({method: 'GET', url: 'http://mattomanka.esy.es/gomus/api/desktop/common_app.php?nfields=*&where=InnerLocation&lang='+lang})
   	.then(function successCallback(response) {
 	  	console.log(response.data);
 	    $ionicLoading.hide()

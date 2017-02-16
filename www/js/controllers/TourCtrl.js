@@ -6,12 +6,12 @@ angular.module('starter.controllers').controller('TourCtrl', ['$scope', '$http',
   $ionicLoading.show({
     template: '{{"loading" | translate}}'
   })
-  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=id,name&sfield=id&count=1&sfieldValue=' + $stateParams.tourId + '&where=Tour&lang='+lang})
+  $http({method: 'GET', url: 'http://mattomanka.esy.es/gomus/api/desktop/common_app.php?nfields=id,name&sfield=id&count=1&sfieldValue=' + $stateParams.tourId + '&where=Tour&lang='+lang})
   .then(function successCallback(response) {
     $scope.tour = response.data[0];
   })
 
- 	$http({method: 'GET', url: 'http://gid.areyoualive.ru/api/tour_locations.php?tour_id=' + $stateParams.tourId + '&lang='+lang})
+ 	$http({method: 'GET', url: 'http://mattomanka.esy.es/gomus/api/tour_locations.php?tour_id=' + $stateParams.tourId + '&lang='+lang})
   .then(function successCallback(response) {
     $ionicLoading.hide();
     $scope.locations = response.data;

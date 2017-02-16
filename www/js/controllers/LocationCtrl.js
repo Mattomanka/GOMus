@@ -7,7 +7,7 @@ angular.module('starter.controllers').controller('LocationCtrl', function($scope
   })
 	lang = window.localStorage.getItem('lang');
   console.log(lang);
-  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=*&sfield=id&count=1&sfieldValue=' + currentLocationID + '&where=Location&lang='+lang})
+  $http({method: 'GET', url: 'http://mattomanka.esy.es/gomus/api/desktop/common_app.php?nfields=*&sfield=id&count=1&sfieldValue=' + currentLocationID + '&where=Location&lang='+lang})
   .then(function successCallback(response) {
     console.log(response.data);
 		$ionicLoading.hide();
@@ -20,12 +20,12 @@ angular.module('starter.controllers').controller('LocationCtrl', function($scope
 		$scope.map.center.longitude = parseFloat(coordArray[1]);
 	});
 
-  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/check_inner_loc.php?ID=' + currentLocationID + '&bool=1'})
+  $http({method: 'GET', url: 'http://mattomanka.esy.es/gomus/api/check_inner_loc.php?ID=' + currentLocationID + '&bool=1'})
   .then(function successCallback(response) {
       $scope.check_inner_loc = response.data;
   });
 
-  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/check_quest.php?ID=' + currentLocationID + '&bool=1'})
+  $http({method: 'GET', url: 'http://mattomanka.esy.es/gomus/api/check_quest.php?ID=' + currentLocationID + '&bool=1'})
   .then(function successCallback(response) {
       $scope.check_quest = response.data;
   });

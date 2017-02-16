@@ -4,7 +4,7 @@ angular.module('starter.controllers').controller('ToursCtrl', function($scope, $
   })
   lang = window.localStorage.getItem('lang');
 
-  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/desktop/common_app.php?nfields=id,name,photo,description&where=Tour&lang='+lang})
+  $http({method: 'GET', url: 'http://mattomanka.esy.es/gomus/api/desktop/common_app.php?nfields=id,name,photo,description&where=Tour&lang='+lang})
   .then(function successCallback(response) {
   	$ionicLoading.hide()
     $scope.tours = response.data;

@@ -5,7 +5,7 @@ angular.module('starter.controllers').controller('QuestCtrl', ['$scope', '$ionic
   var currentInLocationID = parseInt($stateParams.questId.slice(5));
   console.log(currentInLocationID)
 
-  $http({method: 'GET', url: 'http://gid.areyoualive.ru/api/quests.php?questID=' + currentInLocationID })
+  $http({method: 'GET', url: 'http://mattomanka.esy.es/gomus/api/quests.php?questID=' + currentInLocationID })
   .then(function successCallback(response) {
 
     $scope.CurrenHTML = response.data[0].question.replace(/[{][\S]{0,}[\s]{0,}[\S]{0,}[\s]{0,}[\S]{0,}[\s]{0,}[}]/g,qmaxParser);
